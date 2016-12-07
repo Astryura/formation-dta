@@ -82,11 +82,11 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>pizzeria-dao</artifactId>
+			<artifactId>astrid-pizzeria-dao</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>pizzeria-model</artifactId>
+			<artifactId>astrid-pizzeria-model</artifactId>
 		</dependency>
 	</dependencies>
 
