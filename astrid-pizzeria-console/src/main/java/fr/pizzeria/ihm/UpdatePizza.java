@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.sql.SQLException;
+
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -14,7 +16,7 @@ public class UpdatePizza implements Action {
 	}
 
 	@Override
-	public void doAction() {
+	public void doAction() throws SQLException {
 		System.out.println("Modifiez votre Pizza. \nCode de la Pizza que vous voulez modifier");
 		String codePizza = ihmUtil.getScanner().next();
 		System.out.println("Nouveau Code de la Pizza");
@@ -23,7 +25,7 @@ public class UpdatePizza implements Action {
 		String nomU = ihmUtil.getScanner().next();
 		System.out.println("Nouveau Prix de la Pizza");
 		String prixU = ihmUtil.getScanner().next();
-		System.out.println("Nouvelle Catégorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
+		System.out.println("Nouvelle Catï¿½gorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
 		String cat = ihmUtil.getScanner().next();
 		if (cat.equals("V")) {
 			catP = CategoriePizza.VIANDE;
@@ -38,14 +40,14 @@ public class UpdatePizza implements Action {
 			Pizza pizza = new Pizza(codeU, nomU, Double.parseDouble(prixU), catP);
 			ihmUtil.getPizzaDao().updatePizza(codePizza, pizza);
 		} else {
-			System.out.println("Rentrez une catégorie valide");
+			System.out.println("Rentrez une catï¿½gorie valide");
 		}
 
 	}
 
 	@Override
 	public void describeAction() {
-		System.out.println("3. Mettre à jour une pizza");
+		System.out.println("3. Mettre ï¿½ jour une pizza");
 	}
 
 }

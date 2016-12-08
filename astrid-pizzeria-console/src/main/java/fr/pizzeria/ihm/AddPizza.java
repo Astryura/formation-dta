@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.sql.SQLException;
+
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -14,14 +16,14 @@ public class AddPizza implements Action {
 	}
 
 	@Override
-	public void doAction() {
-		System.out.println("Créez votre Pizza. \nCode de la Pizza");
+	public void doAction() throws SQLException {
+		System.out.println("Crï¿½ez votre Pizza. \nCode de la Pizza");
 		String code = ihmUtil.getScanner().next();
 		System.out.println("Nom de la Pizza");
 		String nom = ihmUtil.getScanner().next();
 		System.out.println("Prix de la Pizza");
 		String prix = ihmUtil.getScanner().next();
-		System.out.println("Catégorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
+		System.out.println("Catï¿½gorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
 		String cat = ihmUtil.getScanner().next();
 		if (cat.equals("V")) {
 			catP = CategoriePizza.VIANDE;
@@ -36,7 +38,7 @@ public class AddPizza implements Action {
 			Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), catP);
 			ihmUtil.getPizzaDao().saveNewPizza(pizza);
 		} else {
-			System.out.println("Rentrez une catégorie valide");
+			System.out.println("Rentrez une catï¿½gorie valide");
 		}
 
 	}

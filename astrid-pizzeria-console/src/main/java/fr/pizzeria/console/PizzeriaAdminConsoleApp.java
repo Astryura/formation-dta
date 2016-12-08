@@ -1,5 +1,6 @@
 package fr.pizzeria.console;
 
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -9,8 +10,8 @@ import fr.pizzeria.ihm.MainMenu;
 
 public class PizzeriaAdminConsoleApp {
 
-	public static void main(String[] args)
-			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException, NumberFormatException, SQLException {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 

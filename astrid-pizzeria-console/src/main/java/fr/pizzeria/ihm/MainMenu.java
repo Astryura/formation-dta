@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,14 +20,14 @@ public class MainMenu {
 		this.ihmUtil = ihmUtil;
 	}
 
-	public void displayMenu() {
+	public void displayMenu() throws NumberFormatException, SQLException {
 		actions.forEach((k, v) -> {
 			actions.get(k).describeAction();
 		});
 		parseAndExec();
 	}
 
-	private void parseAndExec() {
+	private void parseAndExec() throws NumberFormatException, SQLException {
 		String input = ihmUtil.getScanner().next();
 
 		if (Integer.parseInt(input) <= 6) {
