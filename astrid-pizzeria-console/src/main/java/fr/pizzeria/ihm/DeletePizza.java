@@ -1,7 +1,5 @@
 package fr.pizzeria.ihm;
 
-import java.sql.SQLException;
-
 public class DeletePizza implements Action {
 
 	private IhmUtil ihmUtil;
@@ -12,7 +10,7 @@ public class DeletePizza implements Action {
 	}
 
 	@Override
-	public void doAction() throws SQLException {
+	public void doAction() {
 		System.out.println("Supprimer votre Pizza. \nCode de la Pizza que vous voulez supprimer");
 		String codeS = ihmUtil.getScanner().next();
 		ihmUtil.getPizzaDao().deletePizza(codeS);

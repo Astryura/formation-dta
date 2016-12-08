@@ -10,98 +10,121 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoJDBC implements PizzaDao {
 
-	List<Pizza> listPizzas = new ArrayList<Pizza>();
-	String url;
-	Connection connection;
-	Statement statement;
-
-	public void PizzaDaoJDBCStart() throws SQLException {
-		url = "jdbc:mysql://localhost:3306/pizzadb";
-		connection = DriverManager.getConnection(url, "root", "");
-		statement = connection.createStatement();
+	interface IRunSql<T> {
+		T exec(Statement st) throws SQLException;
 	}
 
-	public void PizzaDaoJDBCEnd() throws SQLException {
-		connection.close();
+	interface IRunSqlPrep<T> {
+		T exec(Connection conn) throws SQLException;
 	}
 
-	@Override
-	public List<Pizza> findAllPizzas() throws SQLException {
-		listPizzas.clear();
-		Pizza.setNbPizzas(0);
-		PizzaDaoJDBCStart();
-		ResultSet resultats = statement.executeQuery("SELECT * FROM PIZZA");
-		while (resultats.next()) {
-			Integer id = resultats.getInt("ID");
-			String code = resultats.getString("CODE");
-			String name = resultats.getString("NOM");
-			Double price = resultats.getDouble("PRIX");
-			String cat = resultats.getString("CATEGORIE");
-			Pizza pizza = new Pizza(id, code, name, price,
-					CategoriePizza.valueOf(cat.toUpperCase().replaceAll(" ", "_")));
-			listPizzas.add(pizza);
+	public <T> T execute(IRunSql<T> run) {
+		String url = "jdbc:mysql://localhost:3306/pizzadb";
+		try (Connection connection = DriverManager.getConnection(url, "root", "");
+				Statement statement = connection.createStatement();) {
+
+			return run.exec(statement);
+		} catch (SQLException e) {
+			Logger.getLogger(PizzaDaoJDBC.class.getName()).severe(e.getMessage());
+			throw new PizzaException(e);
 		}
-		PizzaDaoJDBCEnd();
-		return listPizzas;
-	}
-
-	@Override
-	public void saveNewPizza(Pizza pizza) throws SQLException {
-		PizzaDaoJDBCStart();
-		PreparedStatement addPizzaSt = connection
-				.prepareStatement("INSERT INTO PIZZA (CODE, NOM, PRIX, CATEGORIE) VALUES (?,?,?,?)");
-		addPizzaSt.setString(1, pizza.getCode());
-		addPizzaSt.setString(2, pizza.getNom());
-		addPizzaSt.setDouble(3, pizza.getPrix());
-		addPizzaSt.setString(4, pizza.getCatP());
-		addPizzaSt.executeUpdate();
-		PizzaDaoJDBCEnd();
 
 	}
 
-	@Override
-	public void updatePizza(String codePizza, Pizza pizza) throws SQLException {
-		PizzaDaoJDBCStart();
-		PreparedStatement updatePizzaSt = connection
-				.prepareStatement("UPDATE PIZZA SET ID=?,CODE=?,NOM=?,PRIX=?,CATEGORIE=? WHERE CODE = ?");
-		updatePizzaSt.setInt(1, pizza.getId());
-		updatePizzaSt.setString(2, pizza.getCode());
-		updatePizzaSt.setString(3, pizza.getNom());
-		updatePizzaSt.setDouble(4, pizza.getPrix());
-		updatePizzaSt.setString(5, pizza.getCatP());
-		updatePizzaSt.setString(6, codePizza);
-		updatePizzaSt.executeUpdate();
-		PizzaDaoJDBCEnd();
-	}
+	public <T> T executePrep(IRunSqlPrep<T> run) {
+		String url = "jdbc:mysql://localhost:3306/pizzadb";
+		try (Connection connection = DriverManager.getConnection(url, "root", "");) {
 
-	@Override
-	public void deletePizza(String codePizza) throws SQLException {
-		PizzaDaoJDBCStart();
-		PreparedStatement deletePizzaSt = connection.prepareStatement("DELETE FROM PIZZA WHERE CODE = ?");
-		deletePizzaSt.setString(1, codePizza);
-		deletePizzaSt.executeUpdate();
-		PizzaDaoJDBCEnd();
+			return run.exec(connection);
+		} catch (SQLException e) {
+			Logger.getLogger(PizzaDaoJDBC.class.getName()).severe(e.getMessage());
+			throw new PizzaException(e);
+		}
 
 	}
 
 	@Override
-	public List<Pizza> findAllPizzasCat() throws SQLException {
-		listPizzas = findAllPizzas();
+	public List<Pizza> findAllPizzas() throws PizzaException {
+		List<Pizza> listPizzas = new ArrayList<Pizza>();
+		return execute((Statement statement) -> {
+			Pizza.setNbPizzas(0);
+			ResultSet resultats = statement.executeQuery("SELECT * FROM PIZZA");
+			while (resultats.next()) {
+				Integer id = resultats.getInt("ID");
+				String code = resultats.getString("CODE");
+				String name = resultats.getString("NOM");
+				Double price = resultats.getDouble("PRIX");
+				String cat = resultats.getString("CATEGORIE");
+				Pizza pizza = new Pizza(id, code, name, price,
+						CategoriePizza.valueOf(cat.toUpperCase().replaceAll(" ", "_")));
+				listPizzas.add(pizza);
+			}
+			return listPizzas;
+		});
+	}
+
+	@Override
+	public void saveNewPizza(Pizza pizza) throws PizzaException {
+		executePrep((Connection connection) -> {
+			PreparedStatement addPizzaSt = connection
+					.prepareStatement("INSERT INTO PIZZA (CODE, NOM, PRIX, CATEGORIE) VALUES (?,?,?,?)");
+			addPizzaSt.setString(1, pizza.getCode());
+			addPizzaSt.setString(2, pizza.getNom());
+			addPizzaSt.setDouble(3, pizza.getPrix());
+			addPizzaSt.setString(4, pizza.getCatP());
+			addPizzaSt.executeUpdate();
+			return Void.TYPE;
+		});
+
+	}
+
+	@Override
+	public void updatePizza(String codePizza, Pizza pizza) throws PizzaException {
+		executePrep((Connection connection) -> {
+			PreparedStatement updatePizzaSt = connection
+					.prepareStatement("UPDATE PIZZA SET ID=?,CODE=?,NOM=?,PRIX=?,CATEGORIE=? WHERE CODE = ?");
+			updatePizzaSt.setInt(1, pizza.getId());
+			updatePizzaSt.setString(2, pizza.getCode());
+			updatePizzaSt.setString(3, pizza.getNom());
+			updatePizzaSt.setDouble(4, pizza.getPrix());
+			updatePizzaSt.setString(5, pizza.getCatP());
+			updatePizzaSt.setString(6, codePizza);
+			updatePizzaSt.executeUpdate();
+			return Void.TYPE;
+		});
+	}
+
+	@Override
+	public void deletePizza(String codePizza) throws PizzaException {
+		executePrep((Connection connection) -> {
+			PreparedStatement deletePizzaSt = connection.prepareStatement("DELETE FROM PIZZA WHERE CODE = ?");
+			deletePizzaSt.setString(1, codePizza);
+			deletePizzaSt.executeUpdate();
+			return Void.TYPE;
+		});
+
+	}
+
+	@Override
+	public List<Pizza> findAllPizzasCat() {
+		List<Pizza> listPizzas = findAllPizzas();
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
 		List<Pizza> list = listPizzas.stream().sorted(comp).collect(Collectors.toList());
 		return list;
 	}
 
 	@Override
-	public Pizza findAllPizzasPrix() throws SQLException {
-		listPizzas = findAllPizzas();
+	public Pizza findAllPizzasPrix() {
+		List<Pizza> listPizzas = findAllPizzas();
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
 		Optional<Pizza> pizza = listPizzas.stream().max(comp);
 		if (pizza.isPresent()) {

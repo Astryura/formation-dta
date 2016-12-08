@@ -1,7 +1,5 @@
 package fr.pizzeria.ihm;
 
-import java.sql.SQLException;
-
 import fr.pizzeria.model.Pizza;
 
 public class ListPizzaPrix implements Action {
@@ -14,7 +12,7 @@ public class ListPizzaPrix implements Action {
 	}
 
 	@Override
-	public void doAction() throws SQLException {
+	public void doAction() {
 		Pizza p = this.ihmUtil.getPizzaDao().findAllPizzasPrix();
 		System.out.println(p.getId() + " " + p.getCode() + " " + p.getNom() + " " + p.getPrix() + " " + p.getCatP());
 

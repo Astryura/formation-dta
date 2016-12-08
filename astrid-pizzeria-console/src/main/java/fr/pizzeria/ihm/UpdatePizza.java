@@ -1,7 +1,5 @@
 package fr.pizzeria.ihm;
 
-import java.sql.SQLException;
-
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -16,7 +14,7 @@ public class UpdatePizza implements Action {
 	}
 
 	@Override
-	public void doAction() throws SQLException {
+	public void doAction() {
 		System.out.println("Modifiez votre Pizza. \nCode de la Pizza que vous voulez modifier");
 		String codePizza = ihmUtil.getScanner().next();
 		System.out.println("Nouveau Code de la Pizza");

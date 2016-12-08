@@ -1,6 +1,5 @@
 package fr.pizzeria.ihm;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import fr.pizzeria.model.Pizza;
@@ -15,7 +14,7 @@ public class ListPizzaCat implements Action {
 	}
 
 	@Override
-	public void doAction() throws SQLException {
+	public void doAction() {
 		List<Pizza> list = this.ihmUtil.getPizzaDao().findAllPizzasCat();
 		list.forEach(p -> {
 			System.out
