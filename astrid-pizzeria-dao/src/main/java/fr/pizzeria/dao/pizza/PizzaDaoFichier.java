@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import fr.pizzeria.model.CategoriePizza;
@@ -42,9 +43,9 @@ public class PizzaDaoFichier implements PizzaDao {
 					listPizzas.add(pizza);
 					br.close();
 				} catch (FileNotFoundException e) {
-					e.printStackTrace();
+					Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
 				} catch (IOException e) {
-					e.printStackTrace();
+					Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
 				}
 			}
 		});
@@ -129,7 +130,7 @@ public class PizzaDaoFichier implements PizzaDao {
 		}
 
 		catch (java.io.IOException e) {
-			e.printStackTrace();
+			Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
 		}
 	}
 
@@ -150,7 +151,7 @@ public class PizzaDaoFichier implements PizzaDao {
 			}
 			stream.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
 		}
 		return files;
 
