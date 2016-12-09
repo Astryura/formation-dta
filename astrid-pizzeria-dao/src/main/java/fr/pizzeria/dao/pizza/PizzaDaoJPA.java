@@ -30,7 +30,7 @@ public class PizzaDaoJPA implements PizzaDao {
 			entitymanager = emfactory.createEntityManager();
 			return run.exec(entitymanager);
 		} catch (SQLException e) {
-			Logger.getLogger(PizzaDaoJDBC.class.getName()).severe(e.getMessage());
+			Logger.getLogger(PizzaDaoJPA.class.getName()).severe(e.getMessage());
 			throw new PizzaException(e);
 		} finally {
 			entitymanager.close();
