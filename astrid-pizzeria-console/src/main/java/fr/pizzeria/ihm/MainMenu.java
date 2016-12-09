@@ -36,7 +36,7 @@ public class MainMenu {
 			actions.get((Integer.parseInt(input)) - 1).doAction();
 			displayMenu();
 		} else if (Integer.parseInt(input) == 99) {
-			actions.get(6).doAction();
+			actions.get(7).doAction();
 		}
 	}
 }
