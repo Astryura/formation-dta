@@ -13,7 +13,7 @@ public class IhmUtilTest {
 
 	Scanner sc = new Scanner(System.in);
 	DaoFactory dao = new FichierDaoFactory();
-	IhmUtil ihm = new IhmUtil(sc, dao);
+	IhmUtil ihm = new IhmUtil(sc, dao, "");
 
 	@Test
 	public void testSetScanner() {

@@ -18,7 +18,7 @@ public class PizzeriaAdminConsoleApp {
 
 		DaoFactory daoFactory = (DaoFactory) Class.forName(choix).newInstance();
 
-		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), daoFactory);
+		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), daoFactory, choix);
 
 		MainMenu mainMenu = new MainMenu(ihmUtil);
 

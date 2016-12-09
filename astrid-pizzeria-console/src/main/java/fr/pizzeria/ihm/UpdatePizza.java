@@ -23,7 +23,7 @@ public class UpdatePizza implements Action {
 		String nomU = ihmUtil.getScanner().next();
 		System.out.println("Nouveau Prix de la Pizza");
 		String prixU = ihmUtil.getScanner().next();
-		System.out.println("Nouvelle Cat�gorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
+		System.out.println("Nouvelle Catégorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
 		String cat = ihmUtil.getScanner().next();
 		if (cat.equals("V")) {
 			catP = CategoriePizza.VIANDE;
@@ -38,14 +38,14 @@ public class UpdatePizza implements Action {
 			Pizza pizza = new Pizza(codeU, nomU, Double.parseDouble(prixU), catP);
 			ihmUtil.getPizzaDao().updatePizza(codePizza, pizza);
 		} else {
-			System.out.println("Rentrez une cat�gorie valide");
+			System.out.println("Rentrez une catégorie valide");
 		}
 
 	}
 
 	@Override
 	public void describeAction() {
-		System.out.println("3. Mettre � jour une pizza");
+		System.out.println("3. Mettre à jour une pizza");
 	}
 
 }

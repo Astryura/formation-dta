@@ -19,7 +19,7 @@ public class PizzaDaoTableau implements PizzaDao {
 		listPizzas.add(new Pizza(2, "REI", "La Reine", 11.50, CategoriePizza.VIANDE));
 		listPizzas.add(new Pizza(3, "FRO", "La 4 fromages", 12.00, CategoriePizza.SANS_VIANDE));
 		listPizzas.add(new Pizza(4, "CAN", "La cannibale", 12.50, CategoriePizza.VIANDE));
-		listPizzas.add(new Pizza(5, "SAVO", "La savoyarde", 13.00, CategoriePizza.VIANDE));
+		listPizzas.add(new Pizza(5, "SAV", "La savoyarde", 13.00, CategoriePizza.VIANDE));
 		listPizzas.add(new Pizza(6, "ORI", "L'orientale", 13.50, CategoriePizza.POISSON));
 		listPizzas.add(new Pizza(7, "IND", "L'indienne", 14.50, CategoriePizza.VIANDE));
 
