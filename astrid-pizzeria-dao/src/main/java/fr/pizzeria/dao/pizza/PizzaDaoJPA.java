@@ -1,8 +1,10 @@
 package fr.pizzeria.dao.pizza;
 
+import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
@@ -16,50 +18,74 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoJPA implements PizzaDao {
 
-	EntityManagerFactory emfactory;
-	EntityManager entitymanager;
+	interface IRunSql<T> {
+		T exec(EntityManager entitymanager) throws SQLException;
+	}
 
-	public PizzaDaoJPA() {
-		emfactory = Persistence.createEntityManagerFactory("pizzeria-console");
-		entitymanager = emfactory.createEntityManager();
+	public <T> T execute(IRunSql<T> run) {
+		EntityManagerFactory emfactory = null;
+		EntityManager entitymanager = null;
+		try {
+			emfactory = Persistence.createEntityManagerFactory("pizzeria-console");
+			entitymanager = emfactory.createEntityManager();
+			return run.exec(entitymanager);
+		} catch (SQLException e) {
+			Logger.getLogger(PizzaDaoJDBC.class.getName()).severe(e.getMessage());
+			throw new PizzaException(e);
+		} finally {
+			entitymanager.close();
+			emfactory.close();
+		}
 
 	}
 
 	@Override
 	public List<Pizza> findAllPizzas() throws PizzaException {
-		TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p", Pizza.class);
-		List<Pizza> listPizzas = query.getResultList();
-		return listPizzas;
+		return execute((EntityManager entitymanager) -> {
+			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p", Pizza.class);
+			return query.getResultList();
+		});
 	}
 
 	@Override
 	public void saveNewPizza(Pizza pizza) throws PizzaException {
-		entitymanager.getTransaction().begin();
-		entitymanager.persist(pizza);
-		entitymanager.getTransaction().commit();
+		execute((EntityManager entitymanager) -> {
+			entitymanager.getTransaction().begin();
+			entitymanager.persist(pizza);
+			entitymanager.getTransaction().commit();
+			return Void.TYPE;
+		});
 	}
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) throws PizzaException {
-		entitymanager.getTransaction().begin();
-		TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code", Pizza.class);
-		query.setParameter("code", codePizza);
-		Pizza p = (Pizza) query.getSingleResult();
-		p.setCode(pizza.getCode());
-		p.setNom(pizza.getNom());
-		p.setPrix(pizza.getPrix());
-		p.setCatP(CategoriePizza.valueOf(pizza.getCatP()));
-		entitymanager.getTransaction().commit();
+		execute((EntityManager entitymanager) -> {
+			entitymanager.getTransaction().begin();
+			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code",
+					Pizza.class);
+			query.setParameter("code", codePizza);
+			Pizza p = (Pizza) query.getSingleResult();
+			p.setCode(pizza.getCode());
+			p.setNom(pizza.getNom());
+			p.setPrix(pizza.getPrix());
+			p.setCatP(CategoriePizza.valueOf(pizza.getCatP()));
+			entitymanager.getTransaction().commit();
+			return Void.TYPE;
+		});
 	}
 
 	@Override
 	public void deletePizza(String codePizza) throws PizzaException {
-		entitymanager.getTransaction().begin();
-		TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code", Pizza.class);
-		query.setParameter("code", codePizza);
-		Pizza p = (Pizza) query.getSingleResult();
-		entitymanager.remove(p);
-		entitymanager.getTransaction().commit();
+		execute((EntityManager entitymanager) -> {
+			entitymanager.getTransaction().begin();
+			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code",
+					Pizza.class);
+			query.setParameter("code", codePizza);
+			Pizza p = (Pizza) query.getSingleResult();
+			entitymanager.remove(p);
+			entitymanager.getTransaction().commit();
+			return Void.TYPE;
+		});
 
 	}
 
@@ -67,8 +93,8 @@ public class PizzaDaoJPA implements PizzaDao {
 	public List<Pizza> findAllPizzasCat() {
 		List<Pizza> listPizzas = findAllPizzas();
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
-		List<Pizza> list = listPizzas.stream().sorted(comp).collect(Collectors.toList());
-		return list;
+		return listPizzas.stream().sorted(comp).collect(Collectors.toList());
+
 	}
 
 	@Override
