@@ -14,7 +14,6 @@ public class ImportePizza implements Action {
 		System.out.println("Voulez vous importez les données dans la base de données (oui ou non)");
 		String choix = ihmUtil.getScanner().next();
 		if (choix.equalsIgnoreCase("oui")) {
-			// PizzaDaoJDBC jdbc = new PizzaDaoJDBC();
 			ihmUtil.getPizzaDao().importDataPizza();
 		}
 	}

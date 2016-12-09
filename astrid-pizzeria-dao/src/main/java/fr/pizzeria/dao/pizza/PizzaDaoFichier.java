@@ -140,7 +140,11 @@ public class PizzaDaoFichier implements PizzaDao {
 
 	public void destockage(Pizza pizza) {
 		File fichier = new File("data/" + pizza.getCode() + ".txt");
-		fichier.delete();
+		if (fichier.delete()) {
+			System.out.println("pizza supprimée");
+		} else {
+			System.out.println("erreur");
+		}
 	}
 
 	public static List<String> lire(String dir) {
