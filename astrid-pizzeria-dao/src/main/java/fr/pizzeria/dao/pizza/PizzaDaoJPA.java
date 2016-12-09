@@ -17,24 +17,28 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoJPA implements PizzaDao {
+	EntityManagerFactory emfactory;
+
+	public PizzaDaoJPA() {
+		emfactory = Persistence.createEntityManagerFactory("pizzeria-console");
+	}
 
 	interface IRunSql<T> {
 		T exec(EntityManager entitymanager) throws SQLException;
 	}
 
 	public <T> T execute(IRunSql<T> run) {
-		EntityManagerFactory emfactory = null;
 		EntityManager entitymanager = null;
 		try {
-			emfactory = Persistence.createEntityManagerFactory("pizzeria-console");
 			entitymanager = emfactory.createEntityManager();
 			return run.exec(entitymanager);
 		} catch (SQLException e) {
 			Logger.getLogger(PizzaDaoJPA.class.getName()).severe(e.getMessage());
 			throw new PizzaException(e);
 		} finally {
-			entitymanager.close();
-			emfactory.close();
+			if (entitymanager != null) {
+				entitymanager.close();
+			}
 		}
 
 	}
