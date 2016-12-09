@@ -22,7 +22,6 @@ public class PizzaDaoJPA implements PizzaDao {
 	public PizzaDaoJPA() {
 		emfactory = Persistence.createEntityManagerFactory("pizzeria-console");
 		entitymanager = emfactory.createEntityManager();
-		entitymanager.getTransaction().begin();
 
 	}
 
@@ -35,12 +34,14 @@ public class PizzaDaoJPA implements PizzaDao {
 
 	@Override
 	public void saveNewPizza(Pizza pizza) throws PizzaException {
+		entitymanager.getTransaction().begin();
 		entitymanager.persist(pizza);
 		entitymanager.getTransaction().commit();
 	}
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) throws PizzaException {
+		entitymanager.getTransaction().begin();
 		TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code", Pizza.class);
 		query.setParameter("code", codePizza);
 		Pizza p = (Pizza) query.getSingleResult();
@@ -53,6 +54,7 @@ public class PizzaDaoJPA implements PizzaDao {
 
 	@Override
 	public void deletePizza(String codePizza) throws PizzaException {
+		entitymanager.getTransaction().begin();
 		TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code", Pizza.class);
 		query.setParameter("code", codePizza);
 		Pizza p = (Pizza) query.getSingleResult();
