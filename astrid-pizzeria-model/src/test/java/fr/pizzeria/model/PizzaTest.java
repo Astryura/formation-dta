@@ -14,11 +14,6 @@ public class PizzaTest {
 	}
 
 	@Test
-	public void testSetId() {
-		assertEquals(0, pizza.getId());
-	}
-
-	@Test
 	public void testSetCode() {
 		assertEquals("P", pizza.getCode());
 	}

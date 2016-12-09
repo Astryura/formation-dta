@@ -13,7 +13,7 @@ public class ListPizzaPrix implements Action {
 
 	@Override
 	public void doAction() {
-		Pizza p = this.ihmUtil.getPizzaDao().findAllPizzasPrix();
+		Pizza p = this.ihmUtil.getPizzaDao().findPrixMaxPizza();
 		System.out.println(p.getId() + " " + p.getCode() + " " + p.getNom() + " " + p.getPrix() + " " + p.getCatP());
 	}
 

@@ -17,7 +17,7 @@ public interface PizzaDao {
 
 	List<Pizza> findAllPizzasCat();
 
-	Pizza findAllPizzasPrix();
+	Pizza findPrixMaxPizza();
 
 	default void importDataPizza() throws PizzaException {
 		throw new PizzaException("pas d'implémentatio,)");

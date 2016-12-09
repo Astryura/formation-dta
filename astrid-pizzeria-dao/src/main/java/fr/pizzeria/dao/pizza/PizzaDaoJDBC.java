@@ -126,7 +126,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 	}
 
 	@Override
-	public Pizza findAllPizzasPrix() {
+	public Pizza findPrixMaxPizza() {
 		List<Pizza> listPizzas = findAllPizzas();
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
 		Optional<Pizza> pizza = listPizzas.stream().max(comp);

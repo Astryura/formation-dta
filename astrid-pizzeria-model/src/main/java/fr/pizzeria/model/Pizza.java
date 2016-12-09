@@ -1,17 +1,39 @@
 package fr.pizzeria.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
+@Table(name = "PIZZA")
 public class Pizza {
-	int id;
-	String code;
-	String nom;
-	double prix;
-	static int nbPizzas;
-	CategoriePizza catP;
 
-	public Pizza(int id, String code, String nom, double prix, CategoriePizza catP) {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Integer id;
+	@Column(name = "CODE", length = 3)
+	private String code;
+	@Column(name = "NOM")
+	private String nom;
+	@Column(name = "PRIX")
+	private double prix;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "CATEGORIE")
+	private CategoriePizza catP;
+	@Transient
+	private static int nbPizzas;
+
+	public Pizza(Integer id, String code, String nom, double prix, CategoriePizza catP) {
 		super();
 		this.id = id;
 		this.code = code;
@@ -30,11 +52,10 @@ public class Pizza {
 	}
 
 	public Pizza() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getCatP() {
-		return catP.toString();
+		return catP.toString().toUpperCase().replaceAll(" ", "_");
 	}
 
 	public void setCatP(CategoriePizza catP) {
@@ -49,11 +70,11 @@ public class Pizza {
 		Pizza.nbPizzas = nbPizzas;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -99,8 +120,6 @@ public class Pizza {
 
 	@Override
 	public int hashCode() {
-		// you pick a hard-coded, randomly chosen, non-zero, odd number
-		// ideally different for each class
 		return new HashCodeBuilder(17, 37).append(nom).append(id).toHashCode();
 	}
 }

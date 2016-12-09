@@ -20,7 +20,7 @@ public class ListPizza implements Action {
 			System.out
 					.println(p.getId() + " " + p.getCode() + " " + p.getNom() + " " + p.getPrix() + " " + p.getCatP());
 		});
-		System.out.println(Pizza.getNbPizzas() + " Pizzas enregistr�es");
+		// System.out.println(Pizza.getNbPizzas() + " Pizzas enregistr�es");
 	}
 
 	@Override

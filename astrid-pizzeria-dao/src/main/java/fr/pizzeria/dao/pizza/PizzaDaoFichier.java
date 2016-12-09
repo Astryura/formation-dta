@@ -67,7 +67,7 @@ public class PizzaDaoFichier implements PizzaDao {
 		return list;
 	}
 
-	public Pizza findAllPizzasPrix() {
+	public Pizza findPrixMaxPizza() {
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
 		Optional<Pizza> pizza = listPizzas.stream().max(comp);
 		if (pizza.isPresent()) {
