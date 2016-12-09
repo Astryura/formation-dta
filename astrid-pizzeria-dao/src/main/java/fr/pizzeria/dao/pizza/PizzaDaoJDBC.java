@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -137,8 +138,16 @@ public class PizzaDaoJDBC implements PizzaDao {
 	}
 
 	public void importDataPizza() throws PizzaException {
-		PizzaDaoTableau tableau = new PizzaDaoTableau();
-		List<Pizza> listPizzas = tableau.findAllPizzas();
+		ResourceBundle bundle = ResourceBundle.getBundle("application");
+		String choix = bundle.getString("dao.source");
+		PizzaDao pizzadao;
+		try {
+			pizzadao = (PizzaDao) Class.forName(choix).newInstance();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e1) {
+			Logger.getLogger(PizzaDaoJDBC.class.getName()).severe(e1.getMessage());
+			throw new PizzaException(e1);
+		}
+		List<Pizza> listPizzas = pizzadao.findAllPizzas();
 		executePrep((Connection connection) -> {
 			connection.setAutoCommit(false);
 			List<List<Pizza>> list = ListUtils.partition(listPizzas, 3);
