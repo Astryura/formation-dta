@@ -18,4 +18,5 @@ public interface PizzaDao {
 	List<Pizza> findAllPizzasCat();
 
 	Pizza findAllPizzasPrix();
+
 }

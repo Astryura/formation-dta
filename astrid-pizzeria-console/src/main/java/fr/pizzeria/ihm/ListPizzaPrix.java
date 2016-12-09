@@ -15,8 +15,6 @@ public class ListPizzaPrix implements Action {
 	public void doAction() {
 		Pizza p = this.ihmUtil.getPizzaDao().findAllPizzasPrix();
 		System.out.println(p.getId() + " " + p.getCode() + " " + p.getNom() + " " + p.getPrix() + " " + p.getCatP());
-
-		// System.out.println(Pizza.getNbPizzas() + " Pizzas enregistr�es");
 	}
 
 	@Override

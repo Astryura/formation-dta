@@ -13,6 +13,8 @@ import java.util.Optional;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import org.apache.commons.collections4.ListUtils;
+
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -132,6 +134,36 @@ public class PizzaDaoJDBC implements PizzaDao {
 		} else {
 			return null;
 		}
+	}
+
+	public void saveDataPizza() throws PizzaException {
+		PizzaDaoTableau tableau = new PizzaDaoTableau();
+		List<Pizza> listPizzas = tableau.findAllPizzas();
+		executePrep((Connection connection) -> {
+			connection.setAutoCommit(false);
+			List<List<Pizza>> list = ListUtils.partition(listPizzas, 3);
+			try {
+				for (List<Pizza> liste : list) {
+					for (Pizza pizza : liste) {
+						PreparedStatement addPizzaSt = connection
+								.prepareStatement("INSERT INTO PIZZA (CODE, NOM, PRIX, CATEGORIE) VALUES (?,?,?,?)");
+						addPizzaSt.setString(1, pizza.getCode());
+						addPizzaSt.setString(2, pizza.getNom());
+						addPizzaSt.setDouble(3, pizza.getPrix());
+						addPizzaSt.setString(4, pizza.getCatP());
+						addPizzaSt.executeUpdate();
+
+					}
+					connection.commit();
+				}
+			} catch (SQLException e) {
+				connection.rollback();
+				Logger.getLogger(PizzaDaoJDBC.class.getName()).severe(e.getMessage());
+				throw new PizzaException(e);
+			}
+			return Void.TYPE;
+		});
+
 	}
 
 }

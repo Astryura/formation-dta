@@ -19,6 +19,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -44,8 +45,10 @@ public class PizzaDaoFichier implements PizzaDao {
 					br.close();
 				} catch (FileNotFoundException e) {
 					Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
+					throw new PizzaException(e);
 				} catch (IOException e) {
 					Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
+					throw new PizzaException(e);
 				}
 			}
 		});
@@ -129,8 +132,9 @@ public class PizzaDaoFichier implements PizzaDao {
 			writer.write(pizza.getId() + ";" + pizza.getNom() + ";" + pizza.getPrix() + ";" + pizza.getCatP());
 		}
 
-		catch (java.io.IOException e) {
+		catch (IOException e) {
 			Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
+			throw new PizzaException(e);
 		}
 	}
 
@@ -152,6 +156,7 @@ public class PizzaDaoFichier implements PizzaDao {
 			stream.close();
 		} catch (IOException e) {
 			Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
+			throw new PizzaException(e);
 		}
 		return files;
 

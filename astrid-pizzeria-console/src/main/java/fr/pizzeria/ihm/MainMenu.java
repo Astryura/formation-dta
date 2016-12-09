@@ -15,7 +15,8 @@ public class MainMenu {
 		actions.put(3, new DeletePizza(ihmUtil));
 		actions.put(4, new ListPizzaCat(ihmUtil));
 		actions.put(5, new ListPizzaPrix(ihmUtil));
-		actions.put(6, new ExitMenu());
+		actions.put(6, new ImportePizza(ihmUtil));
+		actions.put(7, new ExitMenu());
 		this.ihmUtil = ihmUtil;
 	}
 
@@ -29,7 +30,7 @@ public class MainMenu {
 	private void parseAndExec() throws NumberFormatException {
 		String input = ihmUtil.getScanner().next();
 
-		if (Integer.parseInt(input) <= 6) {
+		if (Integer.parseInt(input) <= 7) {
 			actions.get((Integer.parseInt(input)) - 1).doAction();
 			displayMenu();
 		} else if (Integer.parseInt(input) == 99) {

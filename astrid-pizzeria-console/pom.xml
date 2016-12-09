@@ -61,7 +61,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<dao.impl>fr.pizzeria.dao.JDBCDaoFactory</dao.impl>
+				<dao.impl>fr.pizzeria.dao.TableauDaoFactory</dao.impl>
 			</properties>
 		</profile>
 		<profile>
@@ -70,7 +70,7 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
-				<dao.impl>fr.pizzeria.dao.JDBCDaoFactory</dao.impl>
+				<dao.impl>fr.pizzeria.dao.TableauDaoFactory</dao.impl>
 			</properties>
 		</profile>
 	</profiles>
@@ -91,6 +91,10 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
 		</dependency>
 	</dependencies>
 
