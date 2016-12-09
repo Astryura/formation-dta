@@ -19,4 +19,8 @@ public interface PizzaDao {
 
 	Pizza findAllPizzasPrix();
 
+	default void importDataPizza() throws PizzaException {
+		throw new PizzaException("pas d'implémentatio,)");
+	}
+
 }

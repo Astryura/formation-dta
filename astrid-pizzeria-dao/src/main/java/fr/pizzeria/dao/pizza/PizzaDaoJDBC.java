@@ -10,13 +10,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.ListUtils;
 
-import fr.pizzeria.dao.DaoFactory;
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -138,16 +136,8 @@ public class PizzaDaoJDBC implements PizzaDao {
 		}
 	}
 
-	public void saveDataPizza() throws PizzaException {
-		ResourceBundle bundle = ResourceBundle.getBundle("application");
-		String choix = bundle.getString("dao.impl");
-		DaoFactory daoFactory = null;
-		try {
-			daoFactory = (DaoFactory) Class.forName(choix).newInstance();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e1) {
-			e1.printStackTrace();
-		}
-		PizzaDao tableau = daoFactory.getPizzaDao();
+	public void importDataPizza() throws PizzaException {
+		PizzaDaoTableau tableau = new PizzaDaoTableau();
 		List<Pizza> listPizzas = tableau.findAllPizzas();
 		executePrep((Connection connection) -> {
 			connection.setAutoCommit(false);

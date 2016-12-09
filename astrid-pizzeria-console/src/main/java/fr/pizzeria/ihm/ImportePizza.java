@@ -1,7 +1,5 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.dao.pizza.PizzaDaoJDBC;
-
 public class ImportePizza implements Action {
 
 	private IhmUtil ihmUtil;
@@ -16,8 +14,8 @@ public class ImportePizza implements Action {
 		System.out.println("Voulez vous importez les données dans la base de données (oui ou non)");
 		String choix = ihmUtil.getScanner().next();
 		if (choix.equalsIgnoreCase("oui")) {
-			PizzaDaoJDBC jdbc = new PizzaDaoJDBC();
-			jdbc.saveDataPizza();
+			// PizzaDaoJDBC jdbc = new PizzaDaoJDBC();
+			ihmUtil.getPizzaDao().importDataPizza();
 		}
 	}
 

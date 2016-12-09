@@ -15,8 +15,7 @@ public class MainMenu {
 		actions.put(3, new DeletePizza(ihmUtil));
 		actions.put(4, new ListPizzaCat(ihmUtil));
 		actions.put(5, new ListPizzaPrix(ihmUtil));
-		if (ihmUtil.getChoixFactory().equals("fr.pizzeria.dao.FichierDaoFactory")
-				|| ihmUtil.getChoixFactory().equals("fr.pizzeria.dao.TableauDaoFactory")) {
+		if (ihmUtil.getChoixFactory().equals("fr.pizzeria.dao.JDBCDaoFactory")) {
 			actions.put(6, new ImportePizza(ihmUtil));
 		}
 		actions.put(7, new ExitMenu());
