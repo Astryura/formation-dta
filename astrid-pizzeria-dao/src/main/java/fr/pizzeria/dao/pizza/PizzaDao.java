@@ -20,7 +20,8 @@ public interface PizzaDao {
 	Pizza findPrixMaxPizza();
 
 	default void importDataPizza() throws PizzaException {
-		throw new PizzaException("pas d'implémentatio,)");
+		throw new PizzaException("pas d'implémentation");
 	}
 
+	void close() throws PizzaException;
 }

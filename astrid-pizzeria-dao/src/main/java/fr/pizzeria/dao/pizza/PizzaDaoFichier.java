@@ -61,12 +61,14 @@ public class PizzaDaoFichier implements PizzaDao {
 		return listPizzas;
 	}
 
+	@Override
 	public List<Pizza> findAllPizzasCat() {
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
 		List<Pizza> list = listPizzas.stream().sorted(comp).collect(Collectors.toList());
 		return list;
 	}
 
+	@Override
 	public Pizza findPrixMaxPizza() {
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
 		Optional<Pizza> pizza = listPizzas.stream().max(comp);
@@ -164,6 +166,12 @@ public class PizzaDaoFichier implements PizzaDao {
 		}
 		return files;
 
+	}
+
+	@Override
+	public void close() throws PizzaException {
+		Pizza.setNbPizzas(0);
+		listPizzas.clear();
 	}
 
 }

@@ -18,7 +18,7 @@ public class MainMenu {
 		if (ihmUtil.getChoixFactory().equals("fr.pizzeria.dao.JDBCDaoFactory")) {
 			actions.put(6, new ImportePizza(ihmUtil));
 		}
-		actions.put(7, new ExitMenu());
+		actions.put(7, new ExitMenu(ihmUtil));
 		this.ihmUtil = ihmUtil;
 	}
 

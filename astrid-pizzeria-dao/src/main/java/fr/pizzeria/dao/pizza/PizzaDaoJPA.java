@@ -17,6 +17,7 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoJPA implements PizzaDao {
+
 	EntityManagerFactory emfactory;
 
 	public PizzaDaoJPA() {
@@ -44,6 +45,11 @@ public class PizzaDaoJPA implements PizzaDao {
 	}
 
 	@Override
+	public void close() {
+		emfactory.close();
+	}
+
+	@Override
 	public List<Pizza> findAllPizzas() throws PizzaException {
 		return execute((EntityManager entitymanager) -> {
 			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p", Pizza.class);
@@ -68,7 +74,7 @@ public class PizzaDaoJPA implements PizzaDao {
 			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code",
 					Pizza.class);
 			query.setParameter("code", codePizza);
-			Pizza p = (Pizza) query.getSingleResult();
+			Pizza p = query.getSingleResult();
 			p.setCode(pizza.getCode());
 			p.setNom(pizza.getNom());
 			p.setPrix(pizza.getPrix());
@@ -85,7 +91,7 @@ public class PizzaDaoJPA implements PizzaDao {
 			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code",
 					Pizza.class);
 			query.setParameter("code", codePizza);
-			Pizza p = (Pizza) query.getSingleResult();
+			Pizza p = query.getSingleResult();
 			entitymanager.remove(p);
 			entitymanager.getTransaction().commit();
 			return Void.TYPE;

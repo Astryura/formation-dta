@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -30,12 +31,14 @@ public class PizzaDaoTableau implements PizzaDao {
 		return listPizzas;
 	}
 
+	@Override
 	public List<Pizza> findAllPizzasCat() {
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
 		List<Pizza> list = listPizzas.stream().sorted(comp).collect(Collectors.toList());
 		return list;
 	}
 
+	@Override
 	public Pizza findPrixMaxPizza() {
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
 		Optional<Pizza> pizza = listPizzas.stream().max(comp);
@@ -87,6 +90,12 @@ public class PizzaDaoTableau implements PizzaDao {
 		nbPizza--;
 		Pizza.setNbPizzas(nbPizza);
 
+	}
+
+	@Override
+	public void close() throws PizzaException {
+		Pizza.setNbPizzas(0);
+		listPizzas.clear();
 	}
 
 }
