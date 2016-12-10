@@ -161,7 +161,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 	}
 
 	@Override
-	public void close() throws PizzaException {
+	public void close() {
 
 	}
 

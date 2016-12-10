@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -93,7 +92,7 @@ public class PizzaDaoTableau implements PizzaDao {
 	}
 
 	@Override
-	public void close() throws PizzaException {
+	public void close() {
 		Pizza.setNbPizzas(0);
 		listPizzas.clear();
 	}

@@ -169,7 +169,7 @@ public class PizzaDaoFichier implements PizzaDao {
 	}
 
 	@Override
-	public void close() throws PizzaException {
+	public void close() {
 		Pizza.setNbPizzas(0);
 		listPizzas.clear();
 	}

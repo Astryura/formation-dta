@@ -23,5 +23,5 @@ public interface PizzaDao {
 		throw new PizzaException("pas d'implémentation");
 	}
 
-	void close() throws PizzaException;
+	void close();
 }

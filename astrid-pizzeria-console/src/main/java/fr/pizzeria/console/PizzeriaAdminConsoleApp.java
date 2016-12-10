@@ -8,6 +8,12 @@ import fr.pizzeria.dao.DaoFactory;
 import fr.pizzeria.ihm.IhmUtil;
 import fr.pizzeria.ihm.MainMenu;
 
+/**
+ * 
+ * @author Hlavacek Astrid
+ *
+ */
+
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args)
