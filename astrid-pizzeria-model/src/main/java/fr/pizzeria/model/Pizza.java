@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * <b>Pizza est la classe représentant une Pizza.</b>
@@ -181,5 +182,12 @@ public class Pizza {
 		Pizza rhs = (Pizza) obj;
 		return new EqualsBuilder().append(id, rhs.id).append(code, rhs.code).append(nom, rhs.nom).append(prix, rhs.prix)
 				.append(catP, rhs.catP).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(1, 20).append(code).append(nom).toHashCode();
 	}
 }
