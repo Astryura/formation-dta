@@ -16,19 +16,44 @@ import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Classe gérant les Pizza enregistrées en JPA
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class PizzaDaoJPA implements PizzaDao {
 
-	EntityManagerFactory emfactory;
+	private EntityManagerFactory emfactory;
 
+	/**
+	 * Constructeur instanciant le EntityManagerFactory
+	 */
 	public PizzaDaoJPA() {
 		emfactory = Persistence.createEntityManagerFactory("pizzeria-console");
 	}
 
-	interface IRunSql<T> {
+	/**
+	 * Interface fonctionnelle permettant d'instancier l'EntityManager avec des
+	 * types génériques
+	 *
+	 * @param <T>
+	 */
+	interface IRunJPA<T> {
+		/**
+		 * @param entitymanager
+		 * @return T
+		 * @throws SQLException
+		 */
 		T exec(EntityManager entitymanager) throws SQLException;
 	}
 
-	public <T> T execute(IRunSql<T> run) {
+	/**
+	 * 
+	 * @param run
+	 * @return T
+	 */
+	public <T> T execute(IRunJPA<T> run) {
 		EntityManager entitymanager = null;
 		try {
 			entitymanager = emfactory.createEntityManager();

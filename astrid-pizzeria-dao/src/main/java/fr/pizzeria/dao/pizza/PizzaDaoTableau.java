@@ -9,10 +9,19 @@ import java.util.stream.Collectors;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Classe gérant les Pizza enregistrées sous forme de tableau
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class PizzaDaoTableau implements PizzaDao {
 
 	List<Pizza> listPizzas = new ArrayList<>();
 
+	/**
+	 * Constructeur
+	 */
 	public PizzaDaoTableau() {
 		listPizzas.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
 		listPizzas.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.SANS_VIANDE));

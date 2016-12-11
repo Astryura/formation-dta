@@ -20,12 +20,38 @@ import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Classe gérant les Pizza enregistrées en JDBC
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class PizzaDaoJDBC implements PizzaDao {
 
+	/**
+	 * 
+	 * Interface fonctionnelle permettant d'instancier la connexion JDBC et le
+	 * statement avec des types génériques
+	 *
+	 * @param <T>
+	 */
 	interface IRunSql<T> {
+		/**
+		 * 
+		 * @param conn
+		 * @param st
+		 * @return T
+		 * @throws SQLException
+		 */
 		T exec(Connection conn, Statement st) throws SQLException;
 	}
 
+	/**
+	 * instanciation de l'interface fonctionnelle
+	 * 
+	 * @param run
+	 * @return T
+	 */
 	public <T> T execute(IRunSql<T> run) {
 		String url = "jdbc:mysql://localhost:3306/pizzadb";
 		try (Connection connection = DriverManager.getConnection(url, "root", "");
