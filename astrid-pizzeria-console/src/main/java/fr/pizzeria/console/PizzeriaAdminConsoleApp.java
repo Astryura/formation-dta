@@ -28,7 +28,7 @@ public class PizzeriaAdminConsoleApp {
 	 * @throws NumberFormatException
 	 */
 	public static void main(String[] args)
-			throws InstantiationException, IllegalAccessException, ClassNotFoundException, NumberFormatException {
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
