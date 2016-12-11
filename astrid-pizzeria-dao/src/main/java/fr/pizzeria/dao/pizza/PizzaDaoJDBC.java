@@ -41,7 +41,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 
 	@Override
 	public List<Pizza> findAllPizzas() throws PizzaException {
-		List<Pizza> listPizzas = new ArrayList<Pizza>();
+		List<Pizza> listPizzas = new ArrayList<>();
 		return execute((Connection connection, Statement statement) -> {
 			Pizza.setNbPizzas(0);
 			ResultSet resultats = statement.executeQuery("SELECT * FROM PIZZA");

@@ -42,4 +42,8 @@ public class PizzeriaAdminConsoleApp {
 		mainMenu.displayMenu();
 
 	}
+
+	private PizzeriaAdminConsoleApp() {
+		throw new IllegalAccessError("Console class");
+	}
 }

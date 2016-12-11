@@ -11,7 +11,7 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoTableau implements PizzaDao {
 
-	List<Pizza> listPizzas = new ArrayList<Pizza>();
+	List<Pizza> listPizzas = new ArrayList<>();
 
 	public PizzaDaoTableau() {
 		listPizzas.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));

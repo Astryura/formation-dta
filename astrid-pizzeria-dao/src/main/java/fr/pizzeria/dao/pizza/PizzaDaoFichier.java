@@ -25,7 +25,7 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoFichier implements PizzaDao {
 
-	List<Pizza> listPizzas = new ArrayList<Pizza>();
+	List<Pizza> listPizzas = new ArrayList<>();
 
 	public PizzaDaoFichier() {
 		List<String> listFichiers = lire("data/");
@@ -38,7 +38,7 @@ public class PizzaDaoFichier implements PizzaDao {
 					BufferedReader br = new BufferedReader(ipsr);
 					String ligne = br.readLine();
 					String code = f.getName().replaceAll(".txt", "");
-					String a[] = ligne.split(";");
+					String[] a = ligne.split(";");
 					Pizza pizza = new Pizza(Integer.parseInt(a[0]), code, a[1], Double.parseDouble(a[2]),
 							CategoriePizza.valueOf(a[3].toUpperCase().replaceAll(" ", "_")));
 					listPizzas.add(pizza);
