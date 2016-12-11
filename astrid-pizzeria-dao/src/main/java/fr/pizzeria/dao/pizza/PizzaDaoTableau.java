@@ -33,8 +33,7 @@ public class PizzaDaoTableau implements PizzaDao {
 	@Override
 	public List<Pizza> findAllPizzasCat() {
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
-		List<Pizza> list = listPizzas.stream().sorted(comp).collect(Collectors.toList());
-		return list;
+		return listPizzas.stream().sorted(comp).collect(Collectors.toList());
 	}
 
 	@Override

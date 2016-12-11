@@ -105,7 +105,6 @@ public class Pizza {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
-		// nbPizzas++;
 		this.catP = catP;
 	}
 

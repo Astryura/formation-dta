@@ -106,8 +106,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 	public List<Pizza> findAllPizzasCat() {
 		List<Pizza> listPizzas = findAllPizzas();
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
-		List<Pizza> list = listPizzas.stream().sorted(comp).collect(Collectors.toList());
-		return list;
+		return listPizzas.stream().sorted(comp).collect(Collectors.toList());
 	}
 
 	@Override
