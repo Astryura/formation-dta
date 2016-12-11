@@ -9,13 +9,24 @@ import fr.pizzeria.ihm.IhmUtil;
 import fr.pizzeria.ihm.MainMenu;
 
 /**
+ * <h1>PizzeriaAdminConsoleApp</h1><b>Classe de démarrage de l'application.</b>
  * 
- * @author Hlavacek Astrid
- *
+ * @author Astrid Hlavacek
+ * @version 1
+ * @since 2016-11-14
  */
 
 public class PizzeriaAdminConsoleApp {
 
+	/**
+	 * Méthode main, l'exécution du programme commence par cette fonction
+	 * 
+	 * @param args
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws ClassNotFoundException
+	 * @throws NumberFormatException
+	 */
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, NumberFormatException {
 

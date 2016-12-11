@@ -53,6 +53,7 @@ public class PizzaDaoJPA implements PizzaDao {
 	public List<Pizza> findAllPizzas() throws PizzaException {
 		return execute((EntityManager entitymanager) -> {
 			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p", Pizza.class);
+			Pizza.setNbPizzas(query.getResultList().size());
 			return query.getResultList();
 		});
 	}

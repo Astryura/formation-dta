@@ -6,7 +6,6 @@ import fr.pizzeria.model.Pizza;
 public class UpdatePizza implements Action {
 
 	private IhmUtil ihmUtil;
-	CategoriePizza catP;
 
 	public UpdatePizza(IhmUtil ihmUtil) {
 		super();
@@ -25,6 +24,7 @@ public class UpdatePizza implements Action {
 		String prixU = ihmUtil.getScanner().next();
 		System.out.println("Nouvelle Catégorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
 		String cat = ihmUtil.getScanner().next();
+		CategoriePizza catP;
 		if (cat.equals("V")) {
 			catP = CategoriePizza.VIANDE;
 		} else if (cat.equals("P")) {

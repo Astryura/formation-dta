@@ -3,16 +3,30 @@ package fr.pizzeria.ihm;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class AddPizza implements Action {
 
+	/**
+	 * L'IhmUtil
+	 */
 	private IhmUtil ihmUtil;
-	CategoriePizza catP;
 
+	/**
+	 * 
+	 * @param ihmUtil
+	 */
 	public AddPizza(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void doAction() {
 		System.out.println("Cr�ez votre Pizza. \nCode de la Pizza");
@@ -23,6 +37,7 @@ public class AddPizza implements Action {
 		String prix = ihmUtil.getScanner().next();
 		System.out.println("Cat�gorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
 		String cat = ihmUtil.getScanner().next();
+		CategoriePizza catP;
 		if (cat.equals("V")) {
 			catP = CategoriePizza.VIANDE;
 		} else if (cat.equals("P")) {
@@ -41,6 +56,9 @@ public class AddPizza implements Action {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void describeAction() {
 		System.out.println("2. Ajouter une nouvelle pizza");

@@ -11,22 +11,87 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+/**
+ * <b>Pizza est la classe représentant une Pizza.</b>
+ * <p>
+ * Une Pizza est caractérisée par les informations suivantes :
+ * <ul>
+ * <li>Un identifiant unique attribué définitivement.</li>
+ * <li>Un code permettant de retrouver la Pizza.</li>
+ * <li>Un nom.</li>
+ * <li>Un prix.</li>
+ * <li>Une Catégorie indiquant le type de garniture de la Pizza.</li>
+ * </ul>
+ * </p>
+ * <p>
+ * De plus on enregistre le nombre de Pizza créée
+ * </p>
+ * 
+ */
 
 @Entity
 @Table(name = "PIZZA")
 public class Pizza {
 
+	/**
+	 * L'ID de la Pizza. Cet ID n'est pas modifiable.
+	 * 
+	 * @see Pizza#id
+	 * @see Pizza#Pizza(Integer, String, String, double, CategoriePizza)
+	 * @see Pizza#getId()
+	 * @see Pizza#setId(Integer)
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
+
+	/**
+	 * Le CODE de la Pizza.
+	 * 
+	 * @see Pizza#code
+	 * @see Pizza#Pizza(Integer, String, String, double, CategoriePizza)
+	 * @see Pizza#Pizza(String, String, double, CategoriePizza)
+	 * @see Pizza#getCode()
+	 * @see Pizza#setCode(String)
+	 */
 	@Column(name = "CODE", length = 3)
 	private String code;
+
+	/**
+	 * Le NOM de la Pizza
+	 * 
+	 * @see Pizza#nom
+	 * @see Pizza#Pizza(Integer, String, String, double, CategoriePizza)
+	 * @see Pizza#Pizza(String, String, double, CategoriePizza)
+	 * @see Pizza#getNom()
+	 * @see Pizza#setNom(String)
+	 */
 	@Column(name = "NOM")
 	private String nom;
+
+	/**
+	 * Le PRIX de la Pizza
+	 * 
+	 * @see Pizza#prix
+	 * @see Pizza#Pizza(Integer, String, String, double, CategoriePizza)
+	 * @see Pizza#Pizza(String, String, double, CategoriePizza)
+	 * @see Pizza#getPrix()
+	 * @see Pizza#setPrix(double)
+	 */
 	@Column(name = "PRIX")
 	private double prix;
+
+	/**
+	 * La catégorie de la Pizza. Type énuméré
+	 * 
+	 * @see Pizza#catP
+	 * @see Pizza#Pizza(Integer, String, String, double, CategoriePizza)
+	 * @see Pizza#Pizza(String, String, double, CategoriePizza)
+	 * @see Pizza#getCatP()
+	 * @see Pizza#setCatP(CategoriePizza)
+	 */
 	@Enumerated(EnumType.STRING)
 	@Column(name = "CATEGORIE")
 	private CategoriePizza catP;
@@ -39,7 +104,7 @@ public class Pizza {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
-		nbPizzas++;
+		// nbPizzas++;
 		this.catP = catP;
 	}
 
@@ -116,10 +181,5 @@ public class Pizza {
 		Pizza rhs = (Pizza) obj;
 		return new EqualsBuilder().append(id, rhs.id).append(code, rhs.code).append(nom, rhs.nom).append(prix, rhs.prix)
 				.append(catP, rhs.catP).isEquals();
-	}
-
-	@Override
-	public int hashCode() {
-		return new HashCodeBuilder(17, 37).append(nom).append(id).toHashCode();
 	}
 }

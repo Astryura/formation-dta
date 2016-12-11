@@ -52,6 +52,7 @@ public class PizzaDaoFichier implements PizzaDao {
 				}
 			}
 		});
+		Pizza.setNbPizzas(listPizzas.size());
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getId);
 		listPizzas = listPizzas.stream().sorted(comp).collect(Collectors.toList());
 	}
@@ -87,9 +88,7 @@ public class PizzaDaoFichier implements PizzaDao {
 			Pizza max = p.get();
 			pizza.setId(max.getId() + 1);
 			listPizzas.add(pizza);
-			int nbPizza = Pizza.getNbPizzas();
-			nbPizza++;
-			Pizza.setNbPizzas(nbPizza);
+			Pizza.setNbPizzas(listPizzas.size());
 			stockage(pizza);
 		}
 	}
@@ -119,10 +118,7 @@ public class PizzaDaoFichier implements PizzaDao {
 			listPizzas.remove(pizza);
 			destockage(pizza);
 		}
-
-		int nbPizza = Pizza.getNbPizzas();
-		nbPizza--;
-		Pizza.setNbPizzas(nbPizza);
+		Pizza.setNbPizzas(listPizzas.size());
 
 	}
 

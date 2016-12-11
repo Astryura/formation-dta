@@ -55,6 +55,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 						CategoriePizza.valueOf(cat.toUpperCase().replaceAll(" ", "_")));
 				listPizzas.add(pizza);
 			}
+			Pizza.setNbPizzas(listPizzas.size());
 			return listPizzas;
 		});
 	}
