@@ -35,6 +35,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 	 *
 	 * @param <T>
 	 */
+	@FunctionalInterface
 	interface IRunSql<T> {
 		/**
 		 * 
@@ -188,7 +189,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 
 	@Override
 	public void close() {
-
+		Pizza.setNbPizzas(0);
 	}
 
 }

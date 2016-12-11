@@ -39,6 +39,7 @@ public class PizzaDaoJPA implements PizzaDao {
 	 *
 	 * @param <T>
 	 */
+	@FunctionalInterface
 	interface IRunJPA<T> {
 		/**
 		 * @param entitymanager

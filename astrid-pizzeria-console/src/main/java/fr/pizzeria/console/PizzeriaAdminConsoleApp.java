@@ -33,7 +33,6 @@ public class PizzeriaAdminConsoleApp {
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 * @throws ClassNotFoundException
-	 * @throws NumberFormatException
 	 */
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
