@@ -19,6 +19,14 @@ import fr.pizzeria.ihm.MainMenu;
 public class PizzeriaAdminConsoleApp {
 
 	/**
+	 * Constructeur privé, permet de garantir que la classe ne pourra pas être
+	 * instancié
+	 */
+	private PizzeriaAdminConsoleApp() {
+		throw new IllegalAccessError("Console class");
+	}
+
+	/**
 	 * Méthode main, l'exécution du programme commence par cette fonction
 	 * 
 	 * @param args
@@ -41,9 +49,5 @@ public class PizzeriaAdminConsoleApp {
 
 		mainMenu.displayMenu();
 
-	}
-
-	private PizzeriaAdminConsoleApp() {
-		throw new IllegalAccessError("Console class");
 	}
 }
