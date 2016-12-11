@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -23,19 +21,26 @@ import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Classe gérant les Pizza enregistrées sous forme de fichier
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class PizzaDaoFichier implements PizzaDao {
 
-	List<Pizza> listPizzas = new ArrayList<>();
+	private List<Pizza> listPizzas = new ArrayList<>();
 
+	/**
+	 * Constructeur
+	 */
 	public PizzaDaoFichier() {
-		List<String> listFichiers = lire("data/");
+		List<String> listFichiers = lire();
 		listFichiers.forEach(s -> {
 			File f = new File(s);
 			if (f.canRead()) {
 				try {
-					InputStream ips = new FileInputStream(f);
-					InputStreamReader ipsr = new InputStreamReader(ips);
-					BufferedReader br = new BufferedReader(ipsr);
+					BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
 					String ligne = br.readLine();
 					String code = f.getName().replaceAll(".txt", "");
 					String[] a = ligne.split(";");
@@ -43,10 +48,7 @@ public class PizzaDaoFichier implements PizzaDao {
 							CategoriePizza.valueOf(a[3].toUpperCase().replaceAll(" ", "_")));
 					listPizzas.add(pizza);
 					br.close();
-				} catch (FileNotFoundException e) {
-					Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
-					throw new PizzaException(e);
-				} catch (IOException e) {
+				} catch (Exception e) {
 					Logger.getLogger(PizzaDaoFichier.class.getName()).severe(e.getMessage());
 					throw new PizzaException(e);
 				}
@@ -121,6 +123,11 @@ public class PizzaDaoFichier implements PizzaDao {
 
 	}
 
+	/**
+	 * Enregistre un fichier Pizza
+	 * 
+	 * @param pizza
+	 */
 	public void stockage(Pizza pizza) {
 
 		File file = new File("data/" + pizza.getCode() + ".txt");
@@ -135,6 +142,11 @@ public class PizzaDaoFichier implements PizzaDao {
 		}
 	}
 
+	/**
+	 * Supprime un fichier Pizza
+	 * 
+	 * @param pizza
+	 */
 	public void destockage(Pizza pizza) {
 		File fichier = new File("data/" + pizza.getCode() + ".txt");
 		if (fichier.delete()) {
@@ -144,11 +156,16 @@ public class PizzaDaoFichier implements PizzaDao {
 		}
 	}
 
-	public static List<String> lire(String dir) {
+	/**
+	 * Fait la liste des fichiers textes contenant des Pizza
+	 * 
+	 * @return List<String>
+	 */
+	public static List<String> lire() {
 
 		final List<String> files = new ArrayList<>();
 
-		Path path = Paths.get(dir);
+		Path path = Paths.get("data/");
 		try {
 			DirectoryStream<Path> stream = Files.newDirectoryStream(path);
 			for (Path entry : stream) {
