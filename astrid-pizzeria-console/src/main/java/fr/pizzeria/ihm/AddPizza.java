@@ -10,12 +10,10 @@ import fr.pizzeria.model.Pizza;
  */
 public class AddPizza implements Action {
 
-	/**
-	 * L'IhmUtil
-	 */
 	private IhmUtil ihmUtil;
 
 	/**
+	 * Constructeur
 	 * 
 	 * @param ihmUtil
 	 */
@@ -24,9 +22,6 @@ public class AddPizza implements Action {
 		this.ihmUtil = ihmUtil;
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public void doAction() {
 		System.out.println("Cr�ez votre Pizza. \nCode de la Pizza");
@@ -56,9 +51,6 @@ public class AddPizza implements Action {
 
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public void describeAction() {
 		System.out.println("2. Ajouter une nouvelle pizza");

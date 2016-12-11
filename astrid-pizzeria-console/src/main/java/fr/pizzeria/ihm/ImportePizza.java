@@ -1,9 +1,19 @@
 package fr.pizzeria.ihm;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class ImportePizza implements Action {
 
 	private IhmUtil ihmUtil;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param ihmUtil
+	 */
 	public ImportePizza(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;

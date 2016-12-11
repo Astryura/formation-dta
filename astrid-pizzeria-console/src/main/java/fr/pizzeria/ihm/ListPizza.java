@@ -4,10 +4,20 @@ import java.util.List;
 
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author AstridHlavacek
+ *
+ */
 public class ListPizza implements Action {
 
 	private IhmUtil ihmUtil;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param ihmUtil
+	 */
 	public ListPizza(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;

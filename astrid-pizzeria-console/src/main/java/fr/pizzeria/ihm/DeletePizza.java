@@ -1,9 +1,19 @@
 package fr.pizzeria.ihm;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class DeletePizza implements Action {
 
 	private IhmUtil ihmUtil;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param ihmUtil
+	 */
 	public DeletePizza(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;

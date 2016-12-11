@@ -2,10 +2,20 @@ package fr.pizzeria.ihm;
 
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class ListPizzaPrix implements Action {
 
 	private IhmUtil ihmUtil;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param ihmUtil
+	 */
 	public ListPizzaPrix(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;

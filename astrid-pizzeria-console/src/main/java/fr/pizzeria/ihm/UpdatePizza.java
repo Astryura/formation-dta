@@ -3,10 +3,20 @@ package fr.pizzeria.ihm;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class UpdatePizza implements Action {
 
 	private IhmUtil ihmUtil;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param ihmUtil
+	 */
 	public UpdatePizza(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;

@@ -3,11 +3,22 @@ package fr.pizzeria.ihm;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * <h1>Menu Principal</h1>
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class MainMenu {
 
 	Map<Integer, Action> actions = new HashMap<Integer, Action>();
 	private IhmUtil ihmUtil;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param ihmUtil
+	 */
 	public MainMenu(IhmUtil ihmUtil) {
 		actions.put(0, new ListPizza(ihmUtil));
 		actions.put(1, new AddPizza(ihmUtil));
@@ -22,6 +33,11 @@ public class MainMenu {
 		this.ihmUtil = ihmUtil;
 	}
 
+	/**
+	 * Affiche le menu
+	 * 
+	 * @throws NumberFormatException
+	 */
 	public void displayMenu() throws NumberFormatException {
 		actions.forEach((k, v) -> {
 			actions.get(k).describeAction();
@@ -29,6 +45,11 @@ public class MainMenu {
 		parseAndExec();
 	}
 
+	/**
+	 * Execute l'action choisie
+	 * 
+	 * @throws NumberFormatException
+	 */
 	private void parseAndExec() throws NumberFormatException {
 		String input = ihmUtil.getScanner().next();
 
