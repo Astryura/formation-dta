@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import fr.pizzeria.dao.exception.PizzaException;
@@ -42,7 +43,7 @@ public class CommandeDaoJPA implements CommandeDao {
 		 * @return T
 		 * @throws SQLException
 		 */
-		T exec(EntityManager entitymanager) throws SQLException;
+		T exec(EntityManager entitymanager) throws PersistenceException;
 	}
 
 	/**
@@ -55,7 +56,7 @@ public class CommandeDaoJPA implements CommandeDao {
 		try {
 			entitymanager = emfactory.createEntityManager();
 			return run.exec(entitymanager);
-		} catch (SQLException e) {
+		} catch (PersistenceException e) {
 			Logger.getLogger(PizzaDaoJPA.class.getName()).severe(e.getMessage());
 			throw new PizzaException(e);
 		} finally {
@@ -118,7 +119,7 @@ public class CommandeDaoJPA implements CommandeDao {
 	@Override
 	public List<Commande> ListCommande(Integer id) throws PizzaException {
 		return execute((EntityManager entitymanager) -> {
-			TypedQuery<Commande> query = entitymanager.createQuery("SELECT c FROM Commande c WHERE c.clientId= :id",
+			TypedQuery<Commande> query = entitymanager.createQuery("SELECT co FROM Commande co WHERE co.clientId = :id",
 					Commande.class);
 			query.setParameter("id", id);
 			List<Commande> commandes = query.getResultList();

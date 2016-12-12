@@ -25,14 +25,13 @@ public class ListCommande implements Action {
 	public void doAction() {
 		System.out.println("Votre Liste de Commande :");
 		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommande(client.getId());
-		for (Commande commande : commandes) {
+		commandes.forEach(commande -> {
 			if (commande != null) {
-				System.out.println(
-						commande.getId() + ". " + commande.getNumeroCommande() + " " + commande.getDateCommande());
+				System.out.println(commande.getId() + ". " + commande.getDateCommande());
 			} else {
 				System.out.println("erreur");
 			}
-		}
+		});
 
 	}
 
