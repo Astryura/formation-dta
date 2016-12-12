@@ -9,9 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  * <b>Pizza est la classe représentant une Pizza.</b>
  * <p>
@@ -162,26 +159,15 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (obj == this) {
-			return true;
-		}
-		if (obj.getClass() != getClass()) {
-			return false;
-		}
-		Pizza rhs = (Pizza) obj;
-		return new EqualsBuilder().append(id, rhs.id).append(code, rhs.code).append(nom, rhs.nom).append(prix, rhs.prix)
-				.append(catP, rhs.catP).isEquals();
-	}
-
-	@Override
-	public int hashCode() {
-		// you pick a hard-coded, randomly chosen, non-zero, odd number
-		// ideally different for each class
-		return new HashCodeBuilder(1, 20).append(code).append(nom).toHashCode();
-	}
+	/*
+	 * @Override public boolean equals(Object obj) { if (obj == null) { return
+	 * false; } if (obj == this) { return true; } if (obj.getClass() !=
+	 * getClass()) { return false; } Pizza rhs = (Pizza) obj; return new
+	 * EqualsBuilder().append(id, rhs.id).append(code, rhs.code).append(nom,
+	 * rhs.nom).append(prix, rhs.prix) .append(catP, rhs.catP).isEquals(); }
+	 * 
+	 * @Override public int hashCode() { // you pick a hard-coded, randomly
+	 * chosen, non-zero, odd number // ideally different for each class return
+	 * new HashCodeBuilder(1, 20).append(code).append(nom).toHashCode(); }
+	 */
 }

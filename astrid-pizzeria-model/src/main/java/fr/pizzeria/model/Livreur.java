@@ -18,11 +18,15 @@ public class Livreur {
 	private String prenom;
 
 	@OneToMany(mappedBy = "livreur")
-	private Set<Commande> commandes;
+	public Set<Commande> commandes;
 
-	public Livreur(Integer id, String nom, String prenom) {
+	public Livreur() {
 		super();
-		this.id = id;
+
+	}
+
+	public Livreur(String nom, String prenom) {
+		super();
 		this.nom = nom;
 		this.prenom = prenom;
 	}

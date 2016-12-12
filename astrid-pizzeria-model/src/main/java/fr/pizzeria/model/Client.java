@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 @Entity
 public class Client {
 	@Id
@@ -21,12 +23,21 @@ public class Client {
 	@OneToMany(mappedBy = "client")
 	private Set<Commande> commandes;
 
+	public Client() {
+
+	}
+
 	public Client(String nom, String prenom, String email, String motDePasse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
-		this.motDePasse = motDePasse;
+		this.motDePasse = DigestUtils.md5Hex(motDePasse);
+	}
+
+	public Client(String email, String motDePasse) {
+		this.email = email;
+		this.motDePasse = DigestUtils.md5Hex(motDePasse);
 	}
 
 	public Integer getId() {
@@ -66,7 +77,7 @@ public class Client {
 	}
 
 	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
+		this.motDePasse = DigestUtils.md5Hex(motDePasse);
 	}
 
 	public Set<Commande> getCommandes() {
