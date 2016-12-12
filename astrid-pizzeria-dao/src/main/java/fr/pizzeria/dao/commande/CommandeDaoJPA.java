@@ -119,8 +119,8 @@ public class CommandeDaoJPA implements CommandeDao {
 	@Override
 	public List<Commande> ListCommande(Integer id) throws PizzaException {
 		return execute((EntityManager entitymanager) -> {
-			TypedQuery<Commande> query = entitymanager.createQuery("SELECT co FROM Commande co WHERE co.clientId = :id",
-					Commande.class);
+			TypedQuery<Commande> query = entitymanager
+					.createQuery("SELECT co FROM Commande co WHERE co.client.id = :id", Commande.class);
 			query.setParameter("id", id);
 			List<Commande> commandes = query.getResultList();
 			if (commandes != null) {

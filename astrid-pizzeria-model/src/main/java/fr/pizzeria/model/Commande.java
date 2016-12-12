@@ -33,6 +33,9 @@ public class Commande {
 	@JoinTable(name = "CommandePizza", joinColumns = @JoinColumn(name = "commandeId", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "pizzaId", referencedColumnName = "ID"))
 	public Set<Pizza> pizzas = new HashSet<>();
 
+	public Commande() {
+	}
+
 	public Commande(Integer numeroCommande, Integer statut, String dateCommande, Client client, Livreur livreur) {
 		super();
 		this.numeroCommande = numeroCommande;

@@ -27,7 +27,7 @@ public class ListCommande implements Action {
 		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommande(client.getId());
 		commandes.forEach(commande -> {
 			if (commande != null) {
-				System.out.println(commande.getId() + ". " + commande.getDateCommande());
+				System.out.println(commande.getId() + ". " + commande.getDateCommande() + " " + commande.getStatut());
 			} else {
 				System.out.println("erreur");
 			}
