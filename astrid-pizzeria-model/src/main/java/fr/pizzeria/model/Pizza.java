@@ -7,7 +7,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -32,7 +31,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  */
 
 @Entity
-@Table(name = "PIZZA")
 public class Pizza {
 
 	/**
@@ -45,7 +43,6 @@ public class Pizza {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
 	private Integer id;
 
 	/**
@@ -57,7 +54,7 @@ public class Pizza {
 	 * @see Pizza#getCode()
 	 * @see Pizza#setCode(String)
 	 */
-	@Column(name = "CODE", length = 3)
+	@Column(length = 3)
 	private String code;
 
 	/**
@@ -69,7 +66,6 @@ public class Pizza {
 	 * @see Pizza#getNom()
 	 * @see Pizza#setNom(String)
 	 */
-	@Column(name = "NOM")
 	private String nom;
 
 	/**
@@ -81,7 +77,6 @@ public class Pizza {
 	 * @see Pizza#getPrix()
 	 * @see Pizza#setPrix(double)
 	 */
-	@Column(name = "PRIX")
 	private double prix;
 
 	/**
@@ -94,7 +89,7 @@ public class Pizza {
 	 * @see Pizza#setCatP(CategoriePizza)
 	 */
 	@Enumerated(EnumType.STRING)
-	@Column(name = "CATEGORIE")
+	@Column(name = "CategoriePizza")
 	private CategoriePizza catP;
 	@Transient
 	private static int nbPizzas;
