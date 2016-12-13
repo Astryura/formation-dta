@@ -8,11 +8,11 @@ import fr.pizzeria.ihm.IhmUtilClient;
 import fr.pizzeria.ihm.MainMenuClient;
 
 /**
- * <h1>PizzeriaAdminConsoleApp</h1><b>Classe de démarrage de l'application.</b>
+ * <h1>PizzeriaClientConsoleApp</h1><b>Classe de démarrage de l'application.</b>
  * 
  * @author Astrid Hlavacek
  * @version 1
- * @since 2016-11-14
+ * @since 2016-12-12
  */
 
 public class PizzeriaClientConsoleApp {

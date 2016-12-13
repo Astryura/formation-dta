@@ -20,6 +20,11 @@ import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class CommandeDaoJPA implements CommandeDao {
 	private EntityManagerFactory emfactory;
 
@@ -43,7 +48,7 @@ public class CommandeDaoJPA implements CommandeDao {
 		 * @return T
 		 * @throws SQLException
 		 */
-		T exec(EntityManager entitymanager) throws PersistenceException;
+		T exec(EntityManager entitymanager);
 	}
 
 	/**
@@ -67,7 +72,8 @@ public class CommandeDaoJPA implements CommandeDao {
 
 	}
 
-	public void saveNewClient(Client client) throws PizzaException {
+	@Override
+	public void saveNewClient(Client client) {
 		execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			entitymanager.persist(client);
@@ -76,7 +82,8 @@ public class CommandeDaoJPA implements CommandeDao {
 		});
 	}
 
-	public Client ConnectNewClient(Client client) throws PizzaException {
+	@Override
+	public Client ConnectNewClient(Client client) {
 		return execute((EntityManager entitymanager) -> {
 			TypedQuery<Client> query = entitymanager
 					.createQuery("SELECT c FROM Client c WHERE c.email = :email AND c.motDePasse = :mdp", Client.class);
@@ -91,6 +98,7 @@ public class CommandeDaoJPA implements CommandeDao {
 		});
 	}
 
+	@Override
 	public void NewCommande(Integer id, String codePizza) {
 		execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
@@ -117,7 +125,7 @@ public class CommandeDaoJPA implements CommandeDao {
 	}
 
 	@Override
-	public List<Commande> ListCommande(Integer id) throws PizzaException {
+	public List<Commande> ListCommande(Integer id) {
 		return execute((EntityManager entitymanager) -> {
 			TypedQuery<Commande> query = entitymanager
 					.createQuery("SELECT co FROM Commande co WHERE co.client.id = :id", Commande.class);

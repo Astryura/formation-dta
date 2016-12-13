@@ -2,19 +2,46 @@ package fr.pizzeria.dao.commande;
 
 import java.util.List;
 
-import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public interface CommandeDao {
-	void saveNewClient(Client client) throws PizzaException;
 
-	Client ConnectNewClient(Client client) throws PizzaException;
+	/**
+	 * 
+	 * @param client
+	 */
+	void saveNewClient(Client client);
 
-	void NewCommande(Integer id, String codePizza) throws PizzaException;
+	/**
+	 * 
+	 * @param client
+	 * @return Client
+	 */
+	Client ConnectNewClient(Client client);
 
-	List<Commande> ListCommande(Integer id) throws PizzaException;
+	/**
+	 * 
+	 * @param id
+	 * @param codePizza
+	 */
+	void NewCommande(Integer id, String codePizza);
 
+	/**
+	 * 
+	 * @param id
+	 * @return List<Commande>
+	 */
+	List<Commande> ListCommande(Integer id);
+
+	/**
+	 * 
+	 */
 	void close();
 
 }

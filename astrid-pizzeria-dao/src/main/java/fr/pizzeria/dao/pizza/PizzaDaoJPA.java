@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import fr.pizzeria.dao.exception.PizzaException;
@@ -46,7 +47,7 @@ public class PizzaDaoJPA implements PizzaDao {
 		 * @return T
 		 * @throws SQLException
 		 */
-		T exec(EntityManager entitymanager) throws SQLException;
+		T exec(EntityManager entitymanager);
 	}
 
 	/**
@@ -59,7 +60,7 @@ public class PizzaDaoJPA implements PizzaDao {
 		try {
 			entitymanager = emfactory.createEntityManager();
 			return run.exec(entitymanager);
-		} catch (SQLException e) {
+		} catch (PersistenceException e) {
 			Logger.getLogger(PizzaDaoJPA.class.getName()).severe(e.getMessage());
 			throw new PizzaException(e);
 		} finally {
@@ -76,7 +77,7 @@ public class PizzaDaoJPA implements PizzaDao {
 	}
 
 	@Override
-	public List<Pizza> findAllPizzas() throws PizzaException {
+	public List<Pizza> findAllPizzas() {
 		return execute((EntityManager entitymanager) -> {
 			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p", Pizza.class);
 			Pizza.setNbPizzas(query.getResultList().size());
@@ -85,7 +86,7 @@ public class PizzaDaoJPA implements PizzaDao {
 	}
 
 	@Override
-	public void saveNewPizza(Pizza pizza) throws PizzaException {
+	public void saveNewPizza(Pizza pizza) {
 		execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			entitymanager.persist(pizza);
@@ -95,7 +96,7 @@ public class PizzaDaoJPA implements PizzaDao {
 	}
 
 	@Override
-	public void updatePizza(String codePizza, Pizza pizza) throws PizzaException {
+	public void updatePizza(String codePizza, Pizza pizza) {
 		execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code",
@@ -112,7 +113,7 @@ public class PizzaDaoJPA implements PizzaDao {
 	}
 
 	@Override
-	public void deletePizza(String codePizza) throws PizzaException {
+	public void deletePizza(String codePizza) {
 		execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code",
