@@ -20,9 +20,4 @@ public class IhmUtilTest {
 		assertEquals(sc, ihm.getScanner());
 	}
 
-	@Test
-	public void testSetPizzaDao() {
-		assertEquals(dao.getPizzaDao(), ihm.getPizzaDao());
-	}
-
 }
