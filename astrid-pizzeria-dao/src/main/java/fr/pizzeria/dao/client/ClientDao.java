@@ -1,6 +1,5 @@
 package fr.pizzeria.dao.client;
 
-import fr.pizzeria.dao.JPADao;
 import fr.pizzeria.model.Client;
 
 /**
@@ -13,7 +12,7 @@ public interface ClientDao {
 	 * 
 	 * @param client
 	 */
-	void saveNewClient(Client client, JPADao jpaDao);
+	void saveNewClient(Client client);
 
 	/**
 	 * 
@@ -21,6 +20,6 @@ public interface ClientDao {
 	 * @return Client
 	 */
 
-	Client ConnectNewClient(Client client, JPADao jpaDao);
+	Client ConnectNewClient(Client client);
 
 }

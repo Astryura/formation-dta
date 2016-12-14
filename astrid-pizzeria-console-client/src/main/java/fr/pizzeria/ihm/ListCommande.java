@@ -29,7 +29,7 @@ public class ListCommande implements Action {
 	@Override
 	public void doAction() {
 		System.out.println("Votre Liste de Commande :");
-		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommandeClient(client.getId(), ihmUtil.getJpaDao());
+		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommandeClient(client.getId());
 		commandes.forEach(commande -> {
 			if (commande != null) {
 				System.out.println(commande.getId() + ". " + commande.getDateCommande() + " " + commande.getStatut());

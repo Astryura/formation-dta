@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.factory;
 
 import fr.pizzeria.dao.client.ClientDao;
 import fr.pizzeria.dao.commande.CommandeDao;
@@ -23,21 +23,18 @@ public abstract class DaoFactory {
 	private CommandeDao commandeDao;
 	private LivreurDao livreurDao;
 	private ClientDao clientDao;
-	private JPADao jpaDao;
 
 	/**
 	 * Constructeur instancie le PizzaDao
 	 * 
 	 * @param pizzaDao
 	 */
-	public DaoFactory(PizzaDao pizzaDao, CommandeDao commandeDao, LivreurDao livreurDao, ClientDao clientDao,
-			JPADao jpaDao) {
+	public DaoFactory(PizzaDao pizzaDao, CommandeDao commandeDao, LivreurDao livreurDao, ClientDao clientDao) {
 		super();
 		this.pizzaDao = pizzaDao;
 		this.commandeDao = commandeDao;
 		this.livreurDao = livreurDao;
 		this.clientDao = clientDao;
-		this.jpaDao = jpaDao;
 	}
 
 	/**
@@ -61,7 +58,4 @@ public abstract class DaoFactory {
 		return clientDao;
 	}
 
-	public JPADao getJpaDao() {
-		return jpaDao;
-	}
 }

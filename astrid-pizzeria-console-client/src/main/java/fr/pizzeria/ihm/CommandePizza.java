@@ -2,6 +2,7 @@ package fr.pizzeria.ihm;
 
 import java.util.List;
 
+import fr.pizzeria.dao.other.JPADao;
 import fr.pizzeria.dao.pizza.PizzaDaoJPA;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
@@ -25,7 +26,7 @@ public class CommandePizza implements Action {
 	@Override
 	public void doAction() {
 		System.out.println("Liste des Pizzas :");
-		PizzaDaoJPA piz = new PizzaDaoJPA();
+		PizzaDaoJPA piz = new PizzaDaoJPA(new JPADao());
 		List<Pizza> list = piz.findAllPizzas();
 		piz.close();
 		list.forEach(p -> {
@@ -34,7 +35,7 @@ public class CommandePizza implements Action {
 		});
 		System.out.println("Quel est le code de la Pizza que vous voulez commander ?");
 		String codePizza = ihmUtil.getScanner().next();
-		ihmUtil.getCommandeDao().NewCommande(client.getId(), codePizza, ihmUtil.getJpaDao());
+		ihmUtil.getCommandeDao().NewCommande(client.getId(), codePizza);
 
 	}
 

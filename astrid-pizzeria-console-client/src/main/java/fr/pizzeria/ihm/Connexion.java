@@ -23,7 +23,7 @@ public class Connexion implements Action {
 		System.out.println("Votre mot de passe");
 		String mdp = ihmUtil.getScanner().next();
 		Client client = new Client(email, mdp);
-		Client connect = ihmUtil.getClientDao().ConnectNewClient(client, ihmUtil.getJpaDao());
+		Client connect = ihmUtil.getClientDao().ConnectNewClient(client);
 		if (connect != null) {
 			System.out.println("vous etes connecté");
 			new MainMenuClient2(ihmUtil, connect).displayMenu();

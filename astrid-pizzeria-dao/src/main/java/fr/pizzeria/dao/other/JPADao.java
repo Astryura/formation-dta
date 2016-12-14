@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.other;
 
 import java.util.logging.Logger;
 

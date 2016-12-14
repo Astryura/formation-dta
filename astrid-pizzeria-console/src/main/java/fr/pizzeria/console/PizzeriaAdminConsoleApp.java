@@ -4,7 +4,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
 
-import fr.pizzeria.dao.DaoFactory;
+import fr.pizzeria.dao.factory.DaoFactory;
 import fr.pizzeria.ihm.IhmUtil;
 import fr.pizzeria.ihm.MainMenu;
 

@@ -32,7 +32,7 @@ public class Subscribe implements Action {
 		System.out.println("Votre mot de passe");
 		String mdp = ihmUtil.getScanner().next();
 		Client client = new Client(nom, prenom, email, mdp);
-		ihmUtil.getClientDao().saveNewClient(client, ihmUtil.getJpaDao());
+		ihmUtil.getClientDao().saveNewClient(client);
 
 	}
 
