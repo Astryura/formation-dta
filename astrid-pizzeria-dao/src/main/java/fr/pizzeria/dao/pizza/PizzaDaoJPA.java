@@ -1,6 +1,5 @@
 package fr.pizzeria.dao.pizza;
 
-import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +12,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import fr.pizzeria.dao.IRunJPA;
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -32,22 +32,6 @@ public class PizzaDaoJPA implements PizzaDao {
 	 */
 	public PizzaDaoJPA() {
 		emfactory = Persistence.createEntityManagerFactory("pizzeria-console");
-	}
-
-	/**
-	 * Interface fonctionnelle permettant d'instancier l'EntityManager avec des
-	 * types génériques
-	 *
-	 * @param <T>
-	 */
-	@FunctionalInterface
-	interface IRunJPA<T> {
-		/**
-		 * @param entitymanager
-		 * @return T
-		 * @throws SQLException
-		 */
-		T exec(EntityManager entitymanager);
 	}
 
 	/**
