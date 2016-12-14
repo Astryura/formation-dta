@@ -2,6 +2,7 @@ package fr.pizzeria.dao.commande;
 
 import java.util.List;
 
+import fr.pizzeria.dao.JPADao;
 import fr.pizzeria.model.Commande;
 
 /**
@@ -16,14 +17,14 @@ public interface CommandeDao {
 	 * @param id
 	 * @param codePizza
 	 */
-	void NewCommande(Integer id, String codePizza);
+	void NewCommande(Integer id, String codePizza, JPADao jpaDao);
 
 	/**
 	 * 
 	 * @param id
 	 * @return List<Commande>
 	 */
-	List<Commande> ListCommandeClient(Integer id);
+	List<Commande> ListCommandeClient(Integer id, JPADao jpaDao);
 
 	/**
 	 * 
@@ -34,8 +35,8 @@ public interface CommandeDao {
 	 * 
 	 * @return List<Commande>
 	 */
-	List<Commande> ListCommande();
+	List<Commande> ListCommande(JPADao jpaDao);
 
-	void ExpedtionCommande(Integer num);
+	void ExpedtionCommande(Integer num, JPADao jpaDao);
 
 }

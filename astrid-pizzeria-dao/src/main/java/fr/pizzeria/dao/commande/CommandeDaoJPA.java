@@ -20,10 +20,9 @@ import fr.pizzeria.model.Pizza;
  *
  */
 public class CommandeDaoJPA implements CommandeDao {
-	private JPADao jpaDao = new JPADao();
 
 	@Override
-	public void NewCommande(Integer id, String codePizza) {
+	public void NewCommande(Integer id, String codePizza, JPADao jpaDao) {
 		jpaDao.execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -44,7 +43,7 @@ public class CommandeDaoJPA implements CommandeDao {
 	}
 
 	@Override
-	public List<Commande> ListCommandeClient(Integer id) {
+	public List<Commande> ListCommandeClient(Integer id, JPADao jpaDao) {
 		return jpaDao.execute((EntityManager entitymanager) -> {
 			TypedQuery<Commande> query = entitymanager
 					.createQuery("SELECT co FROM Commande co WHERE co.client.id = :id", Commande.class);
@@ -59,7 +58,7 @@ public class CommandeDaoJPA implements CommandeDao {
 	}
 
 	@Override
-	public List<Commande> ListCommande() {
+	public List<Commande> ListCommande(JPADao jpaDao) {
 		return jpaDao.execute((EntityManager entitymanager) -> {
 			TypedQuery<Commande> query = entitymanager.createQuery("SELECT co FROM Commande co WHERE co.statut=0",
 					Commande.class);
@@ -73,7 +72,7 @@ public class CommandeDaoJPA implements CommandeDao {
 	}
 
 	@Override
-	public void ExpedtionCommande(Integer num) {
+	public void ExpedtionCommande(Integer num, JPADao jpaDao) {
 		jpaDao.execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			TypedQuery<Commande> query = entitymanager

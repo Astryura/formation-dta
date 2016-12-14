@@ -23,7 +23,7 @@ public class ListCommande implements Action {
 	@Override
 	public void doAction() {
 		System.out.println("Liste des Commandes non traitées :");
-		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommande();
+		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommande(ihmUtil.getJpaDao());
 		commandes.forEach(commande -> {
 			if (commande != null) {
 				System.out.println(commande.getId() + ". " + commande.getNumeroCommande() + " "

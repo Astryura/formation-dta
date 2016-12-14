@@ -8,8 +8,6 @@ import fr.pizzeria.model.Client;
 
 public class ClientDaoJPA implements ClientDao {
 
-	// private JPADao jpaDao = new JPADao();
-
 	@Override
 	public void saveNewClient(Client client, JPADao jpaDao) {
 		jpaDao.execute((EntityManager entitymanager) -> {
