@@ -21,8 +21,4 @@ public interface ClientDao {
 	 */
 	Client ConnectNewClient(Client client);
 
-	/**
-	 * 
-	 */
-	void close();
 }

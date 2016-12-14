@@ -24,7 +24,7 @@ public class ExitMenu implements Action {
 		ihmUtil.getPizzaDao().close();
 		ihmUtil.getCommandeDao().close();
 		ihmUtil.getLivreurDao().close();
-		ihmUtil.getClientDao().close();
+		// ihmUtil.getClientDao().close();
 		System.out.println("AU REVOIR :'(");
 	}
 
