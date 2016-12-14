@@ -2,7 +2,11 @@ package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 
+import fr.pizzeria.dao.DaoFactory;
+import fr.pizzeria.dao.client.ClientDao;
 import fr.pizzeria.dao.commande.CommandeDao;
+import fr.pizzeria.dao.livreur.LivreurDao;
+import fr.pizzeria.dao.pizza.PizzaDao;
 
 /**
  * 
@@ -26,7 +30,7 @@ public class IhmUtilClient {
 	 * @see IhmUtilClient#getPizzaDao
 	 * @see IhmUtilClient#setPizzaDao
 	 */
-	private CommandeDao commandeDao;
+	private DaoFactory daoFactory;
 
 	/**
 	 * Constructeur enregistreur le scanner, le DaoFactory et la variable
@@ -36,10 +40,10 @@ public class IhmUtilClient {
 	 * @param daoFactory
 	 * @param choixFactory
 	 */
-	public IhmUtilClient(Scanner scanner, CommandeDao commandeDao) {
+	public IhmUtilClient(Scanner scanner, DaoFactory daoFactory) {
 
 		this.scanner = scanner;
-		this.commandeDao = commandeDao;
+		this.daoFactory = daoFactory;
 	}
 
 	public Scanner getScanner() {
@@ -50,12 +54,24 @@ public class IhmUtilClient {
 		this.scanner = scanner;
 	}
 
-	public CommandeDao getCommandeDao() {
-		return commandeDao;
+	public PizzaDao getPizzaDao() {
+		return daoFactory.getPizzaDao();
 	}
 
-	public void setCommandeDao(CommandeDao commandeDao) {
-		this.commandeDao = commandeDao;
+	public void setPizzaDao(DaoFactory daoFactory) {
+		this.daoFactory = daoFactory;
+	}
+
+	public CommandeDao getCommandeDao() {
+		return daoFactory.getCommandeDao();
+	}
+
+	public LivreurDao getLivreurDao() {
+		return daoFactory.getLivreurDao();
+	}
+
+	public ClientDao getClientDao() {
+		return daoFactory.getClientDao();
 	}
 
 }

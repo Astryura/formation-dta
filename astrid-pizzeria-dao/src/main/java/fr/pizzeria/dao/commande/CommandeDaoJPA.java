@@ -73,32 +73,6 @@ public class CommandeDaoJPA implements CommandeDao {
 	}
 
 	@Override
-	public void saveNewClient(Client client) {
-		execute((EntityManager entitymanager) -> {
-			entitymanager.getTransaction().begin();
-			entitymanager.persist(client);
-			entitymanager.getTransaction().commit();
-			return Void.TYPE;
-		});
-	}
-
-	@Override
-	public Client ConnectNewClient(Client client) {
-		return execute((EntityManager entitymanager) -> {
-			TypedQuery<Client> query = entitymanager
-					.createQuery("SELECT c FROM Client c WHERE c.email = :email AND c.motDePasse = :mdp", Client.class);
-			query.setParameter("email", client.getEmail());
-			query.setParameter("mdp", client.getMotDePasse());
-			Client cl = query.getSingleResult();
-			if (cl != null) {
-				return cl;
-			} else {
-				return null;
-			}
-		});
-	}
-
-	@Override
 	public void NewCommande(Integer id, String codePizza) {
 		execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();

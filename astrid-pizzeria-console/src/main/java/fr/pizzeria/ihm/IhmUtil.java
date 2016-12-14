@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.DaoFactory;
+import fr.pizzeria.dao.client.ClientDao;
 import fr.pizzeria.dao.commande.CommandeDao;
 import fr.pizzeria.dao.livreur.LivreurDao;
 import fr.pizzeria.dao.pizza.PizzaDao;
@@ -84,6 +85,10 @@ public class IhmUtil {
 
 	public LivreurDao getLivreurDao() {
 		return daoFactory.getLivreurDao();
+	}
+
+	public ClientDao getClientDao() {
+		return daoFactory.getClientDao();
 	}
 
 }

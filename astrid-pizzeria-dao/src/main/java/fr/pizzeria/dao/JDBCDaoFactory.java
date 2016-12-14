@@ -2,6 +2,7 @@ package fr.pizzeria.dao;
 
 import java.sql.SQLException;
 
+import fr.pizzeria.dao.client.ClientDaoJPA;
 import fr.pizzeria.dao.commande.CommandeDaoJPA;
 import fr.pizzeria.dao.livreur.LivreurDaoJPA;
 import fr.pizzeria.dao.pizza.PizzaDaoJDBC;
@@ -20,7 +21,7 @@ public class JDBCDaoFactory extends DaoFactory {
 	 * @see PizzaDaoJDBC
 	 */
 	public JDBCDaoFactory() throws SQLException {
-		super(new PizzaDaoJDBC(), new CommandeDaoJPA(), new LivreurDaoJPA());
+		super(new PizzaDaoJDBC(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA());
 	}
 
 }

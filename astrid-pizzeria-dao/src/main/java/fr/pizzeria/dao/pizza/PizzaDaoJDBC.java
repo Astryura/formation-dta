@@ -54,7 +54,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 	 * @return T
 	 */
 	public <T> T execute(IRunSql<T> run) {
-		String url = "jdbc:mysql://localhost:3306/pizzadb";
+		String url = "jdbc:mysql://localhost:3306/pizzeriabd";
 		try (Connection connection = DriverManager.getConnection(url, "root", "");
 				Statement statement = connection.createStatement();) {
 
@@ -77,7 +77,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 				String code = resultats.getString("CODE");
 				String name = resultats.getString("NOM");
 				Double price = resultats.getDouble("PRIX");
-				String cat = resultats.getString("CATEGORIE");
+				String cat = resultats.getString("CategoriePizza");
 				Pizza pizza = new Pizza(id, code, name, price,
 						CategoriePizza.valueOf(cat.toUpperCase().replaceAll(" ", "_")));
 				listPizzas.add(pizza);
@@ -91,7 +91,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 	public void saveNewPizza(Pizza pizza) throws PizzaException {
 		execute((Connection connection, Statement statement) -> {
 			PreparedStatement addPizzaSt = connection
-					.prepareStatement("INSERT INTO PIZZA (CODE, NOM, PRIX, CATEGORIE) VALUES (?,?,?,?)");
+					.prepareStatement("INSERT INTO PIZZA (CODE, NOM, PRIX, CategoriePizza) VALUES (?,?,?,?)");
 			addPizzaSt.setString(1, pizza.getCode());
 			addPizzaSt.setString(2, pizza.getNom());
 			addPizzaSt.setDouble(3, pizza.getPrix());
@@ -106,7 +106,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 	public void updatePizza(String codePizza, Pizza pizza) throws PizzaException {
 		execute((Connection connection, Statement statement) -> {
 			PreparedStatement updatePizzaSt = connection
-					.prepareStatement("UPDATE PIZZA SET ID=?,CODE=?,NOM=?,PRIX=?,CATEGORIE=? WHERE CODE = ?");
+					.prepareStatement("UPDATE PIZZA SET ID=?,CODE=?,NOM=?,PRIX=?,CategoriePizza=? WHERE CODE = ?");
 			updatePizzaSt.setInt(1, pizza.getId());
 			updatePizzaSt.setString(2, pizza.getCode());
 			updatePizzaSt.setString(3, pizza.getNom());
@@ -166,8 +166,8 @@ public class PizzaDaoJDBC implements PizzaDao {
 			try {
 				for (List<Pizza> liste : list) {
 					for (Pizza pizza : liste) {
-						PreparedStatement addPizzaSt = connection
-								.prepareStatement("INSERT INTO PIZZA (CODE, NOM, PRIX, CATEGORIE) VALUES (?,?,?,?)");
+						PreparedStatement addPizzaSt = connection.prepareStatement(
+								"INSERT INTO PIZZA (CODE, NOM, PRIX, CategoriePizza) VALUES (?,?,?,?)");
 						addPizzaSt.setString(1, pizza.getCode());
 						addPizzaSt.setString(2, pizza.getNom());
 						addPizzaSt.setDouble(3, pizza.getPrix());

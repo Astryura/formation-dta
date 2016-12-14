@@ -2,7 +2,6 @@ package fr.pizzeria.dao.commande;
 
 import java.util.List;
 
-import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
 
 /**
@@ -11,19 +10,6 @@ import fr.pizzeria.model.Commande;
  *
  */
 public interface CommandeDao {
-
-	/**
-	 * 
-	 * @param client
-	 */
-	void saveNewClient(Client client);
-
-	/**
-	 * 
-	 * @param client
-	 * @return Client
-	 */
-	Client ConnectNewClient(Client client);
 
 	/**
 	 * 

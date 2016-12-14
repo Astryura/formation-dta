@@ -1,9 +1,10 @@
 package fr.pizzeria.console;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
 
-import fr.pizzeria.dao.commande.CommandeDaoJPA;
+import fr.pizzeria.dao.DaoFactory;
 import fr.pizzeria.ihm.IhmUtilClient;
 import fr.pizzeria.ihm.MainMenuClient;
 
@@ -38,7 +39,11 @@ public class PizzeriaClientConsoleApp {
 
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 
-		IhmUtilClient ihmUtil = new IhmUtilClient(new Scanner(System.in), new CommandeDaoJPA());
+		ResourceBundle bundle = ResourceBundle.getBundle("application");
+		String choix = bundle.getString("dao.impl");
+		DaoFactory daoFactory = (DaoFactory) Class.forName(choix).newInstance();
+
+		IhmUtilClient ihmUtil = new IhmUtilClient(new Scanner(System.in), daoFactory);
 
 		MainMenuClient mainMenu = new MainMenuClient(ihmUtil);
 
