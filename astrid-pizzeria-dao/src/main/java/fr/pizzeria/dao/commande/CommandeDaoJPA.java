@@ -152,4 +152,18 @@ public class CommandeDaoJPA implements CommandeDao {
 			}
 		});
 	}
+
+	@Override
+	public void ExpedtionCommande(Integer num) {
+		execute((EntityManager entitymanager) -> {
+			entitymanager.getTransaction().begin();
+			TypedQuery<Commande> query = entitymanager
+					.createQuery("SELECT co FROM Commande co WHERE co.numeroCommande= :num", Commande.class);
+			query.setParameter("num", num);
+			Commande commande = query.getSingleResult();
+			commande.setStatut(1);
+			entitymanager.getTransaction().commit();
+			return Void.TYPE;
+		});
+	}
 }

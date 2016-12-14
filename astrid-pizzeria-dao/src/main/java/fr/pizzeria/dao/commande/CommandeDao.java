@@ -50,4 +50,6 @@ public interface CommandeDao {
 	 */
 	List<Commande> ListCommande();
 
+	void ExpedtionCommande(Integer num);
+
 }
