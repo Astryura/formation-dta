@@ -21,7 +21,7 @@ public class JDBCDaoFactory extends DaoFactory {
 	 * @see PizzaDaoJDBC
 	 */
 	public JDBCDaoFactory() throws SQLException {
-		super(new PizzaDaoJDBC(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA());
+		super(new PizzaDaoJDBC(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA(), new JPADao());
 	}
 
 }

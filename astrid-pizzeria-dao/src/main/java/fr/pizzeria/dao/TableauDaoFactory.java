@@ -19,6 +19,6 @@ public class TableauDaoFactory extends DaoFactory {
 	 * @see PizzaDaoTableau
 	 */
 	public TableauDaoFactory() {
-		super(new PizzaDaoTableau(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA());
+		super(new PizzaDaoTableau(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA(), new JPADao());
 	}
 }

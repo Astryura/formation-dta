@@ -8,10 +8,10 @@ import fr.pizzeria.model.Client;
 
 public class ClientDaoJPA implements ClientDao {
 
-	private JPADao jpaDao = new JPADao();
+	// private JPADao jpaDao = new JPADao();
 
 	@Override
-	public void saveNewClient(Client client) {
+	public void saveNewClient(Client client, JPADao jpaDao) {
 		jpaDao.execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			entitymanager.persist(client);
@@ -22,7 +22,7 @@ public class ClientDaoJPA implements ClientDao {
 	}
 
 	@Override
-	public Client ConnectNewClient(Client client) {
+	public Client ConnectNewClient(Client client, JPADao jpaDao) {
 		return jpaDao.execute((EntityManager entitymanager) -> {
 			TypedQuery<Client> query = entitymanager
 					.createQuery("SELECT c FROM Client c WHERE c.email = :email AND c.motDePasse = :mdp", Client.class);

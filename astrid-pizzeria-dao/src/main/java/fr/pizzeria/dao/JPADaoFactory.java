@@ -19,7 +19,7 @@ public class JPADaoFactory extends DaoFactory {
 	 * @see PizzaDaoJPA
 	 */
 	public JPADaoFactory() {
-		super(new PizzaDaoJPA(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA());
+		super(new PizzaDaoJPA(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA(), new JPADao());
 	}
 
 }

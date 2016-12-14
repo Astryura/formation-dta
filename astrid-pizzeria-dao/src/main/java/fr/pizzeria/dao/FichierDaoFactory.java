@@ -19,7 +19,7 @@ public class FichierDaoFactory extends DaoFactory {
 	 * @see PizzaDaoFichier
 	 */
 	public FichierDaoFactory() {
-		super(new PizzaDaoFichier(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA());
+		super(new PizzaDaoFichier(), new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA(), new JPADao());
 	}
 
 }

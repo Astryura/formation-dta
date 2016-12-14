@@ -23,18 +23,21 @@ public abstract class DaoFactory {
 	private CommandeDao commandeDao;
 	private LivreurDao livreurDao;
 	private ClientDao clientDao;
+	private JPADao jpaDao;
 
 	/**
 	 * Constructeur instancie le PizzaDao
 	 * 
 	 * @param pizzaDao
 	 */
-	public DaoFactory(PizzaDao pizzaDao, CommandeDao commandeDao, LivreurDao livreurDao, ClientDao clientDao) {
+	public DaoFactory(PizzaDao pizzaDao, CommandeDao commandeDao, LivreurDao livreurDao, ClientDao clientDao,
+			JPADao jpaDao) {
 		super();
 		this.pizzaDao = pizzaDao;
 		this.commandeDao = commandeDao;
 		this.livreurDao = livreurDao;
 		this.clientDao = clientDao;
+		this.jpaDao = jpaDao;
 	}
 
 	/**
@@ -56,5 +59,9 @@ public abstract class DaoFactory {
 
 	public ClientDao getClientDao() {
 		return clientDao;
+	}
+
+	public JPADao getJpaDao() {
+		return jpaDao;
 	}
 }
