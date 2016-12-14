@@ -1,5 +1,7 @@
 package fr.pizzeria.dao;
 
+import fr.pizzeria.dao.commande.CommandeDaoJPA;
+import fr.pizzeria.dao.livreur.LivreurDaoJPA;
 import fr.pizzeria.dao.pizza.PizzaDaoFichier;
 
 /**
@@ -16,7 +18,7 @@ public class FichierDaoFactory extends DaoFactory {
 	 * @see PizzaDaoFichier
 	 */
 	public FichierDaoFactory() {
-		super(new PizzaDaoFichier());
+		super(new PizzaDaoFichier(), new CommandeDaoJPA(), new LivreurDaoJPA());
 	}
 
 }

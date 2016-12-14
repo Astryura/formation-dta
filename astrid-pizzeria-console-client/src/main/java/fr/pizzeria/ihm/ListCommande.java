@@ -29,10 +29,18 @@ public class ListCommande implements Action {
 	@Override
 	public void doAction() {
 		System.out.println("Votre Liste de Commande :");
-		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommande(client.getId());
+		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommandeClient(client.getId());
 		commandes.forEach(commande -> {
 			if (commande != null) {
 				System.out.println(commande.getId() + ". " + commande.getDateCommande() + " " + commande.getStatut());
+				// System.out.println("Vos Pizzas :");
+				/*
+				 * Iterator<Pizza> iterator = commande.getPizzas().iterator();
+				 * while (iterator.hasNext()) { Pizza p = iterator.next();
+				 * System.out.println(p.getId() + ". " + p.getCode() + " " +
+				 * p.getNom()); }
+				 */
+
 			} else {
 				System.out.println("erreur");
 			}

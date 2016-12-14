@@ -125,11 +125,25 @@ public class CommandeDaoJPA implements CommandeDao {
 	}
 
 	@Override
-	public List<Commande> ListCommande(Integer id) {
+	public List<Commande> ListCommandeClient(Integer id) {
 		return execute((EntityManager entitymanager) -> {
 			TypedQuery<Commande> query = entitymanager
 					.createQuery("SELECT co FROM Commande co WHERE co.client.id = :id", Commande.class);
 			query.setParameter("id", id);
+			List<Commande> commandes = query.getResultList();
+			if (commandes != null) {
+				return commandes;
+			} else {
+				return null;
+			}
+		});
+	}
+
+	@Override
+	public List<Commande> ListCommande() {
+		return execute((EntityManager entitymanager) -> {
+			TypedQuery<Commande> query = entitymanager.createQuery("SELECT co FROM Commande co WHERE co.statut=0",
+					Commande.class);
 			List<Commande> commandes = query.getResultList();
 			if (commandes != null) {
 				return commandes;

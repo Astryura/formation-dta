@@ -37,11 +37,17 @@ public interface CommandeDao {
 	 * @param id
 	 * @return List<Commande>
 	 */
-	List<Commande> ListCommande(Integer id);
+	List<Commande> ListCommandeClient(Integer id);
 
 	/**
 	 * 
 	 */
 	void close();
+
+	/**
+	 * 
+	 * @return List<Commande>
+	 */
+	List<Commande> ListCommande();
 
 }

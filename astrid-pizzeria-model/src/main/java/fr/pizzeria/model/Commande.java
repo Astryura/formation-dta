@@ -12,6 +12,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 @Entity
 public class Commande {
 
@@ -43,6 +48,7 @@ public class Commande {
 		this.dateCommande = dateCommande;
 		this.client = client;
 		this.livreur = livreur;
+
 	}
 
 	public Set<Pizza> getPizzas() {
