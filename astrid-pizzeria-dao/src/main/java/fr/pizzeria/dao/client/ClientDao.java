@@ -20,8 +20,11 @@ public interface ClientDao {
 	 * @return Client
 	 */
 
-	Client ConnectNewClient(Client client);
+	Client connectNewClient(Client client);
 
+	/**
+	 * 
+	 */
 	void close();
 
 }

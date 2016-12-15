@@ -29,7 +29,7 @@ public class ClientDaoJPA implements ClientDao {
 	}
 
 	@Override
-	public Client ConnectNewClient(Client client) {
+	public Client connectNewClient(Client client) {
 		return jpaDao.execute((EntityManager entitymanager) -> {
 			TypedQuery<Client> query = entitymanager
 					.createQuery("SELECT c FROM Client c WHERE c.email = :email AND c.motDePasse = :mdp", Client.class);

@@ -11,7 +11,7 @@ public class ClientDaoTableau implements ClientDao {
 	}
 
 	@Override
-	public Client ConnectNewClient(Client client) {
+	public Client connectNewClient(Client client) {
 		// TODO Auto-generated method stub
 		return null;
 	}
