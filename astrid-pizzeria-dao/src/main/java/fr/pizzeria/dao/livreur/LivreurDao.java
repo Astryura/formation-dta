@@ -13,7 +13,7 @@ public interface LivreurDao {
 	 * 
 	 * @param livreur
 	 */
-	void AddLivreur(Livreur livreur);
+	void addLivreur(Livreur livreur);
 
 	/**
 	 * 

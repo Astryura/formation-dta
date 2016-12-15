@@ -30,7 +30,7 @@ public class AddLivreur implements Action {
 		System.out.println("Votre prenom");
 		String prenom = ihmUtil.getScanner().next();
 		Livreur livreur = new Livreur(nom, prenom);
-		ihmUtil.getLivreurDao().AddLivreur(livreur);
+		ihmUtil.getLivreurDao().addLivreur(livreur);
 
 	}
 

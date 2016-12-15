@@ -17,7 +17,7 @@ public class LivreurDaoJPA implements LivreurDao {
 	}
 
 	@Override
-	public void AddLivreur(Livreur livreur) {
+	public void addLivreur(Livreur livreur) {
 		jpaDao.execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			entitymanager.persist(livreur);

@@ -5,7 +5,7 @@ import fr.pizzeria.model.Livreur;
 public class LivreurDaoJDBC implements LivreurDao {
 
 	@Override
-	public void AddLivreur(Livreur livreur) {
+	public void addLivreur(Livreur livreur) {
 		// TODO Auto-generated method stub
 
 	}

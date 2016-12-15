@@ -20,6 +20,10 @@ public class ClientDaoTableau implements ClientDao {
 		listClients.add(new Client(0, "Girard", "Jean", "J.Girard@hotmail.fr", "abc"));
 	}
 
+	public List<Client> allClient() {
+		return listClients;
+	}
+
 	@Override
 	public void saveNewClient(Client client) {
 		Comparator<Client> comp = Comparator.comparing(Client::getId);

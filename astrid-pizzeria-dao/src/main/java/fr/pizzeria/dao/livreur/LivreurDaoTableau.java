@@ -20,13 +20,17 @@ public class LivreurDaoTableau implements LivreurDao {
 	 * Constructeur
 	 */
 	public LivreurDaoTableau() {
-		listLivreurs.add(new Livreur(0, "Jacques", "Dutronc"));
-		listLivreurs.add(new Livreur(1, "Road", "Runner"));
-		listLivreurs.add(new Livreur(2, "Beep", "Beep"));
+		listLivreurs.add(new Livreur(1, "Jacques", "Dutronc"));
+		listLivreurs.add(new Livreur(2, "Road", "Runner"));
+		listLivreurs.add(new Livreur(3, "Beep", "Beep"));
+	}
+
+	public List<Livreur> allLivreur() {
+		return listLivreurs;
 	}
 
 	@Override
-	public void AddLivreur(Livreur livreur) {
+	public void addLivreur(Livreur livreur) {
 		Comparator<Livreur> comp = Comparator.comparing(Livreur::getId);
 		Optional<Livreur> l = listLivreurs.stream().max(comp);
 		if (l.isPresent()) {
