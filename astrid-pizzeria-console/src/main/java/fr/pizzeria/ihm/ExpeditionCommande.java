@@ -28,7 +28,7 @@ public class ExpeditionCommande implements Action {
 	@Override
 	public void doAction() {
 		System.out.println("Liste des Commandes non traitées :");
-		List<Commande> commandes = ihmUtil.getCommandeDao().ListCommande();
+		List<Commande> commandes = ihmUtil.getCommandeDao().listCommande();
 		commandes.forEach(commande -> {
 			if (commande != null) {
 				System.out.println(commande.getId() + ". " + commande.getNumeroCommande() + " "
@@ -39,7 +39,7 @@ public class ExpeditionCommande implements Action {
 		});
 		System.out.println("Saisissez le numéro de la commande a envoyer :");
 		String numeroCommande = ihmUtil.getScanner().next();
-		ihmUtil.getCommandeDao().ExpedtionCommande(Integer.parseInt(numeroCommande));
+		ihmUtil.getCommandeDao().expedtionCommande(Integer.parseInt(numeroCommande));
 
 	}
 

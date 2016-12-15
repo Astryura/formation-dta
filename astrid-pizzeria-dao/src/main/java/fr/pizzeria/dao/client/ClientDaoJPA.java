@@ -13,6 +13,9 @@ import fr.pizzeria.model.Client;
  */
 public class ClientDaoJPA implements ClientDao {
 
+	/**
+	 * @see JPADao#JPADao()
+	 */
 	private JPADao jpaDao;
 
 	/**

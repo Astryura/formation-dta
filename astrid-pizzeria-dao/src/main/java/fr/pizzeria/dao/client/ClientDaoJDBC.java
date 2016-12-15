@@ -14,8 +14,14 @@ import fr.pizzeria.model.Client;
  *
  */
 public class ClientDaoJDBC implements ClientDao {
+
 	private JDBCDao jdbcDao;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param jdbcDao
+	 */
 	public ClientDaoJDBC(JDBCDao jdbcDao) {
 		this.jdbcDao = jdbcDao;
 	}
@@ -54,7 +60,7 @@ public class ClientDaoJDBC implements ClientDao {
 
 	@Override
 	public void close() {
-
+		// connection est auto-close
 	}
 
 }

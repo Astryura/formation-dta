@@ -16,17 +16,17 @@ public interface CommandeDao {
 	 * @param id
 	 * @param codePizza
 	 */
-	void NewCommande(Integer id, String codePizza);
+	void newCommande(Integer id, String codePizza);
 
 	/**
 	 * 
 	 * @param id
 	 * @return List<Commande>
 	 */
-	List<Commande> ListCommandeClient(Integer id);
+	List<Commande> listCommandeClient(Integer id);
 
 	/**
-	 * 
+	 * close
 	 */
 	void close();
 
@@ -34,12 +34,12 @@ public interface CommandeDao {
 	 * 
 	 * @return List<Commande>
 	 */
-	List<Commande> ListCommande();
+	List<Commande> listCommande();
 
 	/**
 	 * 
 	 * @param num
 	 */
-	void ExpedtionCommande(Integer num);
+	void expedtionCommande(Integer num);
 
 }

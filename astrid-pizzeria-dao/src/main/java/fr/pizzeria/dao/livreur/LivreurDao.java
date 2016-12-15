@@ -16,7 +16,7 @@ public interface LivreurDao {
 	void addLivreur(Livreur livreur);
 
 	/**
-	 * 
+	 * close
 	 */
 	void close();
 

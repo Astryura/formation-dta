@@ -16,10 +16,18 @@ public class ClientDaoTableau implements ClientDao {
 
 	List<Client> listClients = new ArrayList<>();
 
+	/**
+	 * constructeur
+	 */
 	public ClientDaoTableau() {
 		listClients.add(new Client(0, "Girard", "Jean", "J.Girard@hotmail.fr", "abc"));
 	}
 
+	/**
+	 * Liste des clients
+	 * 
+	 * @return List<Client>
+	 */
 	public List<Client> allClient() {
 		return listClients;
 	}
@@ -41,8 +49,7 @@ public class ClientDaoTableau implements ClientDao {
 				.filter(cl -> cl.getMotDePasse().equals(client.getMotDePasse())).findFirst();
 
 		if (findFirst.isPresent()) {
-			Client cli = findFirst.get();
-			return cli;
+			return findFirst.get();
 		} else {
 			return null;
 		}

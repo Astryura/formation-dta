@@ -2,11 +2,20 @@ package fr.pizzeria.dao.livreur;
 
 import javax.persistence.EntityManager;
 
+import fr.pizzeria.dao.other.JDBCDao;
 import fr.pizzeria.dao.other.JPADao;
 import fr.pizzeria.model.Livreur;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class LivreurDaoJPA implements LivreurDao {
 
+	/**
+	 * @see JDBCDao#JDBCDao()
+	 */
 	private JPADao jpaDao;
 
 	/**

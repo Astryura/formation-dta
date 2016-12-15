@@ -17,6 +17,11 @@ import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class CommandeDaoTableau implements CommandeDao {
 
 	List<Livreur> listLivreurs = new ArrayList<>();
@@ -24,6 +29,9 @@ public class CommandeDaoTableau implements CommandeDao {
 	List<Commande> listCommandes = new ArrayList<>();
 	List<Pizza> listPizzas = new ArrayList<>();
 
+	/**
+	 * Constructeur
+	 */
 	public CommandeDaoTableau() {
 		LivreurDaoTableau lTab = new LivreurDaoTableau();
 		listLivreurs = lTab.allLivreur();
@@ -34,7 +42,7 @@ public class CommandeDaoTableau implements CommandeDao {
 	}
 
 	@Override
-	public void NewCommande(Integer id, String codePizza) {
+	public void newCommande(Integer id, String codePizza) {
 		Optional<Client> findFirst = listClients.stream().filter(cl -> cl.getId().equals(id)).findFirst();
 		Client client = null;
 		if (findFirst.isPresent()) {
@@ -60,7 +68,7 @@ public class CommandeDaoTableau implements CommandeDao {
 	}
 
 	@Override
-	public List<Commande> ListCommandeClient(Integer id) {
+	public List<Commande> listCommandeClient(Integer id) {
 		Optional<Client> findFirst = listClients.stream().filter(cl -> cl.getId().equals(id)).findFirst();
 		List<Commande> list = new ArrayList<>();
 		if (findFirst.isPresent()) {
@@ -81,12 +89,12 @@ public class CommandeDaoTableau implements CommandeDao {
 	}
 
 	@Override
-	public List<Commande> ListCommande() {
+	public List<Commande> listCommande() {
 		return listCommandes.stream().filter(co -> co.getStatut().equals(0)).collect(Collectors.toList());
 	}
 
 	@Override
-	public void ExpedtionCommande(Integer num) {
+	public void expedtionCommande(Integer num) {
 		Optional<Commande> findFirst = listCommandes.stream().filter(c -> c.getNumeroCommande().equals(num))
 				.findFirst();
 		if (findFirst.isPresent()) {

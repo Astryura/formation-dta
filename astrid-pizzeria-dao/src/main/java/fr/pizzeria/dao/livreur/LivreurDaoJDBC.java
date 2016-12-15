@@ -7,10 +7,24 @@ import java.sql.Statement;
 import fr.pizzeria.dao.other.JDBCDao;
 import fr.pizzeria.model.Livreur;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class LivreurDaoJDBC implements LivreurDao {
+
+	/**
+	 * @see JDBCDao#JDBCDao()
+	 */
 
 	private JDBCDao jdbcDao;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param jdbcDao
+	 */
 	public LivreurDaoJDBC(JDBCDao jdbcDao) {
 		this.jdbcDao = jdbcDao;
 	}
@@ -30,7 +44,7 @@ public class LivreurDaoJDBC implements LivreurDao {
 
 	@Override
 	public void close() {
-
+		// connection est auto-close
 	}
 
 }

@@ -20,8 +20,23 @@ public abstract class DaoFactory {
 	 * @see PizzaDao
 	 */
 	private PizzaDao pizzaDao;
+	/**
+	 * Le CommandeDao
+	 * 
+	 * @see CommandeDao
+	 */
 	private CommandeDao commandeDao;
+	/**
+	 * Le LivreurDao
+	 * 
+	 * @see LivreurDao
+	 */
 	private LivreurDao livreurDao;
+	/**
+	 * Le ClientDao
+	 * 
+	 * @see ClientDao
+	 */
 	private ClientDao clientDao;
 
 	/**
@@ -37,11 +52,6 @@ public abstract class DaoFactory {
 		this.clientDao = clientDao;
 	}
 
-	/**
-	 * getPizzaDao(), retourne le PizzaDao
-	 * 
-	 * @return pizzaDao
-	 */
 	public PizzaDao getPizzaDao() {
 		return pizzaDao;
 	}

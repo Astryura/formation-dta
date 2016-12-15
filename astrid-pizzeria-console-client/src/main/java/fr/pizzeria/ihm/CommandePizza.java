@@ -40,7 +40,7 @@ public class CommandePizza implements Action {
 		});
 		System.out.println("Quel est le code de la Pizza que vous voulez commander ?");
 		String codePizza = ihmUtil.getScanner().next();
-		ihmUtil.getCommandeDao().NewCommande(client.getId(), codePizza);
+		ihmUtil.getCommandeDao().newCommande(client.getId(), codePizza);
 
 	}
 
