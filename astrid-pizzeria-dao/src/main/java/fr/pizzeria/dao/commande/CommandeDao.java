@@ -36,6 +36,10 @@ public interface CommandeDao {
 	 */
 	List<Commande> ListCommande();
 
+	/**
+	 * 
+	 * @param num
+	 */
 	void ExpedtionCommande(Integer num);
 
 }

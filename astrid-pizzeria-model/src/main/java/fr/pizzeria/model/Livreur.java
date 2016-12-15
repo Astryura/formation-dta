@@ -31,6 +31,13 @@ public class Livreur {
 		this.prenom = prenom;
 	}
 
+	public Livreur(Integer id, String nom, String prenom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
 	public Integer getId() {
 		return id;
 	}

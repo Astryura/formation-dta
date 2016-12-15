@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.collections4.ListUtils;
 
 import fr.pizzeria.dao.exception.PizzaException;
+import fr.pizzeria.dao.other.IRunSql;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -27,25 +28,6 @@ import fr.pizzeria.model.Pizza;
  *
  */
 public class PizzaDaoJDBC implements PizzaDao {
-
-	/**
-	 * 
-	 * Interface fonctionnelle permettant d'instancier la connexion JDBC et le
-	 * statement avec des types génériques
-	 *
-	 * @param <T>
-	 */
-	@FunctionalInterface
-	interface IRunSql<T> {
-		/**
-		 * 
-		 * @param conn
-		 * @param st
-		 * @return T
-		 * @throws SQLException
-		 */
-		T exec(Connection conn, Statement st) throws SQLException;
-	}
 
 	/**
 	 * instanciation de l'interface fonctionnelle
