@@ -61,7 +61,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<dao.impl>fr.pizzeria.dao.JDBCDaoFactory</dao.impl>
+				<dao.impl>fr.pizzeria.dao.factory.JPADaoFactory</dao.impl>
 			</properties>
 		</profile>
 		<profile>
