@@ -22,8 +22,12 @@ public class Client extends Personne {
 
 	public Client(String nom, String prenom, String email, String motDePasse) {
 		super(nom, prenom);
-		this.nom = nom;
-		this.prenom = prenom;
+		this.email = email;
+		this.motDePasse = DigestUtils.md5Hex(motDePasse);
+	}
+
+	public Client(Integer id, String nom, String prenom, String email, String motDePasse) {
+		super(id, nom, prenom);
 		this.email = email;
 		this.motDePasse = DigestUtils.md5Hex(motDePasse);
 	}

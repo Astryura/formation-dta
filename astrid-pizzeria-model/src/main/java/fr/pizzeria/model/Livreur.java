@@ -18,15 +18,10 @@ public class Livreur extends Personne {
 
 	public Livreur(String nom, String prenom) {
 		super(nom, prenom);
-		this.nom = nom;
-		this.prenom = prenom;
 	}
 
 	public Livreur(Integer id, String nom, String prenom) {
 		super(id, nom, prenom);
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
 	}
 
 	public Set<Commande> getCommandes() {
