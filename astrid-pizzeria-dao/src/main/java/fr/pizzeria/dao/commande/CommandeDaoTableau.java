@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import fr.pizzeria.dao.client.ClientDaoTableau;
 import fr.pizzeria.dao.livreur.LivreurDaoTableau;
@@ -61,33 +62,39 @@ public class CommandeDaoTableau implements CommandeDao {
 	@Override
 	public List<Commande> ListCommandeClient(Integer id) {
 		Optional<Client> findFirst = listClients.stream().filter(cl -> cl.getId().equals(id)).findFirst();
-		Client client = null;
+		List<Commande> list = new ArrayList<>();
 		if (findFirst.isPresent()) {
-			client = findFirst.get();
+			Client client = findFirst.get();
+			listCommandes.forEach(co -> {
+				if (co.getClient().equals(client)) {
+					list.add(co);
+				}
+			});
 		}
-		/*
-		 * Optional<Commande> f = listCommandes.stream().filter(cl ->
-		 * cl.equals(client)).findFirst(); if (findFirst.isPresent()) { client =
-		 * findFirst.get(); }
-		 */
-		return null;
+		return list;
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
+		listCommandes.clear();
 
 	}
 
 	@Override
 	public List<Commande> ListCommande() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Commande> list = listCommandes.stream().filter(co -> co.getStatut().equals(0))
+				.collect(Collectors.toList());
+		return list;
 	}
 
 	@Override
 	public void ExpedtionCommande(Integer num) {
-		// TODO Auto-generated method stub
+		Optional<Commande> findFirst = listCommandes.stream().filter(c -> c.getNumeroCommande().equals(num))
+				.findFirst();
+		if (findFirst.isPresent()) {
+			Commande commande = findFirst.get();
+			commande.setStatut(1);
+		}
 
 	}
 
