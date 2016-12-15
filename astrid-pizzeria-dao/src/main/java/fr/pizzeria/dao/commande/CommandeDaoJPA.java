@@ -96,7 +96,6 @@ public class CommandeDaoJPA implements CommandeDao {
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-
+		jpaDao.close();
 	}
 }

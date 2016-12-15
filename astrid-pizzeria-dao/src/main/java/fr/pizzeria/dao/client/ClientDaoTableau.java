@@ -16,4 +16,10 @@ public class ClientDaoTableau implements ClientDao {
 		return null;
 	}
 
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

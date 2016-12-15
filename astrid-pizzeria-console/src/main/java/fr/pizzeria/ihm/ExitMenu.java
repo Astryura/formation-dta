@@ -22,9 +22,9 @@ public class ExitMenu implements Action {
 	@Override
 	public void doAction() {
 		ihmUtil.getPizzaDao().close();
+		ihmUtil.getClientDao().close();
 		ihmUtil.getCommandeDao().close();
 		ihmUtil.getLivreurDao().close();
-		// ihmUtil.getClientDao().close();
 		System.out.println("AU REVOIR :'(");
 	}
 

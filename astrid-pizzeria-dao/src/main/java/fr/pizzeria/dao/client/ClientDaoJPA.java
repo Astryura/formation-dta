@@ -44,4 +44,9 @@ public class ClientDaoJPA implements ClientDao {
 		});
 	}
 
+	@Override
+	public void close() {
+		jpaDao.close();
+	}
+
 }

@@ -31,7 +31,7 @@ public class PizzaDaoJPA implements PizzaDao {
 
 	@Override
 	public void close() {
-
+		jpaDao.close();
 	}
 
 	@Override

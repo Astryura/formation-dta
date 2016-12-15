@@ -29,6 +29,6 @@ public class LivreurDaoJPA implements LivreurDao {
 
 	@Override
 	public void close() {
-
+		jpaDao.close();
 	}
 }
