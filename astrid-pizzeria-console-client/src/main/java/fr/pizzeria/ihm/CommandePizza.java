@@ -7,6 +7,11 @@ import fr.pizzeria.dao.pizza.PizzaDaoJPA;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class CommandePizza implements Action {
 
 	private IhmUtilClient ihmUtil;

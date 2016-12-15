@@ -2,6 +2,11 @@ package fr.pizzeria.ihm;
 
 import fr.pizzeria.model.Client;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class Connexion implements Action {
 
 	private IhmUtilClient ihmUtil;

@@ -5,6 +5,11 @@ import java.util.Map;
 
 import fr.pizzeria.model.Client;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class MainMenuClient2 {
 	Map<Integer, Action> actions = new HashMap<>();
 	private IhmUtilClient ihmUtil;
