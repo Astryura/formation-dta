@@ -1,7 +1,6 @@
 package fr.pizzeria.dao.pizza;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.collections4.ListUtils;
 
 import fr.pizzeria.dao.exception.PizzaException;
-import fr.pizzeria.dao.other.IRunSql;
+import fr.pizzeria.dao.other.JDBCDao;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -29,29 +28,16 @@ import fr.pizzeria.model.Pizza;
  */
 public class PizzaDaoJDBC implements PizzaDao {
 
-	/**
-	 * instanciation de l'interface fonctionnelle
-	 * 
-	 * @param run
-	 * @return T
-	 */
-	public <T> T execute(IRunSql<T> run) {
-		String url = "jdbc:mysql://localhost:3306/pizzeriabd";
-		try (Connection connection = DriverManager.getConnection(url, "root", "");
-				Statement statement = connection.createStatement();) {
+	private JDBCDao jdbcDao;
 
-			return run.exec(connection, statement);
-		} catch (SQLException e) {
-			Logger.getLogger(PizzaDaoJDBC.class.getName()).severe(e.getMessage());
-			throw new PizzaException(e);
-		}
-
+	public PizzaDaoJDBC(JDBCDao jdbcDao) {
+		this.jdbcDao = jdbcDao;
 	}
 
 	@Override
-	public List<Pizza> findAllPizzas() throws PizzaException {
+	public List<Pizza> findAllPizzas() {
 		List<Pizza> listPizzas = new ArrayList<>();
-		return execute((Connection connection, Statement statement) -> {
+		return jdbcDao.execute((Connection connection, Statement statement) -> {
 			Pizza.setNbPizzas(0);
 			ResultSet resultats = statement.executeQuery("SELECT * FROM PIZZA");
 			while (resultats.next()) {
@@ -70,8 +56,8 @@ public class PizzaDaoJDBC implements PizzaDao {
 	}
 
 	@Override
-	public void saveNewPizza(Pizza pizza) throws PizzaException {
-		execute((Connection connection, Statement statement) -> {
+	public void saveNewPizza(Pizza pizza) {
+		jdbcDao.execute((Connection connection, Statement statement) -> {
 			PreparedStatement addPizzaSt = connection
 					.prepareStatement("INSERT INTO PIZZA (CODE, NOM, PRIX, CategoriePizza) VALUES (?,?,?,?)");
 			addPizzaSt.setString(1, pizza.getCode());
@@ -85,8 +71,8 @@ public class PizzaDaoJDBC implements PizzaDao {
 	}
 
 	@Override
-	public void updatePizza(String codePizza, Pizza pizza) throws PizzaException {
-		execute((Connection connection, Statement statement) -> {
+	public void updatePizza(String codePizza, Pizza pizza) {
+		jdbcDao.execute((Connection connection, Statement statement) -> {
 			PreparedStatement updatePizzaSt = connection
 					.prepareStatement("UPDATE PIZZA SET ID=?,CODE=?,NOM=?,PRIX=?,CategoriePizza=? WHERE CODE = ?");
 			updatePizzaSt.setInt(1, pizza.getId());
@@ -101,8 +87,8 @@ public class PizzaDaoJDBC implements PizzaDao {
 	}
 
 	@Override
-	public void deletePizza(String codePizza) throws PizzaException {
-		execute((Connection connection, Statement statement) -> {
+	public void deletePizza(String codePizza) {
+		jdbcDao.execute((Connection connection, Statement statement) -> {
 			PreparedStatement deletePizzaSt = connection.prepareStatement("DELETE FROM PIZZA WHERE CODE = ?");
 			deletePizzaSt.setString(1, codePizza);
 			deletePizzaSt.executeUpdate();
@@ -131,7 +117,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 	}
 
 	@Override
-	public void importDataPizza() throws PizzaException {
+	public void importDataPizza() {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String choix = bundle.getString("dao.source");
 		PizzaDao pizzadao;
@@ -142,7 +128,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 			throw new PizzaException(e1);
 		}
 		List<Pizza> listPizzas = pizzadao.findAllPizzas();
-		execute((Connection connection, Statement statement) -> {
+		jdbcDao.execute((Connection connection, Statement statement) -> {
 			connection.setAutoCommit(false);
 			List<List<Pizza>> list = ListUtils.partition(listPizzas, 3);
 			try {

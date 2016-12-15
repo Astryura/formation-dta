@@ -82,9 +82,7 @@ public class CommandeDaoTableau implements CommandeDao {
 
 	@Override
 	public List<Commande> ListCommande() {
-		List<Commande> list = listCommandes.stream().filter(co -> co.getStatut().equals(0))
-				.collect(Collectors.toList());
-		return list;
+		return listCommandes.stream().filter(co -> co.getStatut().equals(0)).collect(Collectors.toList());
 	}
 
 	@Override
