@@ -2,6 +2,11 @@ package fr.pizzeria.ihm;
 
 import fr.pizzeria.model.Livreur;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class AddLivreur implements Action {
 
 	private IhmUtil ihmUtil;

@@ -4,6 +4,11 @@ import java.util.List;
 
 import fr.pizzeria.model.Commande;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class ListCommande implements Action {
 
 	private IhmUtil ihmUtil;
