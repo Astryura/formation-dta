@@ -6,6 +6,11 @@ import javax.persistence.TypedQuery;
 import fr.pizzeria.dao.other.JPADao;
 import fr.pizzeria.model.Client;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class ClientDaoJPA implements ClientDao {
 
 	private JPADao jpaDao;

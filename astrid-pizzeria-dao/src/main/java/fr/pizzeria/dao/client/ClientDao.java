@@ -23,7 +23,7 @@ public interface ClientDao {
 	Client connectNewClient(Client client);
 
 	/**
-	 * 
+	 * close console
 	 */
 	void close();
 
