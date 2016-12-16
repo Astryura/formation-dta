@@ -12,6 +12,9 @@ import fr.pizzeria.model.Commande;
 public class ExpeditionCommande implements Action {
 
 	private IhmUtil ihmUtil;
+	/**
+	 * numérotation du menu
+	 */
 	private int num;
 
 	/**

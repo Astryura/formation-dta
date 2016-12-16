@@ -20,6 +20,10 @@ import fr.pizzeria.model.Pizza;
  */
 public class PizzaDaoJPA implements PizzaDao {
 
+	/**
+	 * @see JPADao
+	 * @see JPADao#JPADao()
+	 */
 	private JPADao jpaDao;
 
 	/**

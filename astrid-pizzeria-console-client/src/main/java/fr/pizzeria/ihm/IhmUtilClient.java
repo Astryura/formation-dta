@@ -38,7 +38,6 @@ public class IhmUtilClient {
 	 * 
 	 * @param scanner
 	 * @param daoFactory
-	 * @param choixFactory
 	 */
 	public IhmUtilClient(Scanner scanner, DaoFactory daoFactory) {
 

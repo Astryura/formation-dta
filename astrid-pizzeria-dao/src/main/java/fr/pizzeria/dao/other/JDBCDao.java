@@ -9,6 +9,11 @@ import java.util.logging.Logger;
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.dao.pizza.PizzaDaoJDBC;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class JDBCDao {
 	/**
 	 * instanciation de l'interface fonctionnelle

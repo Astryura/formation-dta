@@ -13,6 +13,9 @@ import fr.pizzeria.model.Commande;
 public class ListCommande implements Action {
 
 	private IhmUtilClient ihmUtil;
+	/**
+	 * Client connecté
+	 */
 	private Client client;
 
 	/**
@@ -33,13 +36,6 @@ public class ListCommande implements Action {
 		commandes.forEach(commande -> {
 			if (commande != null) {
 				System.out.println(commande.getId() + ". " + commande.getDateCommande() + " " + commande.getStatut());
-				// System.out.println("Vos Pizzas :");
-				/*
-				 * Iterator<Pizza> iterator = commande.getPizzas().iterator();
-				 * while (iterator.hasNext()) { Pizza p = iterator.next();
-				 * System.out.println(p.getId() + ". " + p.getCode() + " " +
-				 * p.getNom()); }
-				 */
 
 			} else {
 				System.out.println("erreur");

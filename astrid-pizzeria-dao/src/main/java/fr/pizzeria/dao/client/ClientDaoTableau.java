@@ -14,6 +14,9 @@ import fr.pizzeria.model.Client;
  */
 public class ClientDaoTableau implements ClientDao {
 
+	/**
+	 * intialise la liste de clients
+	 */
 	List<Client> listClients = new ArrayList<>();
 
 	/**

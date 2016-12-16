@@ -14,6 +14,9 @@ import fr.pizzeria.model.Livreur;
  */
 public class LivreurDaoTableau implements LivreurDao {
 
+	/**
+	 * initialisation de la liste des livreurs
+	 */
 	List<Livreur> listLivreurs = new ArrayList<>();
 
 	/**

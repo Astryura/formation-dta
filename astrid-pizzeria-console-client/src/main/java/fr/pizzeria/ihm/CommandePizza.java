@@ -15,6 +15,9 @@ import fr.pizzeria.model.Pizza;
 public class CommandePizza implements Action {
 
 	private IhmUtilClient ihmUtil;
+	/**
+	 * Client connecté
+	 */
 	private Client client;
 
 	/**

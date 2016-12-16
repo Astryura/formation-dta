@@ -10,7 +10,13 @@ import javax.persistence.PersistenceException;
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.dao.pizza.PizzaDaoJPA;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 public class JPADao {
+
 	private EntityManagerFactory emfactory;
 
 	/**
@@ -21,6 +27,7 @@ public class JPADao {
 	}
 
 	/**
+	 * instanciation de l'interface fonctionnelle
 	 * 
 	 * @param run
 	 * @return T

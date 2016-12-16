@@ -7,6 +7,11 @@ import javax.persistence.OneToMany;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 @Entity
 public class Client extends Personne {
 

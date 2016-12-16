@@ -15,6 +15,10 @@ import fr.pizzeria.model.Client;
  */
 public class ClientDaoJDBC implements ClientDao {
 
+	/**
+	 * @see JDBCDao
+	 * @see JDBCDao#JDBCDao()
+	 */
 	private JDBCDao jdbcDao;
 
 	/**

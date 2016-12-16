@@ -17,34 +17,30 @@ public interface PizzaDao {
 	 * retroune la liste de toutes les Pizzas
 	 * 
 	 * @return List<Pizza>
-	 * @throws PizzaException
 	 */
-	List<Pizza> findAllPizzas() throws PizzaException;
+	List<Pizza> findAllPizzas();
 
 	/**
 	 * Enregistre une nouvelle Pizza
 	 * 
 	 * @param pizza
-	 * @throws PizzaException
 	 */
-	void saveNewPizza(Pizza pizza) throws PizzaException;
+	void saveNewPizza(Pizza pizza);
 
 	/**
 	 * Modifie une Pizza
 	 * 
 	 * @param codePizza
 	 * @param pizza
-	 * @throws PizzaException
 	 */
-	void updatePizza(String codePizza, Pizza pizza) throws PizzaException;
+	void updatePizza(String codePizza, Pizza pizza);
 
 	/**
 	 * Supprime une Pizza
 	 * 
 	 * @param codePizza
-	 * @throws PizzaException
 	 */
-	void deletePizza(String codePizza) throws PizzaException;
+	void deletePizza(String codePizza);
 
 	/**
 	 * retourne la liste de Pizza par ordre de catégorie
@@ -63,10 +59,9 @@ public interface PizzaDao {
 	/**
 	 * Import les données fichiers ou Tableaux en BDD (PizzaDaoJDBC)
 	 * 
-	 * @throws PizzaException
 	 * @see PizzaDaoJDBC
 	 */
-	default void importDataPizza() throws PizzaException {
+	default void importDataPizza() {
 		throw new PizzaException("pas d'implémentation");
 	}
 

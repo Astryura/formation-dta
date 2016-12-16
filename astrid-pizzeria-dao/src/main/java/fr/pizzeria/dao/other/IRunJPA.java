@@ -1,7 +1,5 @@
 package fr.pizzeria.dao.other;
 
-import java.sql.SQLException;
-
 import javax.persistence.EntityManager;
 
 /**
@@ -15,7 +13,6 @@ public interface IRunJPA<T> {
 	/**
 	 * @param entitymanager
 	 * @return T
-	 * @throws SQLException
 	 */
 	T exec(EntityManager entitymanager);
 }

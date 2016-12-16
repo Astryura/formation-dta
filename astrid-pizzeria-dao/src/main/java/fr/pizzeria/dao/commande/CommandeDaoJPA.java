@@ -22,6 +22,7 @@ import fr.pizzeria.model.Pizza;
 public class CommandeDaoJPA implements CommandeDao {
 
 	/**
+	 * @see JPADao
 	 * @see JPADao#JPADao()
 	 */
 	private JPADao jpaDao;

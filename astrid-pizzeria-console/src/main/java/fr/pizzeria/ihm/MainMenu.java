@@ -45,7 +45,7 @@ public class MainMenu {
 	 * 
 	 * @throws NumberFormatException
 	 */
-	public void displayMenu() throws NumberFormatException {
+	public void displayMenu() {
 		actions.forEach((k, v) -> {
 			actions.get(k).describeAction();
 		});
@@ -57,7 +57,7 @@ public class MainMenu {
 	 * 
 	 * @throws NumberFormatException
 	 */
-	private void parseAndExec() throws NumberFormatException {
+	private void parseAndExec() {
 		String input = ihmUtil.getScanner().next();
 
 		if (Integer.parseInt(input) <= 10) {

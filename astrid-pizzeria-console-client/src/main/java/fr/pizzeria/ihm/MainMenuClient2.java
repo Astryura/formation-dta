@@ -13,6 +13,9 @@ import fr.pizzeria.model.Client;
 public class MainMenuClient2 {
 	Map<Integer, Action> actions = new HashMap<>();
 	private IhmUtilClient ihmUtil;
+	/**
+	 * Client connecté
+	 */
 	private Client client;
 
 	/**
@@ -33,7 +36,7 @@ public class MainMenuClient2 {
 	 * 
 	 * @throws NumberFormatException
 	 */
-	public void displayMenu() throws NumberFormatException {
+	public void displayMenu() {
 		System.out.println("Bonjour :" + client.getNom() + " " + client.getPrenom());
 		actions.forEach((k, v) -> {
 			actions.get(k).describeAction();
@@ -46,7 +49,7 @@ public class MainMenuClient2 {
 	 * 
 	 * @throws NumberFormatException
 	 */
-	private void parseAndExec() throws NumberFormatException {
+	private void parseAndExec() {
 		String input = ihmUtil.getScanner().next();
 
 		if (Integer.parseInt(input) <= 2) {

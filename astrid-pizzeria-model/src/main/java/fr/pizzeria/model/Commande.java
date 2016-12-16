@@ -39,6 +39,7 @@ public class Commande {
 	public Set<Pizza> pizzas = new HashSet<>();
 
 	public Commande() {
+		super();
 	}
 
 	public Commande(Integer numeroCommande, Integer statut, String dateCommande, Client client, Livreur livreur) {
