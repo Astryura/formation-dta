@@ -25,6 +25,7 @@ public class Personne {
 
 	public Personne(Integer id, String nom, String prenom) {
 		super();
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 	}
