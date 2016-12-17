@@ -34,16 +34,53 @@ public class Commande {
 	@JoinColumn(name = "livreurId")
 	private Livreur livreur;
 
+	/**
+	 * Liste des pizzas commandées
+	 */
 	@ManyToMany
 	@JoinTable(name = "CommandePizza", joinColumns = @JoinColumn(name = "commandeId", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "pizzaId", referencedColumnName = "ID"))
 	public Set<Pizza> pizzas = new HashSet<>();
 
+	/**
+	 * Constructeur vide par défault
+	 */
 	public Commande() {
 		super();
 	}
 
+	/**
+	 * Constructeur sans id pour envoyer en base de donnée
+	 * 
+	 * @param numeroCommande
+	 * @param statut
+	 * @param dateCommande
+	 * @param client
+	 * @param livreur
+	 */
 	public Commande(Integer numeroCommande, Integer statut, String dateCommande, Client client, Livreur livreur) {
 		super();
+		this.numeroCommande = numeroCommande;
+		this.statut = statut;
+		this.dateCommande = dateCommande;
+		this.client = client;
+		this.livreur = livreur;
+
+	}
+
+	/**
+	 * Constructeur complet pour récupérer un client de la base de donnée
+	 * 
+	 * @param id
+	 * @param numeroCommande
+	 * @param statut
+	 * @param dateCommande
+	 * @param client
+	 * @param livreur
+	 */
+	public Commande(Integer id, Integer numeroCommande, Integer statut, String dateCommande, Client client,
+			Livreur livreur) {
+		super();
+		this.id = id;
 		this.numeroCommande = numeroCommande;
 		this.statut = statut;
 		this.dateCommande = dateCommande;

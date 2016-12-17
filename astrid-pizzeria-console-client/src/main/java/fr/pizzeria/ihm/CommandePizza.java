@@ -24,6 +24,7 @@ public class CommandePizza implements Action {
 	 * Constructeur
 	 * 
 	 * @param ihmUtil
+	 * @param client
 	 */
 	public CommandePizza(IhmUtil ihmUtil, Client client) {
 		super();

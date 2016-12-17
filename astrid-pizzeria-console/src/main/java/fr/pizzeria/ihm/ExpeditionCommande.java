@@ -21,6 +21,7 @@ public class ExpeditionCommande implements Action {
 	 * Constructeur
 	 * 
 	 * @param ihmUtil
+	 * @param num
 	 */
 	public ExpeditionCommande(IhmUtil ihmUtil, int num) {
 		super();

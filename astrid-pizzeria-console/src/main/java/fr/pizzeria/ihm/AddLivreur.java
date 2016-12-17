@@ -10,12 +10,16 @@ import fr.pizzeria.model.Livreur;
 public class AddLivreur implements Action {
 
 	private IhmUtil ihmUtil;
+	/**
+	 * numérotation menu
+	 */
 	private int num;
 
 	/**
 	 * Constructeur
 	 * 
 	 * @param ihmUtil
+	 * @param num
 	 */
 	public AddLivreur(IhmUtil ihmUtil, int num) {
 		super();

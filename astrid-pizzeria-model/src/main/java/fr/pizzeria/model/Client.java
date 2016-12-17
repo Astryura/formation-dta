@@ -21,22 +21,48 @@ public class Client extends Personne {
 	@OneToMany(mappedBy = "client")
 	private Set<Commande> commandes;
 
+	/**
+	 * Constructeur par défault vide
+	 */
 	public Client() {
 		super(null, null);
 	}
 
+	/**
+	 * Constructeur sans id pour envoyer en base de donnée
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param motDePasse
+	 */
 	public Client(String nom, String prenom, String email, String motDePasse) {
 		super(nom, prenom);
 		this.email = email;
 		this.motDePasse = DigestUtils.md5Hex(motDePasse);
 	}
 
+	/**
+	 * Constructeur complet pour récupérer un client de la base de donnée
+	 * 
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param motDePasse
+	 */
 	public Client(Integer id, String nom, String prenom, String email, String motDePasse) {
 		super(id, nom, prenom);
 		this.email = email;
 		this.motDePasse = DigestUtils.md5Hex(motDePasse);
 	}
 
+	/**
+	 * Constructeur email, mot de passe pour vérifier la connection
+	 * 
+	 * @param email
+	 * @param motDePasse
+	 */
 	public Client(String email, String motDePasse) {
 		super(null, null);
 		this.email = email;

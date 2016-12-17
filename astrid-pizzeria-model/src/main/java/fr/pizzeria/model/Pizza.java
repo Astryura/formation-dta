@@ -91,6 +91,15 @@ public class Pizza {
 	@Transient
 	private static int nbPizzas;
 
+	/**
+	 * Constructeur complet pour récupérer un client de la base de donnée
+	 * 
+	 * @param id
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param catP
+	 */
 	public Pizza(Integer id, String code, String nom, double prix, CategoriePizza catP) {
 		super();
 		this.id = id;
@@ -100,6 +109,14 @@ public class Pizza {
 		this.catP = catP;
 	}
 
+	/**
+	 * Constructeur sans id pour envoyer en base de donnée
+	 * 
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param catP
+	 */
 	public Pizza(String code, String nom, double prix, CategoriePizza catP) {
 		super();
 		this.code = code;
@@ -108,7 +125,11 @@ public class Pizza {
 		this.catP = catP;
 	}
 
+	/**
+	 * Constructeur vide par défault
+	 */
 	public Pizza() {
+		super();
 	}
 
 	public String getCatP() {
@@ -159,15 +180,4 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	/*
-	 * @Override public boolean equals(Object obj) { if (obj == null) { return
-	 * false; } if (obj == this) { return true; } if (obj.getClass() !=
-	 * getClass()) { return false; } Pizza rhs = (Pizza) obj; return new
-	 * EqualsBuilder().append(id, rhs.id).append(code, rhs.code).append(nom,
-	 * rhs.nom).append(prix, rhs.prix) .append(catP, rhs.catP).isEquals(); }
-	 * 
-	 * @Override public int hashCode() { // you pick a hard-coded, randomly
-	 * chosen, non-zero, odd number // ideally different for each class return
-	 * new HashCodeBuilder(1, 20).append(code).append(nom).toHashCode(); }
-	 */
 }

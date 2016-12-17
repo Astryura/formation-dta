@@ -7,6 +7,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 
+/**
+ * <h1>Personne</h1> <b>Classe mère des classes Client et Livreur</b>
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Personne {
@@ -17,12 +23,25 @@ public class Personne {
 	protected String nom;
 	protected String prenom;
 
+	/**
+	 * Constructeur sans id pour envoyer en base de donnée
+	 * 
+	 * @param nom
+	 * @param prenom
+	 */
 	public Personne(String nom, String prenom) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 	}
 
+	/**
+	 * Constructeur complet pour récupérer un client de la base de donnée
+	 * 
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 */
 	public Personne(Integer id, String nom, String prenom) {
 		super();
 		this.id = id;

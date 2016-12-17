@@ -22,6 +22,7 @@ public class MainMenuClient2 {
 	 * Constructeur
 	 * 
 	 * @param ihmUtil
+	 * @param client
 	 */
 	public MainMenuClient2(IhmUtil ihmUtil, Client client) {
 		this.ihmUtil = ihmUtil;
@@ -34,20 +35,16 @@ public class MainMenuClient2 {
 	/**
 	 * Affiche le menu
 	 * 
-	 * @throws NumberFormatException
 	 */
 	public void displayMenu() {
 		System.out.println("Bonjour :" + client.getNom() + " " + client.getPrenom());
-		actions.forEach((k, v) -> {
-			actions.get(k).describeAction();
-		});
+		actions.forEach((k, v) -> actions.get(k).describeAction());
 		parseAndExec();
 	}
 
 	/**
 	 * Execute l'action choisie
 	 * 
-	 * @throws NumberFormatException
 	 */
 	private void parseAndExec() {
 		String input = ihmUtil.getScanner().next();

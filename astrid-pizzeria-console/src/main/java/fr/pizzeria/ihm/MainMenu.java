@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class MainMenu {
 
-	Map<Integer, Action> actions = new HashMap<Integer, Action>();
+	Map<Integer, Action> actions = new HashMap<>();
 	private IhmUtil ihmUtil;
 
 	/**
@@ -26,8 +26,8 @@ public class MainMenu {
 		actions.put(3, new DeletePizza(ihmUtil));
 		actions.put(4, new ListPizzaCat(ihmUtil));
 		actions.put(5, new ListPizzaPrix(ihmUtil));
-		if (ihmUtil.getChoixFactory().equals("fr.pizzeria.dao.factory.JDBCDaoFactory")
-				|| ihmUtil.getChoixFactory().equals("fr.pizzeria.dao.factory.JPADaoFactory")) {
+		if ("fr.pizzeria.dao.factory.JDBCDaoFactory".equals(ihmUtil.getChoixFactory())
+				|| "fr.pizzeria.dao.factory.JPADaoFactory".equals(ihmUtil.getChoixFactory())) {
 			actions.put(6, new ImportePizza(ihmUtil));
 			actions.put(7, new ListCommande(ihmUtil, 8));
 			actions.put(8, new AddLivreur(ihmUtil, 9));
@@ -44,7 +44,6 @@ public class MainMenu {
 	/**
 	 * Affiche le menu
 	 * 
-	 * @throws NumberFormatException
 	 */
 	public void displayMenu() {
 		actions.forEach((k, v) -> actions.get(k).describeAction());
@@ -54,7 +53,6 @@ public class MainMenu {
 	/**
 	 * Execute l'action choisie
 	 * 
-	 * @throws NumberFormatException
 	 */
 	private void parseAndExec() {
 		String input = ihmUtil.getScanner().next();

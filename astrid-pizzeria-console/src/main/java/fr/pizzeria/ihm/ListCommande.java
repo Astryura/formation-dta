@@ -21,6 +21,7 @@ public class ListCommande implements Action {
 	 * Constructeur
 	 * 
 	 * @param ihmUtil
+	 * @param num
 	 */
 	public ListCommande(IhmUtil ihmUtil, int num) {
 		super();

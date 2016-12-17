@@ -30,7 +30,9 @@ public class PizzaDaoJPA implements PizzaDao {
 	private JPADao jpaDao;
 
 	/**
-	 * Constructeur instanciant le EntityManagerFactory
+	 * Constructeur
+	 * 
+	 * @param jpaDao
 	 */
 	public PizzaDaoJPA(JPADao jpaDao) {
 		this.jpaDao = jpaDao;

@@ -29,19 +29,15 @@ public class MainMenuClient {
 	/**
 	 * Affiche le menu
 	 * 
-	 * @throws NumberFormatException
 	 */
 	public void displayMenu() {
-		actions.forEach((k, v) -> {
-			actions.get(k).describeAction();
-		});
+		actions.forEach((k, v) -> actions.get(k).describeAction());
 		parseAndExec();
 	}
 
 	/**
 	 * Execute l'action choisie
 	 * 
-	 * @throws NumberFormatException
 	 */
 	private void parseAndExec() {
 		String input = ihmUtil.getScanner().next();
