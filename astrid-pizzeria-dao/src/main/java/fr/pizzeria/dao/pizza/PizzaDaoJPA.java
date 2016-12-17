@@ -3,11 +3,14 @@ package fr.pizzeria.dao.pizza;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.dao.other.JPADao;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -109,4 +112,26 @@ public class PizzaDaoJPA implements PizzaDao {
 		}
 	}
 
+	@Override
+	public void importDataPizza() {
+		ResourceBundle bundle = ResourceBundle.getBundle("application");
+		String choix = bundle.getString("dao.source");
+		PizzaDao pizzadao;
+		try {
+			pizzadao = (PizzaDao) Class.forName(choix).newInstance();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e1) {
+			Logger.getLogger(PizzaDaoJDBC.class.getName()).severe(e1.getMessage());
+			throw new PizzaException(e1);
+		}
+		jpaDao.execute((EntityManager entitymanager) -> {
+			List<Pizza> listPizzas = pizzadao.findAllPizzas();
+			for (Pizza pizza : listPizzas) {
+				entitymanager.getTransaction().begin();
+				entitymanager.merge(pizza);
+				entitymanager.getTransaction().commit();
+			}
+			return Void.TYPE;
+		});
+
+	}
 }
