@@ -12,7 +12,7 @@ import fr.pizzeria.model.Client;
  */
 public class MainMenuClient2 {
 	Map<Integer, Action> actions = new HashMap<>();
-	private IhmUtilClient ihmUtil;
+	private IhmUtil ihmUtil;
 	/**
 	 * Client connecté
 	 */
@@ -23,7 +23,7 @@ public class MainMenuClient2 {
 	 * 
 	 * @param ihmUtil
 	 */
-	public MainMenuClient2(IhmUtilClient ihmUtil, Client client) {
+	public MainMenuClient2(IhmUtil ihmUtil, Client client) {
 		this.ihmUtil = ihmUtil;
 		this.client = client;
 		actions.put(0, new CommandePizza(ihmUtil, client));

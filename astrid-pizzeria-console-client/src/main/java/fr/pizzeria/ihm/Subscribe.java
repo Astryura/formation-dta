@@ -9,14 +9,14 @@ import fr.pizzeria.model.Client;
  */
 public class Subscribe implements Action {
 
-	private IhmUtilClient ihmUtil;
+	private IhmUtil ihmUtil;
 
 	/**
 	 * Constructeur
 	 * 
 	 * @param ihmUtil
 	 */
-	public Subscribe(IhmUtilClient ihmUtil) {
+	public Subscribe(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;
 	}

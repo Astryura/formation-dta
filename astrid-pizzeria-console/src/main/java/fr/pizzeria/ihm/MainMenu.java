@@ -46,9 +46,7 @@ public class MainMenu {
 	 * @throws NumberFormatException
 	 */
 	public void displayMenu() {
-		actions.forEach((k, v) -> {
-			actions.get(k).describeAction();
-		});
+		actions.forEach((k, v) -> actions.get(k).describeAction());
 		parseAndExec();
 	}
 

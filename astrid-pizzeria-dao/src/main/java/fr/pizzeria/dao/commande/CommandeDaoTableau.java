@@ -39,6 +39,7 @@ public class CommandeDaoTableau implements CommandeDao {
 		listClients = cTab.allClient();
 		PizzaDaoTableau pTab = new PizzaDaoTableau();
 		listPizzas = pTab.findAllPizzas();
+		listCommandes.add(new Commande(310450, 0, "2016-12-17", listClients.get(0), listLivreurs.get(0)));
 	}
 
 	@Override

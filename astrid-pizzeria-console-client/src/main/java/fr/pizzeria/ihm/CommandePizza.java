@@ -14,7 +14,7 @@ import fr.pizzeria.model.Pizza;
  */
 public class CommandePizza implements Action {
 
-	private IhmUtilClient ihmUtil;
+	private IhmUtil ihmUtil;
 	/**
 	 * Client connecté
 	 */
@@ -25,7 +25,7 @@ public class CommandePizza implements Action {
 	 * 
 	 * @param ihmUtil
 	 */
-	public CommandePizza(IhmUtilClient ihmUtil, Client client) {
+	public CommandePizza(IhmUtil ihmUtil, Client client) {
 		super();
 		this.ihmUtil = ihmUtil;
 		this.client = client;

@@ -9,14 +9,14 @@ import fr.pizzeria.model.Client;
  */
 public class Connexion implements Action {
 
-	private IhmUtilClient ihmUtil;
+	private IhmUtil ihmUtil;
 
 	/**
 	 * Constructeur
 	 * 
 	 * @param ihmUtil
 	 */
-	public Connexion(IhmUtilClient ihmUtil) {
+	public Connexion(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;
 	}

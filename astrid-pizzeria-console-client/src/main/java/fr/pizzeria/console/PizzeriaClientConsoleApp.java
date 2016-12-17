@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 
 import fr.pizzeria.dao.factory.DaoFactory;
-import fr.pizzeria.ihm.IhmUtilClient;
+import fr.pizzeria.ihm.IhmUtil;
 import fr.pizzeria.ihm.MainMenuClient;
 
 /**
@@ -44,7 +44,7 @@ public class PizzeriaClientConsoleApp {
 		String choix = bundle.getString("dao.impl");
 		DaoFactory daoFactory = (DaoFactory) Class.forName(choix).newInstance();
 
-		IhmUtilClient ihmUtil = new IhmUtilClient(new Scanner(System.in), daoFactory);
+		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), daoFactory, choix);
 
 		MainMenuClient mainMenu = new MainMenuClient(ihmUtil);
 

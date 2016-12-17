@@ -12,6 +12,7 @@
 		<module>astrid-pizzeria-model</module>
 		<module>astrid-pizzeria-console</module>
 		<module>astrid-pizzeria-console-client</module>
+		<module>astrid-pizzeria-ihmCommons</module>
 	</modules>
 
 	<properties>
@@ -53,6 +54,11 @@
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>astrid-pizzeria-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>astrid-pizzeria-ihmCommons</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

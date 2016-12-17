@@ -12,7 +12,7 @@ import fr.pizzeria.model.Commande;
  */
 public class ListCommande implements Action {
 
-	private IhmUtilClient ihmUtil;
+	private IhmUtil ihmUtil;
 	/**
 	 * Client connecté
 	 */
@@ -23,7 +23,7 @@ public class ListCommande implements Action {
 	 * 
 	 * @param ihmUtil
 	 */
-	public ListCommande(IhmUtilClient ihmUtil, Client client) {
+	public ListCommande(IhmUtil ihmUtil, Client client) {
 		super();
 		this.ihmUtil = ihmUtil;
 		this.client = client;

@@ -12,14 +12,14 @@ import java.util.Map;
 public class MainMenuClient {
 
 	Map<Integer, Action> actions = new HashMap<>();
-	private IhmUtilClient ihmUtil;
+	private IhmUtil ihmUtil;
 
 	/**
 	 * Constructeur
 	 * 
 	 * @param ihmUtil
 	 */
-	public MainMenuClient(IhmUtilClient ihmUtil) {
+	public MainMenuClient(IhmUtil ihmUtil) {
 		this.ihmUtil = ihmUtil;
 		actions.put(0, new Subscribe(ihmUtil));
 		actions.put(1, new Connexion(ihmUtil));

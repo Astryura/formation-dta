@@ -111,5 +111,9 @@
 			<groupId>org.apache.directory.studio</groupId>
 			<artifactId>org.apache.commons.codec</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>astrid-pizzeria-ihmCommons</artifactId>
+		</dependency>
 	</dependencies>
 </project>

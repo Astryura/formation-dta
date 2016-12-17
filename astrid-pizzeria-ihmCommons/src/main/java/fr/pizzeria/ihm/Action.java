@@ -1,7 +1,7 @@
 package fr.pizzeria.ihm;
 
 /**
- * <h1>Action</h1> <b>Interface définissant les mennus.</b>
+ * <h1>Action</h1> <b>Interface définissant les menus.</b>
  * 
  * @author Astrid Hlavacek
  *
