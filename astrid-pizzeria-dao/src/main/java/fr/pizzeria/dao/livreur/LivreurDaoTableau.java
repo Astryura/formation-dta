@@ -28,6 +28,11 @@ public class LivreurDaoTableau implements LivreurDao {
 		listLivreurs.add(new Livreur(3, "Beep", "Beep"));
 	}
 
+	/**
+	 * liste des livreurs
+	 * 
+	 * @return List<Livreur>
+	 */
 	public List<Livreur> allLivreur() {
 		return listLivreurs;
 	}

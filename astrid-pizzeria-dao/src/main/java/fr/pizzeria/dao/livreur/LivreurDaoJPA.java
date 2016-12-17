@@ -2,7 +2,6 @@ package fr.pizzeria.dao.livreur;
 
 import javax.persistence.EntityManager;
 
-import fr.pizzeria.dao.other.JDBCDao;
 import fr.pizzeria.dao.other.JPADao;
 import fr.pizzeria.model.Livreur;
 
@@ -14,12 +13,17 @@ import fr.pizzeria.model.Livreur;
 public class LivreurDaoJPA implements LivreurDao {
 
 	/**
-	 * @see JDBCDao#JDBCDao()
+	 * instantiation de JPADao
+	 * 
+	 * @see JPADao
+	 * @see JPADao#JPADao()
 	 */
 	private JPADao jpaDao;
 
 	/**
-	 * Constructeur instanciant le EntityManagerFactory
+	 * Constructeur
+	 * 
+	 * @param jpaDao
 	 */
 	public LivreurDaoJPA(JPADao jpaDao) {
 		this.jpaDao = jpaDao;

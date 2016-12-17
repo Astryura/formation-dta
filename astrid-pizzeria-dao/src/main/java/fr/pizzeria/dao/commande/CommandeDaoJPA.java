@@ -22,13 +22,17 @@ import fr.pizzeria.model.Pizza;
 public class CommandeDaoJPA implements CommandeDao {
 
 	/**
+	 * instantiation de JPADao
+	 * 
 	 * @see JPADao
 	 * @see JPADao#JPADao()
 	 */
 	private JPADao jpaDao;
 
 	/**
-	 * Constructeur instanciant le EntityManagerFactory
+	 * Constructeur
+	 * 
+	 * @param jpaDao
 	 */
 	public CommandeDaoJPA(JPADao jpaDao) {
 		this.jpaDao = jpaDao;

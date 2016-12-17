@@ -48,6 +48,9 @@ public class JPADao {
 
 	}
 
+	/**
+	 * close le EntityManagerFactory
+	 */
 	public void close() {
 		emfactory.close();
 	}

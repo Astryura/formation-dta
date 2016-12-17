@@ -40,9 +40,12 @@ public abstract class DaoFactory {
 	private ClientDao clientDao;
 
 	/**
-	 * Constructeur instancie le PizzaDao
+	 * Constructeur
 	 * 
 	 * @param pizzaDao
+	 * @param commandeDao
+	 * @param livreurDao
+	 * @param clientDao
 	 */
 	public DaoFactory(PizzaDao pizzaDao, CommandeDao commandeDao, LivreurDao livreurDao, ClientDao clientDao) {
 		super();

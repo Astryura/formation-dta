@@ -14,12 +14,17 @@ import fr.pizzeria.model.Client;
 public class ClientDaoJPA implements ClientDao {
 
 	/**
+	 * instantiation de JPADao
+	 * 
+	 * @see JPADao
 	 * @see JPADao#JPADao()
 	 */
 	private JPADao jpaDao;
 
 	/**
-	 * Constructeur instanciant le EntityManagerFactory
+	 * Constructeur
+	 * 
+	 * @param jpaDao
 	 */
 	public ClientDaoJPA(JPADao jpaDao) {
 		this.jpaDao = jpaDao;

@@ -28,8 +28,17 @@ import fr.pizzeria.model.Pizza;
  */
 public class PizzaDaoJDBC implements PizzaDao {
 
+	/**
+	 * @see JDBCDao
+	 * @see JDBCDao#JDBCDao()
+	 */
 	private JDBCDao jdbcDao;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param jdbcDao
+	 */
 	public PizzaDaoJDBC(JDBCDao jdbcDao) {
 		this.jdbcDao = jdbcDao;
 	}
@@ -130,9 +139,8 @@ public class PizzaDaoJDBC implements PizzaDao {
 		List<Pizza> listPizzas = pizzadao.findAllPizzas();
 		jdbcDao.execute((Connection connection, Statement statement) -> {
 			connection.setAutoCommit(false);
-			List<List<Pizza>> list = ListUtils.partition(listPizzas, 3);
 			try {
-				for (List<Pizza> liste : list) {
+				for (List<Pizza> liste : ListUtils.partition(listPizzas, 3)) {
 					for (Pizza pizza : liste) {
 						PreparedStatement addPizzaSt = connection.prepareStatement(
 								"INSERT INTO PIZZA (CODE, NOM, PRIX, CategoriePizza) VALUES (?,?,?,?)");

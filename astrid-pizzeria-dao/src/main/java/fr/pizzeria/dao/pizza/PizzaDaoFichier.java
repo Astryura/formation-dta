@@ -30,6 +30,7 @@ import fr.pizzeria.model.Pizza;
 public class PizzaDaoFichier implements PizzaDao {
 
 	private List<Pizza> listPizzas = new ArrayList<>();
+	private static String dir = "data/";
 
 	/**
 	 * Constructeur
@@ -130,7 +131,7 @@ public class PizzaDaoFichier implements PizzaDao {
 	 */
 	public void stockage(Pizza pizza) {
 
-		File file = new File("data/" + pizza.getCode() + ".txt");
+		File file = new File(dir + pizza.getCode() + ".txt");
 		Path path = file.toPath();
 		try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 			writer.write(pizza.getId() + ";" + pizza.getNom() + ";" + pizza.getPrix() + ";" + pizza.getCatP());
@@ -148,7 +149,7 @@ public class PizzaDaoFichier implements PizzaDao {
 	 * @param pizza
 	 */
 	public void destockage(Pizza pizza) {
-		File fichier = new File("data/" + pizza.getCode() + ".txt");
+		File fichier = new File(dir + pizza.getCode() + ".txt");
 		if (fichier.delete()) {
 			System.out.println("pizza supprimée");
 		} else {
@@ -165,7 +166,7 @@ public class PizzaDaoFichier implements PizzaDao {
 
 		final List<String> files = new ArrayList<>();
 
-		Path path = Paths.get("data/");
+		Path path = Paths.get(dir);
 		try {
 			DirectoryStream<Path> stream = Files.newDirectoryStream(path);
 			for (Path entry : stream) {
