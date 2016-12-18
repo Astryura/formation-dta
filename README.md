@@ -11,6 +11,7 @@ Le projet est cindé en deux parties:
  * La deuxième partie séparé en trois sous projet maven:
   * un projet astrid-pizzeria-console contenant la partie ihm de l'application et la console Administrateur
   * un projet astrid-pizzeria-console-client contenant la partie ihm de l'application et la console Client
+  * un projet astrid-pizzeria-ihmCommons contenant la partie ihm commune de l'application
   * un projet astrid-pizzeria-dao contenant la partie donnée
   * un projet astrid-pizzeria-model contenant le modèle Pizza sur lequel l'application est basé.
 
