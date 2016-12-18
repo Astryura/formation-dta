@@ -93,6 +93,11 @@ public class Commande {
 		return pizzas;
 	}
 
+	/**
+	 * Ajout de pizza à la commande
+	 * 
+	 * @param pizza
+	 */
 	public void addPizza(Pizza pizza) {
 		this.pizzas.add(pizza);
 	}

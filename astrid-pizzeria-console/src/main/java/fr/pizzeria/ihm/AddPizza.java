@@ -30,18 +30,9 @@ public class AddPizza implements Action {
 		String nom = ihmUtil.getScanner().next();
 		System.out.println("Prix de la Pizza");
 		String prix = ihmUtil.getScanner().next();
-		System.out.println("Cat�gorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
+		System.out.println("Cat�gorie de la Pizza : VIANDE, POISSON, SANS_VIANDE");
 		String cat = ihmUtil.getScanner().next();
-		CategoriePizza catP;
-		if (cat.equals("V")) {
-			catP = CategoriePizza.VIANDE;
-		} else if (cat.equals("P")) {
-			catP = CategoriePizza.POISSON;
-		} else if (cat.equals("SV")) {
-			catP = CategoriePizza.SANS_VIANDE;
-		} else {
-			catP = null;
-		}
+		CategoriePizza catP = CategoriePizza.valueOf(cat.toUpperCase());
 		if (catP != null) {
 			Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), catP);
 			ihmUtil.getPizzaDao().saveNewPizza(pizza);

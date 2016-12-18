@@ -73,7 +73,7 @@ public class PizzaDaoJPA implements PizzaDao {
 			p.setCode(pizza.getCode());
 			p.setNom(pizza.getNom());
 			p.setPrix(pizza.getPrix());
-			p.setCatP(CategoriePizza.valueOf(pizza.getCatP()));
+			p.setCatP(CategoriePizza.valueOf(pizza.getCatP().toUpperCase().replaceAll(" ", "_")));
 			entitymanager.getTransaction().commit();
 			return Void.TYPE;
 		});

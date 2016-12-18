@@ -5,6 +5,11 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+/**
+ * 
+ * @author Astrid Hlavacek
+ *
+ */
 @Entity
 public class Livreur extends Personne {
 

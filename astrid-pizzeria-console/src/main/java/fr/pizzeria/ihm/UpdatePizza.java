@@ -32,18 +32,9 @@ public class UpdatePizza implements Action {
 		String nomU = ihmUtil.getScanner().next();
 		System.out.println("Nouveau Prix de la Pizza");
 		String prixU = ihmUtil.getScanner().next();
-		System.out.println("Nouvelle Catégorie de la Pizza : V = VIANDE, P = POISSON, SV = SANS_VIANDE");
+		System.out.println("Nouvelle Catégorie de la Pizza : VIANDE, POISSON, SANS_VIANDE");
 		String cat = ihmUtil.getScanner().next();
-		CategoriePizza catP;
-		if (cat.equals("V")) {
-			catP = CategoriePizza.VIANDE;
-		} else if (cat.equals("P")) {
-			catP = CategoriePizza.POISSON;
-		} else if (cat.equals("SV")) {
-			catP = CategoriePizza.SANS_VIANDE;
-		} else {
-			catP = null;
-		}
+		CategoriePizza catP = CategoriePizza.valueOf(cat.toUpperCase());
 		if (catP != null) {
 			Pizza pizza = new Pizza(codeU, nomU, Double.parseDouble(prixU), catP);
 			ihmUtil.getPizzaDao().updatePizza(codePizza, pizza);

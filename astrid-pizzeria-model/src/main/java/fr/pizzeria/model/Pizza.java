@@ -133,7 +133,7 @@ public class Pizza {
 	}
 
 	public String getCatP() {
-		return catP.toString().toUpperCase().replaceAll(" ", "_");
+		return catP.toString();
 	}
 
 	public void setCatP(CategoriePizza catP) {
