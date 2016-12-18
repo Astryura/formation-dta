@@ -2,8 +2,11 @@ package fr.pizzeria.dao.commande;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -21,6 +24,7 @@ import fr.pizzeria.model.Pizza;
  */
 public class CommandeDaoJPA implements CommandeDao {
 
+	private Random rand = new Random();;
 	/**
 	 * instantiation de JPADao
 	 * 
@@ -39,20 +43,35 @@ public class CommandeDaoJPA implements CommandeDao {
 	}
 
 	@Override
-	public void newCommande(Integer id, String codePizza) {
+	public void newCommande(Integer id, List<String> codes) {
 		jpaDao.execute((EntityManager entitymanager) -> {
 			entitymanager.getTransaction().begin();
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = new Date();
 			String today = dateFormat.format(date);
 			Client client = entitymanager.find(Client.class, id);
-			Livreur livreur = entitymanager.find(Livreur.class, 1);
-			Commande commande = new Commande(124558, 0, today, client, livreur);
-			TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code",
-					Pizza.class);
-			query.setParameter("code", codePizza);
-			Pizza p = query.getSingleResult();
-			commande.addPizza(p);
+			TypedQuery<Livreur> querylivreur = entitymanager.createQuery("SELECT l FROM Livreur l", Livreur.class);
+			int nbLiv = querylivreur.getResultList().size();
+			int randomNumLivreur = rand.nextInt((nbLiv - 1) + 1) + 1;
+			Livreur livreur = entitymanager.find(Livreur.class, randomNumLivreur);
+			TypedQuery<Commande> querycom = entitymanager.createQuery("SELECT c FROM Commande c", Commande.class);
+			List<Commande> listCommandes = querycom.getResultList();
+			Comparator<Commande> comp = Comparator.comparing(Commande::getNumeroCommande);
+			Optional<Commande> com = listCommandes.stream().max(comp);
+			Integer numcom;
+			if (com.isPresent()) {
+				numcom = com.get().getNumeroCommande() + 1;
+			} else {
+				numcom = 0;
+			}
+			Commande commande = new Commande(numcom, 0, today, client, livreur);
+			for (String codePizza : codes) {
+				TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code",
+						Pizza.class);
+				query.setParameter("code", codePizza);
+				Pizza p = query.getSingleResult();
+				commande.addPizza(p);
+			}
 			entitymanager.persist(commande);
 			entitymanager.getTransaction().commit();
 			return Void.TYPE;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Commande;
+import fr.pizzeria.model.Pizza;
 
 /**
  * 
@@ -34,14 +35,19 @@ public class ListCommande implements Action {
 	public void doAction() {
 		System.out.println("Votre Liste de Commande :");
 		List<Commande> commandes = ihmUtil.getCommandeDao().listCommandeClient(client.getId());
-		commandes.forEach(commande -> {
+		for (Commande commande : commandes) {
 			if (commande != null) {
-				System.out.println(commande.getId() + ". " + commande.getDateCommande() + " " + commande.getStatut());
+				System.out.println(commande.getId() + ". " + commande.getNumeroCommande() + " "
+						+ commande.getDateCommande() + " " + commande.getStatut());
+				System.out.println("Vos Pizzas :");
+				for (Pizza pizza : commande.getPizzas()) {
+					System.out.println("Pizza : " + pizza.getCode() + " " + pizza.getNom() + " " + pizza.getPrix());
+				}
 
 			} else {
 				System.out.println("erreur");
 			}
-		});
+		}
 
 	}
 

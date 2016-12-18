@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.pizzeria.dao.other.JPADao;
@@ -42,15 +43,21 @@ public class CommandePizza implements Action {
 			System.out
 					.println(p.getId() + " " + p.getCode() + " " + p.getNom() + " " + p.getPrix() + " " + p.getCatP());
 		});
-		System.out.println("Quel est le code de la Pizza que vous voulez commander ?");
-		String codePizza = ihmUtil.getScanner().next();
-		ihmUtil.getCommandeDao().newCommande(client.getId(), codePizza);
+		System.out.println("Combien de pizzas voulez-vous commander ?");
+		String nbPizza = ihmUtil.getScanner().next();
+		List<String> codes = new ArrayList<>();
+		for (int i = 0; i < Integer.parseInt(nbPizza); i++) {
+			System.out.println("Quel est le code de la Pizza que vous voulez commander ?");
+			String codePizza = ihmUtil.getScanner().next();
+			codes.add(codePizza);
+		}
+		ihmUtil.getCommandeDao().newCommande(client.getId(), codes);
 
 	}
 
 	@Override
 	public void describeAction() {
-		System.out.println("1. Commander une Pizza");
+		System.out.println("1. Commander des Pizzas");
 	}
 
 }

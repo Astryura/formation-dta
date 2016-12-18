@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +38,7 @@ public class Commande {
 	/**
 	 * Liste des pizzas commandées
 	 */
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "CommandePizza", joinColumns = @JoinColumn(name = "commandeId", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "pizzaId", referencedColumnName = "ID"))
 	public Set<Pizza> pizzas = new HashSet<>();
 

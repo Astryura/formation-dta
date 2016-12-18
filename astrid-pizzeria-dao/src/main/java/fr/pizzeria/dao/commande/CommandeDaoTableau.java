@@ -43,7 +43,7 @@ public class CommandeDaoTableau implements CommandeDao {
 	}
 
 	@Override
-	public void newCommande(Integer id, String codePizza) {
+	public void newCommande(Integer id, List<String> codes) {
 		Optional<Client> findFirst = listClients.stream().filter(cl -> cl.getId().equals(id)).findFirst();
 		Client client = null;
 		if (findFirst.isPresent()) {
@@ -60,10 +60,12 @@ public class CommandeDaoTableau implements CommandeDao {
 		Date date = new Date();
 		String today = dateFormat.format(date);
 		Commande commande = new Commande(124558, 0, today, client, livreur);
-		Optional<Pizza> findFirtP = listPizzas.stream().filter(p -> p.getCode().equals(codePizza)).findFirst();
-		if (findFirtP.isPresent()) {
-			Pizza pizza = findFirtP.get();
-			commande.addPizza(pizza);
+		for (String codePizza : codes) {
+			Optional<Pizza> findFirtP = listPizzas.stream().filter(p -> p.getCode().equals(codePizza)).findFirst();
+			if (findFirtP.isPresent()) {
+				Pizza pizza = findFirtP.get();
+				commande.addPizza(pizza);
+			}
 		}
 		listCommandes.add(commande);
 	}

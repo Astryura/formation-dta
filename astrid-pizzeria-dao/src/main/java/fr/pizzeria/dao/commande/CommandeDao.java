@@ -16,7 +16,7 @@ public interface CommandeDao {
 	 * @param id
 	 * @param codePizza
 	 */
-	void newCommande(Integer id, String codePizza);
+	void newCommande(Integer id, List<String> codes);
 
 	/**
 	 * 
