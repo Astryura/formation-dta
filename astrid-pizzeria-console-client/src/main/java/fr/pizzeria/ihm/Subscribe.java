@@ -33,7 +33,6 @@ public class Subscribe implements Action {
 		String mdp = ihmUtil.getScanner().next();
 		Client client = new Client(nom, prenom, email, mdp);
 		ihmUtil.getClientDao().saveNewClient(client);
-
 	}
 
 	@Override

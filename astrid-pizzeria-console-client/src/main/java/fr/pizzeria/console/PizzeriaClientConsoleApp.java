@@ -46,7 +46,7 @@ public class PizzeriaClientConsoleApp {
 
 		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), daoFactory, choix);
 
-		MainMenuClient mainMenu = new MainMenuClient(ihmUtil);
+		MainMenuClient mainMenu = new MainMenuClient(ihmUtil, null);
 
 		mainMenu.displayMenu();
 
