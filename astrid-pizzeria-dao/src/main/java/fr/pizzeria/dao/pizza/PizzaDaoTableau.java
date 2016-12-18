@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -37,23 +36,6 @@ public class PizzaDaoTableau implements PizzaDao {
 	@Override
 	public List<Pizza> findAllPizzas() {
 		return listPizzas;
-	}
-
-	@Override
-	public List<Pizza> findAllPizzasCat() {
-		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
-		return listPizzas.stream().sorted(comp).collect(Collectors.toList());
-	}
-
-	@Override
-	public Pizza findPrixMaxPizza() {
-		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
-		Optional<Pizza> pizza = listPizzas.stream().max(comp);
-		if (pizza.isPresent()) {
-			return pizza.get();
-		} else {
-			return null;
-		}
 	}
 
 	@Override

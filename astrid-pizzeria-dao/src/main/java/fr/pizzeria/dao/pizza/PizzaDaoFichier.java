@@ -66,23 +66,6 @@ public class PizzaDaoFichier implements PizzaDao {
 	}
 
 	@Override
-	public List<Pizza> findAllPizzasCat() {
-		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
-		return listPizzas.stream().sorted(comp).collect(Collectors.toList());
-	}
-
-	@Override
-	public Pizza findPrixMaxPizza() {
-		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
-		Optional<Pizza> pizza = listPizzas.stream().max(comp);
-		if (pizza.isPresent()) {
-			return pizza.get();
-		} else {
-			return null;
-		}
-	}
-
-	@Override
 	public void saveNewPizza(Pizza pizza) {
 		Comparator<Pizza> comp = Comparator.comparing(Pizza::getId);
 		Optional<Pizza> p = listPizzas.stream().max(comp);

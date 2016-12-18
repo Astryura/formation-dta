@@ -24,7 +24,7 @@ import fr.pizzeria.model.Pizza;
  */
 public class CommandeDaoJPA implements CommandeDao {
 
-	private Random rand = new Random();;
+	private Random rand = new Random();
 	/**
 	 * instantiation de JPADao
 	 * 

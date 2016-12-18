@@ -6,12 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.ListUtils;
 
@@ -104,25 +101,6 @@ public class PizzaDaoJDBC implements PizzaDao {
 			return Void.TYPE;
 		});
 
-	}
-
-	@Override
-	public List<Pizza> findAllPizzasCat() {
-		List<Pizza> listPizzas = findAllPizzas();
-		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
-		return listPizzas.stream().sorted(comp).collect(Collectors.toList());
-	}
-
-	@Override
-	public Pizza findPrixMaxPizza() {
-		List<Pizza> listPizzas = findAllPizzas();
-		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
-		Optional<Pizza> pizza = listPizzas.stream().max(comp);
-		if (pizza.isPresent()) {
-			return pizza.get();
-		} else {
-			return null;
-		}
 	}
 
 	@Override

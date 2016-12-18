@@ -1,6 +1,9 @@
 package fr.pizzeria.dao.pizza;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.Pizza;
@@ -47,19 +50,34 @@ public interface PizzaDao {
 	 * 
 	 * @return List<Pizza>
 	 */
-	List<Pizza> findAllPizzasCat();
+	default List<Pizza> findAllPizzasCat() {
+		List<Pizza> listPizzas = findAllPizzas();
+		Comparator<Pizza> comp = Comparator.comparing(Pizza::getCatP);
+		return listPizzas.stream().sorted(comp).collect(Collectors.toList());
+	}
 
 	/**
 	 * Trouve la Pizza la plus chère
 	 * 
 	 * @return Pizza
 	 */
-	Pizza findPrixMaxPizza();
+	default Pizza findPrixMaxPizza() {
+		List<Pizza> listPizzas = findAllPizzas();
+		Comparator<Pizza> comp = Comparator.comparing(Pizza::getPrix);
+		Optional<Pizza> pizza = listPizzas.stream().max(comp);
+		if (pizza.isPresent()) {
+			return pizza.get();
+		} else {
+			return null;
+		}
+	}
 
 	/**
-	 * Import les données fichiers ou Tableaux en BDD (PizzaDaoJDBC)
+	 * Import les données fichiers ou Tableaux en BDD (PizzaDaoJDBC ou
+	 * PizzaDaoJPA)
 	 * 
 	 * @see PizzaDaoJDBC
+	 * @see PizzaDaoJPA
 	 */
 	default void importDataPizza() {
 		throw new PizzaException("pas d'implémentation");
