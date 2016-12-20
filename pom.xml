@@ -13,6 +13,7 @@
 		<module>astrid-pizzeria-console</module>
 		<module>astrid-pizzeria-console-client</module>
 		<module>astrid-pizzeria-ihmCommons</module>
+		<module>astrid-pizzeria-console-client</module>
 	</modules>
 
 	<properties>
@@ -88,6 +89,12 @@
 				<groupId>org.apache.directory.studio</groupId>
 				<artifactId>org.apache.commons.codec</artifactId>
 				<version>1.8</version>
+			</dependency>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>7.0</version>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
