@@ -13,7 +13,7 @@
 		<module>astrid-pizzeria-console</module>
 		<module>astrid-pizzeria-console-client</module>
 		<module>astrid-pizzeria-ihmCommons</module>
-		<module>astrid-pizzeria-console-client</module>
+		<module>astrid-pizzeria-admin-app</module>
 	</modules>
 
 	<properties>
