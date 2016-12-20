@@ -29,7 +29,7 @@
 	<div class="row">
 		<form method="get" action="edit">
 			<input type="hidden" name="codePizza" value="<%= code %>" readonly />
-			<div class="col-md-2"><input type="text" name="code" value="<%= id %>" readonly /></div>
+			<div class="col-md-2"><input type="text" name="id" value="<%= id %>" readonly /></div>
 			<div class="col-md-2"><input type="text" name="code" value="<%= code %>" /></div>
 			<div class="col-md-2"><input type="text" name="nom" value="<%= nom %>" /></div>
 			<div class="col-md-2"><input type="text" name="prix" value="<%= prix %>" /></div>
