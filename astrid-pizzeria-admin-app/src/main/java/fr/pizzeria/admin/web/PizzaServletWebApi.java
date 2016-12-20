@@ -14,9 +14,10 @@ import fr.pizzeria.dao.pizza.PizzaDaoJPA;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+@SuppressWarnings("serial")
 public class PizzaServletWebApi extends HttpServlet {
 
-	private PizzaDao pizzaDao = new PizzaDaoJPA(new JPADao());
+	private final transient PizzaDao pizzaDao = new PizzaDaoJPA(new JPADao());
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
