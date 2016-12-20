@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>Pizzeria Admin Web App</display-name>
   <servlet>
 		<servlet-name>PizzaServletWebApi</servlet-name>
 		<servlet-class>fr.pizzeria.admin.web.PizzaServletWebApi</servlet-class>
@@ -11,6 +11,18 @@
 	 <servlet>
 		<servlet-name>PizzaServletWeb</servlet-name>
 		<servlet-class>fr.pizzeria.admin.web.PizzaServletWeb</servlet-class>
+	</servlet>
+	 <servlet>
+		<servlet-name>PizzasList</servlet-name>
+		<servlet-class>fr.pizzeria.admin.web.ListerPizzaController</servlet-class>
+	</servlet>
+	 <servlet>
+		<servlet-name>PizzasEdit</servlet-name>
+		<servlet-class>fr.pizzeria.admin.web.EditerPizzaController</servlet-class>
+	</servlet>
+	 <servlet>
+		<servlet-name>PizzasDelete</servlet-name>
+		<servlet-class>fr.pizzeria.admin.web.SupprimerPizzaController</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -20,5 +32,17 @@
 	<servlet-mapping>
 		<servlet-name>PizzaServletWeb</servlet-name>
 		<url-pattern>/servlet/pizzas</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PizzasEdit</servlet-name>
+		<url-pattern>/pizzas/edit</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PizzasDelete</servlet-name>
+		<url-pattern>/pizzas/delete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PizzasList</servlet-name>
+		<url-pattern>/pizzas/list</url-pattern>
 	</servlet-mapping>
 </web-app>
