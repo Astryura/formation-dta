@@ -8,41 +8,43 @@
 <title>Login</title>
 </head>
 <body>
-	<form class="form-horizontal" action="login" method="post">
-		<fieldset>
+	<div class=”container”>
+		<form class="form-horizontal" action="login" method="post">
+			<fieldset>
 
-			<!-- Form Name -->
-			<legend>Login</legend>
+				<!-- Form Name -->
+				<legend>Connectez-vous :</legend>
 
-			<!-- Text input-->
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="email">Email</label>
-				<div class="col-md-4">
-					<input id="email" name="email" type="text"
-						placeholder="Votre email" class="form-control input-md">
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="email">Email</label>
+					<div class="col-md-4">
+						<input id="email" name="email" type="text"
+							placeholder="Votre email" class="form-control input-md">
 
+					</div>
 				</div>
-			</div>
-			<!-- Password input-->
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="mdp">Mot de passe</label>
-				<div class="col-md-4">
-					<input id="mdp" name="mdp" type="password"
-						placeholder="Votre mot de passe" class="form-control input-md">
+				<!-- Password input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="mdp">Mot de
+						passe</label>
+					<div class="col-md-4">
+						<input id="mdp" name="mdp" type="password"
+							placeholder="Votre mot de passe" class="form-control input-md">
 
+					</div>
 				</div>
-			</div>
-			<!-- Button -->
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="valider"></label>
-				<div class="col-md-4">
-					<button id="valider" name="valider" class="btn btn-info">Valider</button>
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="valider"></label>
+					<div class="col-md-4">
+						<button id="valider" name="valider" class="btn btn-info">Valider</button>
+					</div>
 				</div>
-			</div>
 
-		</fieldset>
-	</form>
-
+			</fieldset>
+		</form>
+	</div>
 
 </body>
 </html>
