@@ -6,7 +6,7 @@
 	<packaging>war</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.exclusion>/src/main/webapp/bootstrap</sonar.exclusion>
+		<sonar.exclusion>file : **/src/main/webapp/bootstrap/*</sonar.exclusion>
 	</properties>
 
 	<parent>
