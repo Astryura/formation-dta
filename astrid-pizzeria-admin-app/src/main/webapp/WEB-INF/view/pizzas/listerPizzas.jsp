@@ -1,7 +1,9 @@
 <%@page import="fr.pizzeria.model.Pizza"%>
 <%@page import="java.util.List"%>
+<%@ page  isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,31 +21,23 @@
 		<div class="col-md-2"><h1>Modifier</h1></div>
 		<div class="col-md-2"><h1>Supprimer</h1></div>
 	</div>
-<%  List<Pizza> list = (List<Pizza>) request.getAttribute("listPizzas"); 
-	for(Pizza pizza: list){
-		Integer id = pizza.getId();
-		String code = pizza.getCode();
-		String nom = pizza.getNom();
-		Double prix = pizza.getPrix();
-		String cat = pizza.getCatP();
-%>
+	<c:forEach var="pizza" items="${listPizzas}">
+
 	<div class="row">
 		<form method="post" action="edit">
-			<input type="hidden" name="id" value="<%= id %>" />
-			<div class="col-md-2"><input class="form-control" type="text" name="code" value="<%= code %>" readonly/></div>
-			<div class="col-md-2"><input class="form-control" type="text" name="nom" value="<%= nom %>" readonly/></div>
-			<div class="col-md-2"><input class="form-control" type="text" name="prix" value="<%= prix %>" readonly/></div>
-			<div class="col-md-2"><input class="form-control" type="text" name="cat" value="<%= cat %>" readonly/></div>
+			<input type="hidden" name="id" value="${pizza.id }" />
+			<div class="col-md-2"><input class="form-control" type="text" name="code" value="${pizza.code}" readonly/></div>
+			<div class="col-md-2"><input class="form-control" type="text" name="nom" value="${pizza.nom}" readonly/></div>
+			<div class="col-md-2"><input class="form-control" type="text" name="prix" value="${pizza.prix}" readonly/></div>
+			<div class="col-md-2"><input class="form-control" type="text" name="cat" value="${pizza.catP}" readonly/></div>
 			<div class="col-md-2"><button class="btn btn-default" type="submit" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></div>
 		</form>
 		<form method="post" action="delete">
-			<input type="hidden" name="codePizza" value="<%= code %>"/>
+			<input type="hidden" name="codePizza" value="${pizza.code}"/>
 			<div class="col-md-2"><button class="btn btn-default" type="submit" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>
 		</form>
 	</div>
-<%
-	}
-%>
+	</c:forEach>
 </div>
 </body>
 </html>
