@@ -34,7 +34,7 @@
 			<div class="col-md-2"><input type="text" name="nom" value="<%= nom %>" /></div>
 			<div class="col-md-2"><input type="text" name="prix" value="<%= prix %>" /></div>
 			<div class="col-md-2"><input type="text" name="cat" value="<%= cat %>" /></div>
-			<div class="col-md-2"><input type="submit" value="Valider"/></div>
+			<div class="col-md-2"><input class="btn btn-default" type="submit" value="Valider"/></div>
 		</form>
 	</div>
 

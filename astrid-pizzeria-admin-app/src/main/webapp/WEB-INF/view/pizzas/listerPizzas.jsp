@@ -30,15 +30,15 @@
 	<div class="row">
 		<form method="post" action="edit">
 			<input type="hidden" name="id" value="<%= id %>" />
-			<div class="col-md-2"><input type="text" name="code" value="<%= code %>" readonly/></div>
-			<div class="col-md-2"><input type="text" name="nom" value="<%= nom %>" readonly/></div>
-			<div class="col-md-2"><input type="text" name="prix" value="<%= prix %>" readonly/></div>
-			<div class="col-md-2"><input type="text" name="cat" value="<%= cat %>" readonly/></div>
-			<div class="col-md-2"><input type="submit" value="Modifier"/></div>
+			<div class="col-md-2"><input class="form-control" type="text" name="code" value="<%= code %>" readonly/></div>
+			<div class="col-md-2"><input class="form-control" type="text" name="nom" value="<%= nom %>" readonly/></div>
+			<div class="col-md-2"><input class="form-control" type="text" name="prix" value="<%= prix %>" readonly/></div>
+			<div class="col-md-2"><input class="form-control" type="text" name="cat" value="<%= cat %>" readonly/></div>
+			<div class="col-md-2"><button class="btn btn-default" type="submit" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></div>
 		</form>
 		<form method="post" action="delete">
 			<input type="hidden" name="codePizza" value="<%= code %>"/>
-			<div class="col-md-2"><input type="submit" value="Supprimer"/></div>
+			<div class="col-md-2"><button class="btn btn-default" type="submit" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>
 		</form>
 	</div>
 <%
