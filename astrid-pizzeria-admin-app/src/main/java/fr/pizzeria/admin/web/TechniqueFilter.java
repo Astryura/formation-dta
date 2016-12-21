@@ -37,7 +37,12 @@ public class TechniqueFilter implements Filter {
 			name = ((HttpServletRequest) request).getRequestURI();
 			names = name.split("/");
 		}
-		String info = names[(names.length) - 1] + ": " + (after - before) + "ms";
+		String info;
+		if (names != null) {
+			info = names[(names.length) - 1] + ": " + (after - before) + "ms";
+		} else {
+			info = "pas d'info";
+		}
 		config.getServletContext().log(info);
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		List<String> log = (List<String>) session.getAttribute("log");
