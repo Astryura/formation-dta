@@ -19,5 +19,6 @@ public class SupprimerPizzaController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String codePizza = req.getParameter("codePizza");
 		pizzaDao.deletePizza(codePizza);
+		resp.sendRedirect("/astrid-pizzeria-admin-app/pizzas/list");
 	}
 }

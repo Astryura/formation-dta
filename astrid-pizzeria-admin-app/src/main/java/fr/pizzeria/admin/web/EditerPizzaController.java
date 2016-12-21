@@ -27,6 +27,7 @@ public class EditerPizzaController extends HttpServlet {
 		CategoriePizza catP = CategoriePizza.valueOf(req.getParameter("cat").toUpperCase().replaceAll(" ", "_"));
 		Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), catP);
 		pizzaDao.updatePizza(codePizza, pizza);
+		resp.sendRedirect("/astrid-pizzeria-admin-app/pizzas/list");
 	}
 
 	@Override
