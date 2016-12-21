@@ -18,6 +18,11 @@
 				</div>
 			</div>
 		</c:forEach>
+		<div class="row">
+				<div class="col-md-6 col-md-offset-4">
+					<h4>${nbSession}</h4>
+				</div>
+			</div>
 	</div>
 </body>
 </html>

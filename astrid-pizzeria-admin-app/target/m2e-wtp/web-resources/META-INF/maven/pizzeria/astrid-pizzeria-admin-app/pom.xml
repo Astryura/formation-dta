@@ -14,7 +14,16 @@
 		<version>1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<name>astrid-pizzeria-admin-app Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
