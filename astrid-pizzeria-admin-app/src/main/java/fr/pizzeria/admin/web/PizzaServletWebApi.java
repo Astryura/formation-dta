@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import fr.pizzeria.dao.pizza.PizzaDaoJPA;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+@WebServlet("/api/servlet/pizzas")
 @SuppressWarnings("serial")
 public class PizzaServletWebApi extends HttpServlet {
 
