@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.web;
+package fr.pizzeria.admin.web.pizza;
 
 import java.io.IOException;
 import java.io.PrintWriter;
