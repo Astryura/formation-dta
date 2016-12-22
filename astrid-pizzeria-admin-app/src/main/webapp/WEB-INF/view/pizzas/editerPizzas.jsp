@@ -14,10 +14,6 @@
 .width {
 	width: 100%;
 }
-
-.white {
-	color: white;
-}
 </style>
 </head>
 <body>
@@ -46,23 +42,23 @@
 			<form method="get" action="edit">
 				<input type="hidden" name="codePizza" value="${pizza.code}" readonly />
 				<div class="col-md-2">
-					<input class="panel" type="text" name="id" value="${pizza.id}"
+					<input class="form-control width" type="text" name="id" value="${pizza.id}"
 						readonly />
 				</div>
 				<div class="col-md-2">
-					<input class="panel" type="text" name="code" value="${pizza.code}" />
+					<input class="form-control width" type="text" name="code" value="${pizza.code}" />
 				</div>
 				<div class="col-md-2">
-					<input class="panel" type="text" name="nom" value="${pizza.nom}" />
+					<input class="form-control width" type="text" name="nom" value="${pizza.nom}" />
 				</div>
 				<div class="col-md-2">
-					<input class="panel" type="text" name="prix" value="${pizza.prix}" />
+					<input class="form-control width" type="text" name="prix" value="${pizza.prix}" />
 				</div>
 				<div class="col-md-2">
-					<input class="panel" type="text" name="cat" value="${pizza.catP}" />
+					<input class="form-control width" type="text" name="cat" value="${pizza.catP}" />
 				</div>
 				<div class="col-md-2">
-					<input class="btn btn-default" type="submit" value="Valider" />
+					<input class="btn btn-default width" type="submit" value="Valider" />
 				</div>
 			</form>
 		</div>

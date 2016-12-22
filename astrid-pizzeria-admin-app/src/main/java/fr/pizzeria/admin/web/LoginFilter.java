@@ -28,7 +28,7 @@ public class LoginFilter implements Filter {
 		if ("admin@pizzeria.fr".equals(session.getAttribute("email")) && "admin".equals(session.getAttribute("mdp"))) {
 			chain.doFilter(req, res);
 		} else {
-			((HttpServletResponse) res).sendRedirect("/astrid-pizzeria-admin-app/connect/login");
+			((HttpServletResponse) res).sendRedirect("/astrid-pizzeria-admin-app-1/connect/login");
 		}
 
 	}

@@ -75,6 +75,14 @@
 				</form>
 			</div>
 		</c:forEach>
+		<div class="row">
+			<div class="col-md-2 pull-right">
+				<form method="post" action="add">
+					<button class="btn btn-default width" type="submit">
+						Ajouter Pizza</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

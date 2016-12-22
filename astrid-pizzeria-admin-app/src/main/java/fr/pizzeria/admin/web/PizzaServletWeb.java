@@ -4,24 +4,24 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.dao.other.JPADao;
-import fr.pizzeria.dao.pizza.PizzaDao;
-import fr.pizzeria.dao.pizza.PizzaDaoJPA;
+import fr.pizzeria.admin.metier.PizzaServiceEJB;
 import fr.pizzeria.model.Pizza;
 
 @WebServlet("/servlet/pizzas")
 @SuppressWarnings("serial")
 public class PizzaServletWeb extends HttpServlet {
-	private final transient PizzaDao pizzaDao = new PizzaDaoJPA(new JPADao());
+	@Inject
+	PizzaServiceEJB service;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		List<Pizza> list = pizzaDao.findAllPizzas();
+		List<Pizza> list = service.findAll();
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");

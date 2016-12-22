@@ -4,26 +4,25 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.dao.other.JPADao;
-import fr.pizzeria.dao.pizza.PizzaDao;
-import fr.pizzeria.dao.pizza.PizzaDaoJPA;
+import fr.pizzeria.admin.metier.PizzaServiceEJB;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 @WebServlet("/api/servlet/pizzas")
 @SuppressWarnings("serial")
 public class PizzaServletWebApi extends HttpServlet {
-
-	private final transient PizzaDao pizzaDao = new PizzaDaoJPA(new JPADao());
+	@Inject
+	PizzaServiceEJB service;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		List<Pizza> list = pizzaDao.findAllPizzas();
+		List<Pizza> list = service.findAll();
 		PrintWriter out = resp.getWriter();
 		list.forEach(p -> out.write(
 				p.getId() + " " + p.getCode() + " " + p.getNom() + " " + p.getPrix() + " " + p.getCatP() + "\n"));
@@ -37,7 +36,7 @@ public class PizzaServletWebApi extends HttpServlet {
 		String prix = req.getParameter("prix");
 		CategoriePizza catP = CategoriePizza.valueOf(req.getParameter("cat"));
 		Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), catP);
-		pizzaDao.saveNewPizza(pizza);
+		service.savePizza(pizza);
 		resp.setStatus(201);
 	}
 
@@ -49,12 +48,12 @@ public class PizzaServletWebApi extends HttpServlet {
 		String prix = req.getParameter("prix");
 		CategoriePizza catP = CategoriePizza.valueOf(req.getParameter("cat"));
 		Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), catP);
-		pizzaDao.updatePizza(codePizza, pizza);
+		service.updatePizza(codePizza, pizza);
 	}
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
 		String codePizza = req.getParameter("codePizza");
-		pizzaDao.deletePizza(codePizza);
+		service.deletePizza(codePizza);
 	}
 }

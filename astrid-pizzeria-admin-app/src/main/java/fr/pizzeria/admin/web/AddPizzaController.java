@@ -14,35 +14,27 @@ import fr.pizzeria.admin.metier.PizzaServiceEJB;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-@WebServlet("/pizzas/edit")
+@WebServlet("/pizzas/add")
 @SuppressWarnings("serial")
-public class EditerPizzaController extends HttpServlet {
+public class AddPizzaController extends HttpServlet {
 	@Inject
 	PizzaServiceEJB service;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String codePizza = req.getParameter("codePizza");
 		String code = req.getParameter("code");
 		String nom = req.getParameter("nom");
 		String prix = req.getParameter("prix");
 		CategoriePizza catP = CategoriePizza.valueOf(req.getParameter("cat").toUpperCase().replaceAll(" ", "_"));
 		Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), catP);
-		service.updatePizza(codePizza, pizza);
+		service.savePizza(pizza);
 		resp.sendRedirect("/astrid-pizzeria-admin-app-1/pizzas/list");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String code = request.getParameter("code");
-		String nom = request.getParameter("nom");
-		String prix = request.getParameter("prix");
-		CategoriePizza catP = CategoriePizza.valueOf(request.getParameter("cat").toUpperCase().replaceAll(" ", "_"));
-		Pizza pizza = new Pizza(Integer.parseInt(id), code, nom, Double.parseDouble(prix), catP);
-		request.setAttribute("pizza", pizza);
 		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/view/pizzas/editerPizzas.jsp");
+				.getRequestDispatcher("/WEB-INF/view/pizzas/addPizza.jsp");
 		dispatcher.forward(request, resp);
 	}
 }

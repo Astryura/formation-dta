@@ -29,9 +29,9 @@ public class LoginPizzaController extends HttpServlet {
 		if ("admin@pizzeria.fr".equals(email) && "admin".equals(mdp)) {
 			session.setAttribute("email", email);
 			session.setAttribute("mdp", mdp);
-			resp.sendRedirect("/astrid-pizzeria-admin-app/pizzas/list");
+			resp.sendRedirect("/astrid-pizzeria-admin-app-1/pizzas/list");
 		} else {
-			resp.sendRedirect("/astrid-pizzeria-admin-app/connect/login");
+			resp.sendRedirect("/astrid-pizzeria-admin-app-1/connect/login");
 		}
 	}
 }
