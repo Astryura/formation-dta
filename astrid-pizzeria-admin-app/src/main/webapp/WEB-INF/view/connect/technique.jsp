@@ -11,6 +11,7 @@
 </head>
 <body>
 	<div class=”container”>
+	<%@include file="../navbar.jsp" %>
 		<c:forEach var="log" items="${info}">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-4">

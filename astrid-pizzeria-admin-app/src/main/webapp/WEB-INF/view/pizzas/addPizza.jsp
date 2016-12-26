@@ -18,7 +18,8 @@
 </head>
 <body>
 	<div class=”container”>
-		<form class="form-horizontal">
+	<%@include file="../navbar.jsp" %>
+		<form class="form-horizontal" method="post" action="add">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -56,10 +57,19 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="cat">Catégorie</label>
+					<label class="col-md-4 control-label" for="cat">Catégorie :</label>
 					<div class="col-md-4">
 						<input id="cat" name="cat" type="text"
 							placeholder="Catégorie de la Pizza" class="form-control input-md">
+
+					</div>
+				</div>
+				
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="img">Image :</label>
+					<div class="col-md-4">
+						<input id="img" name="img" type="file" class="form-control input-md">
 
 					</div>
 				</div>

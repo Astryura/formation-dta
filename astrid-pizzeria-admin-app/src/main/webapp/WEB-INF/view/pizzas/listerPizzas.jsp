@@ -6,6 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,73 +17,54 @@
 }
 </style>
 </head>
+
 <body>
 	<div class=”container”>
-		<div class="row navbar panel-body panel-primary">
-			<div class="col-md-2">
-				<h1>Code</h1>
-			</div>
-			<div class="col-md-2">
-				<h1>Nom</h1>
-			</div>
-			<div class="col-md-2">
-				<h1>Prix</h1>
-			</div>
-			<div class="col-md-2">
-				<h1>Catégorie</h1>
-			</div>
-			<div class="col-md-2">
-				<h1>Modifier</h1>
-			</div>
-			<div class="col-md-2">
-				<h1>Supprimer</h1>
-			</div>
-		</div>
-		<c:forEach var="pizza" items="${listPizzas}">
-
-			<div class="row navbar panel-body">
-				<form method="post" action="edit">
-					<input type="hidden" name="id" value="${pizza.id }" />
-					<div class="col-md-2">
-						<input class="panel" type="text" name="code" value="${pizza.code}"
-							readonly />
-					</div>
-					<div class="col-md-2">
-						<input class="panel" type="text" name="nom" value="${pizza.nom}"
-							readonly />
-					</div>
-					<div class="col-md-2">
-						<input class="panel" type="text" name="prix" value="${pizza.prix}"
-							readonly />
-					</div>
-					<div class="col-md-2">
-						<input class="panel" type="text" name="cat" value="${pizza.catP}"
-							readonly />
-					</div>
-					<div class="col-md-2">
-						<button class="btn btn-default width" type="submit">
-							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-						</button>
-					</div>
-				</form>
-				<form method="post" action="delete">
-					<input type="hidden" name="codePizza" value="${pizza.code}" />
-					<div class="col-md-2">
-						<button class="btn btn-default width" type="submit">
-							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-						</button>
-					</div>
-				</form>
-			</div>
-		</c:forEach>
+		<%@include file="../navbar.jsp" %>
+		
 		<div class="row">
-			<div class="col-md-2 pull-right">
-				<form method="post" action="add">
-					<button class="btn btn-default width" type="submit">
-						Ajouter Pizza</button>
-				</form>
-			</div>
+			<c:forEach var="pizza" items="${listPizzas}">
+				<div class="col-md-3">
+					<div class="thumbnail">
+						<img style="height: 100px;" src="../Pizzas/${pizza.image}" />
+						<div class="caption">
+							<form method="post" action="editer">
+							<input type="hidden" name="img" value="${pizza.image}" />
+								<h3>
+									<input
+										class="panel" type="text" name="nom" value="${pizza.nom}"
+										readonly />
+								</h3>
+								<p>
+									<input type="hidden" name="id" value="${pizza.id}" /> <input
+										class="panel" type="text" name="code" value="${pizza.code}"
+										readonly />
+								</p>
+								<p>
+									<input class="panel" type="text" name="prix"
+										value="${pizza.prix}" readonly />
+								</p>
+								<p>
+									<input class="panel" type="text" name="cat"
+										value="${pizza.catP}" readonly />
+								</p>
+								<button class="btn btn-default width" type="submit">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+								</button>
+							</form>
+							<form method="post" action="delete">
+								<input type="hidden" name="codePizza" value="${pizza.code}" />
+								<button class="btn btn-default width" type="submit">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
+
 	</div>
 </body>
+
 </html>

@@ -14,8 +14,8 @@ import fr.pizzeria.admin.metier.PizzaServiceEJB;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-@WebServlet("/pizzas/edit")
 @SuppressWarnings("serial")
+@WebServlet("/pizzas/editer")
 public class EditerPizzaController extends HttpServlet {
 	@Inject
 	PizzaServiceEJB service;
@@ -26,8 +26,9 @@ public class EditerPizzaController extends HttpServlet {
 		String code = req.getParameter("code");
 		String nom = req.getParameter("nom");
 		String prix = req.getParameter("prix");
+		String image = req.getParameter("img");
 		CategoriePizza catP = CategoriePizza.valueOf(req.getParameter("cat").toUpperCase().replaceAll(" ", "_"));
-		Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), catP);
+		Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), image, catP);
 		service.updatePizza(codePizza, pizza);
 		resp.sendRedirect("/astrid-pizzeria-admin-app-1/pizzas/list");
 	}
@@ -38,8 +39,9 @@ public class EditerPizzaController extends HttpServlet {
 		String code = request.getParameter("code");
 		String nom = request.getParameter("nom");
 		String prix = request.getParameter("prix");
+		String image = request.getParameter("img");
 		CategoriePizza catP = CategoriePizza.valueOf(request.getParameter("cat").toUpperCase().replaceAll(" ", "_"));
-		Pizza pizza = new Pizza(Integer.parseInt(id), code, nom, Double.parseDouble(prix), catP);
+		Pizza pizza = new Pizza(Integer.parseInt(id), code, nom, Double.parseDouble(prix), image, catP);
 		request.setAttribute("pizza", pizza);
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/view/pizzas/editerPizzas.jsp");

@@ -75,6 +75,7 @@ public class Pizza {
 	 * @see Pizza#setPrix(double)
 	 */
 	private double prix;
+	private String image;
 
 	/**
 	 * La catégorie de la Pizza. Type énuméré
@@ -125,11 +126,38 @@ public class Pizza {
 		this.catP = catP;
 	}
 
+	public Pizza(String code, String nom, double prix, String image, CategoriePizza catP) {
+		super();
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.image = image;
+		this.catP = catP;
+	}
+
+	public Pizza(Integer id, String code, String nom, double prix, String image, CategoriePizza catP) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.image = image;
+		this.catP = catP;
+	}
+
 	/**
 	 * Constructeur vide par défault
 	 */
 	public Pizza() {
 		super();
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getCatP() {

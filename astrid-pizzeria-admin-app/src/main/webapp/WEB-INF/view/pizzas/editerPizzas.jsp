@@ -18,10 +18,8 @@
 </head>
 <body>
 	<div class=”container”>
+	<%@include file="../navbar.jsp" %>
 		<div class="row navbar panel-body panel-primary">
-			<div class="col-md-2">
-				<h1>Id</h1>
-			</div>
 			<div class="col-md-2">
 				<h1>Code</h1>
 			</div>
@@ -35,27 +33,35 @@
 				<h1>Catégorie</h1>
 			</div>
 			<div class="col-md-2">
+				<h1>Image</h1>
+			</div>
+			<div class="col-md-2">
 				<h1>Modifier</h1>
 			</div>
 		</div>
 		<div class="row navbar  panel-body">
-			<form method="get" action="edit">
+			<form method="get" action="editer">
 				<input type="hidden" name="codePizza" value="${pizza.code}" readonly />
+				<input type="hidden" name="id" value="${pizza.id}" readonly />
 				<div class="col-md-2">
-					<input class="form-control width" type="text" name="id" value="${pizza.id}"
-						readonly />
+					<input class="form-control width" type="text" name="code"
+						value="${pizza.code}" />
 				</div>
 				<div class="col-md-2">
-					<input class="form-control width" type="text" name="code" value="${pizza.code}" />
+					<input class="form-control width" type="text" name="nom"
+						value="${pizza.nom}" />
 				</div>
 				<div class="col-md-2">
-					<input class="form-control width" type="text" name="nom" value="${pizza.nom}" />
+					<input class="form-control width" type="text" name="prix"
+						value="${pizza.prix}" />
 				</div>
 				<div class="col-md-2">
-					<input class="form-control width" type="text" name="prix" value="${pizza.prix}" />
+					<input class="form-control width" type="text" name="cat"
+						value="${pizza.catP}" />
 				</div>
 				<div class="col-md-2">
-					<input class="form-control width" type="text" name="cat" value="${pizza.catP}" />
+					<input id="img" name="img" type="file"
+						class="form-control input-md" value="${pizza.image}">
 				</div>
 				<div class="col-md-2">
 					<input class="btn btn-default width" type="submit" value="Valider" />
