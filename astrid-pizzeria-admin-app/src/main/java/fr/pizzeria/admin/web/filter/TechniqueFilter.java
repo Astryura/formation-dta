@@ -2,7 +2,6 @@ package fr.pizzeria.admin.web.filter;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -50,8 +49,7 @@ public class TechniqueFilter implements Filter {
 		}
 		config.getServletContext().log(info);
 		HttpSession session = ((HttpServletRequest) request).getSession();
-		@SuppressWarnings("unchecked")
-		List<String> log = (List<String>) session.getAttribute("log");
+		ArrayList<String> log = (ArrayList<String>) session.getAttribute("log");
 		if (log != null) {
 			log.add(info);
 		} else {
