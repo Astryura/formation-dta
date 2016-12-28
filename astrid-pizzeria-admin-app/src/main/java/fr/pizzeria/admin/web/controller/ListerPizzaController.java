@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.web.pizza;
+package fr.pizzeria.admin.web.controller;
 
 import java.io.IOException;
 import java.util.List;

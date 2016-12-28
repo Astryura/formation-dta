@@ -8,47 +8,51 @@
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Technique</title>
+<link rel="stylesheet" href="../otherCssJs/table.css">
 </head>
 <body>
 	<div class=”container”>
-	<%@include file="../navbar.jsp" %>
-		<c:forEach var="log" items="${info}">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-4">
-					<h4>${log}</h4>
-				</div>
+		<%@include file="../navbar.jsp"%>
+		<div id="wrapper">
+			<div id="head" class="row">
+				<div class="col-md-2">Liste des actions :</div>
+				<div class="col-md-1">Nombre de sessions ouvertes :</div>
+				<div class="col-md-3">Pizzas ajoutées :</div>
+				<div class="col-md-3">Pizzas modifiées :</div>
+				<div class="col-md-3">Pizzas Supprimées :</div>
 			</div>
-		</c:forEach>
-		<div class="row">
-			<div class="col-md-6 col-md-offset-4">
-				<h4>${nbSession}</h4>
+			<div class="row">
+				<div class="col-md-2">
+					<c:forEach var="log" items="${info}">
+						<p>${log}</p>
+					</c:forEach>
+				</div>
+				<div class="col-md-1">
+					<p>${nbSession}</p>
+				</div>
+				<div class="col-md-3">
+					<c:forEach var="listAdd" items="${listAdd}">
+						<h4>Date : ${listAdd.dateCreation}</h4>
+						<p>${listAdd.pizza.code},${listAdd.pizza.nom},${listAdd.pizza.prix},${listAdd.pizza.catP}</p>
+					</c:forEach>
+				</div>
+				<div class="col-md-3">
+					<c:forEach var="listUp" items="${listUp}">
+						<h4>Date : ${listUp.dateUpdate}</h4>
+						<p>old :
+							${listUp.pizzaModifier.code},${listUp.pizzaModifier.nom},${listUp.pizzaModifier.prix},${listUp.pizzaModifier.catP}</p>
+						<p>new :
+							${listUp.pizza.code},${listUp.pizza.nom},${listUp.pizza.prix},${listUp.pizza.catP}</p>
+					</c:forEach>
+				</div>
+				<div class="col-md-3">
+					<c:forEach var="listDel" items="${listDel}">
+						<h4>Date : ${listDel.dateDelete}</h4>
+						<p>${listDel.pizza.code},${listDel.pizza.nom},${listDel.pizza.prix},${listDel.pizza.catP}</p>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
-		<c:forEach var="listAdd" items="${listAdd}">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-4">
-					<h4>Pizza ajoutée le : ${listAdd.dateCreation}</h4>
-					<h4>${listAdd.pizza.code},${listAdd.pizza.nom},${listAdd.pizza.prix},${listAdd.pizza.catP}</h4>
-				</div>
-			</div>
-		</c:forEach>
-		<c:forEach var="listUp" items="${listUp}">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-4">
-					<h4>Pizza modifiée le : ${listUp.dateUpdate}</h4>
-					<h4>old : ${listUp.pizzaModifier.code},${listUp.pizzaModifier.nom},${listUp.pizzaModifier.prix},${listUp.pizzaModifier.catP}</h4>
-					<h4>new : ${listUp.pizza.code},${listUp.pizza.nom},${listUp.pizza.prix},${listUp.pizza.catP}</h4>
-				</div>
-			</div>
-		</c:forEach>
-		<c:forEach var="listDel" items="${listDel}">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-4">
-					<h4>Pizza Supprimée le : ${listDel.dateDelete}</h4>
-					<h4>${listDel.pizza.code},${listDel.pizza.nom},${listDel.pizza.prix},${listDel.pizza.catP}</h4>
-				</div>
-			</div>
-		</c:forEach>
 	</div>
 </body>
 </html>

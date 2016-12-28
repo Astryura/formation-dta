@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.web;
+package fr.pizzeria.admin.web.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,7 +27,7 @@ public class TechniqueController extends HttpServlet {
 		List<String> log = (List<String>) session.getAttribute("log");
 		Integer compteur = (Integer) session.getServletContext().getAttribute("compteur");
 		request.setAttribute("info", log);
-		request.setAttribute("nbSession", "Nombre de sessions ouvertes = " + compteur);
+		request.setAttribute("nbSession", compteur);
 		request.setAttribute("listAdd", service.getListAdd());
 		request.setAttribute("listUp", service.getListUp());
 		request.setAttribute("listDel", service.getListDel());
