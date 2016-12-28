@@ -23,6 +23,7 @@ public class TechniqueController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		@SuppressWarnings("unchecked")
 		List<String> log = (List<String>) session.getAttribute("log");
 		Integer compteur = (Integer) session.getServletContext().getAttribute("compteur");
 		request.setAttribute("info", log);

@@ -1,0 +1,18 @@
+body{
+	text-align:center;
+	color: #555;
+}
+#wrapper {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  padding: 15px;
+}
+#head{
+	background-color: #c9dff0;
+	padding:10px;
+	font-weight:bold;
+}
+.width {
+	width: 100%;
+}

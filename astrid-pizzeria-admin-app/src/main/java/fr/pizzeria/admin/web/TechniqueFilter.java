@@ -50,6 +50,7 @@ public class TechniqueFilter implements Filter {
 		}
 		config.getServletContext().log(info);
 		HttpSession session = ((HttpServletRequest) request).getSession();
+		@SuppressWarnings("unchecked")
 		List<String> log = (List<String>) session.getAttribute("log");
 		if (log != null) {
 			log.add(info);
