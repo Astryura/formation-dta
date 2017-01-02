@@ -48,6 +48,7 @@ public class PizzaServiceEJB {
 		p.setCode(pizza.getCode());
 		p.setNom(pizza.getNom());
 		p.setPrix(pizza.getPrix());
+		p.setImage(pizza.getImage());
 		p.setCatP(CategoriePizza.valueOf(pizza.getCatP().toUpperCase().replaceAll(" ", "_")));
 		pizzaUp.fire(new ModifierPizzaEvent(today, old, pizza));
 
