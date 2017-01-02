@@ -69,7 +69,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 			addPizzaSt.setString(1, pizza.getCode());
 			addPizzaSt.setString(2, pizza.getNom());
 			addPizzaSt.setDouble(3, pizza.getPrix());
-			addPizzaSt.setString(4, pizza.getCatP());
+			addPizzaSt.setString(4, pizza.getCatP().toString().toUpperCase().replaceAll(" ", "_"));
 			addPizzaSt.executeUpdate();
 			return Void.TYPE;
 		});
@@ -85,7 +85,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 			updatePizzaSt.setString(2, pizza.getCode());
 			updatePizzaSt.setString(3, pizza.getNom());
 			updatePizzaSt.setDouble(4, pizza.getPrix());
-			updatePizzaSt.setString(5, pizza.getCatP());
+			updatePizzaSt.setString(5, pizza.getCatP().toString().toUpperCase().replaceAll(" ", "_"));
 			updatePizzaSt.setString(6, codePizza);
 			updatePizzaSt.executeUpdate();
 			return Void.TYPE;
@@ -125,7 +125,7 @@ public class PizzaDaoJDBC implements PizzaDao {
 						addPizzaSt.setString(1, pizza.getCode());
 						addPizzaSt.setString(2, pizza.getNom());
 						addPizzaSt.setDouble(3, pizza.getPrix());
-						addPizzaSt.setString(4, pizza.getCatP());
+						addPizzaSt.setString(4, pizza.getCatP().toString().toUpperCase().replaceAll(" ", "_"));
 						addPizzaSt.executeUpdate();
 
 					}

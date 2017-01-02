@@ -4,6 +4,7 @@
 		<li><a href="add">Ajouter une Pizza</a></li>
 		<li><a href="addLivreur">Ajouter un livreur</a></li>
 		<li><a href="listCommande">Liste des commandes</a></li>
+		<li><a href="listClient">Liste des clients</a></li>
 		<li><a href="technique">Fiche technique</a></li>
 	</ul>
 </nav>

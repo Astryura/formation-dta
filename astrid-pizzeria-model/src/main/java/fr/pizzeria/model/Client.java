@@ -7,6 +7,8 @@ import javax.persistence.OneToMany;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * 
  * @author Astrid Hlavacek
@@ -18,6 +20,7 @@ public class Client extends Personne {
 	private String email;
 	private String motDePasse;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private Set<Commande> commandes;
 

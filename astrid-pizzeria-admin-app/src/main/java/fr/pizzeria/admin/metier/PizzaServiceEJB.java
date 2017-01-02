@@ -15,7 +15,6 @@ import javax.persistence.TypedQuery;
 import fr.pizzeria.admin.event.CreerPizzaEvent;
 import fr.pizzeria.admin.event.ModifierPizzaEvent;
 import fr.pizzeria.admin.event.SuppressionPizzaEvent;
-import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 @Stateless
@@ -43,13 +42,12 @@ public class PizzaServiceEJB {
 		TypedQuery<Pizza> query = entitymanager.createQuery("SELECT p FROM Pizza p WHERE p.code = :code", Pizza.class);
 		query.setParameter("code", codePizza);
 		Pizza p = query.getSingleResult();
-		Pizza old = new Pizza(p.getCode(), p.getNom(), p.getPrix(),
-				CategoriePizza.valueOf(p.getCatP().toUpperCase().replaceAll(" ", "_")));
+		Pizza old = new Pizza(p.getCode(), p.getNom(), p.getPrix(), p.getCatP());
 		p.setCode(pizza.getCode());
 		p.setNom(pizza.getNom());
 		p.setPrix(pizza.getPrix());
 		p.setImage(pizza.getImage());
-		p.setCatP(CategoriePizza.valueOf(pizza.getCatP().toUpperCase().replaceAll(" ", "_")));
+		p.setCatP(pizza.getCatP());
 		pizzaUp.fire(new ModifierPizzaEvent(today, old, pizza));
 
 	}

@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.dao.other.JPADao;
-import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -70,7 +69,7 @@ public class PizzaDaoJPA implements PizzaDao {
 			p.setCode(pizza.getCode());
 			p.setNom(pizza.getNom());
 			p.setPrix(pizza.getPrix());
-			p.setCatP(CategoriePizza.valueOf(pizza.getCatP().toUpperCase().replaceAll(" ", "_")));
+			p.setCatP(pizza.getCatP());
 			entitymanager.getTransaction().commit();
 			return Void.TYPE;
 		});

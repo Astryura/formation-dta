@@ -75,6 +75,7 @@ public class Pizza {
 	 * @see Pizza#setPrix(double)
 	 */
 	private double prix;
+	@Column(nullable = true)
 	private String image;
 
 	/**
@@ -160,8 +161,8 @@ public class Pizza {
 		this.image = image;
 	}
 
-	public String getCatP() {
-		return catP.toString();
+	public CategoriePizza getCatP() {
+		return this.catP;
 	}
 
 	public void setCatP(CategoriePizza catP) {
