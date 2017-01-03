@@ -19,13 +19,11 @@ public class ClientServiceEJB {
 		return query.getResultList();
 	}
 
-	public void updateClient(String email, Client client) {
-		TypedQuery<Client> query = entitymanager.createQuery("SELECT c FROM Client c WHERE c.email = :email",
-				Client.class);
-		query.setParameter("email", email);
+	public void updateClient(Integer id, Client client) {
+		TypedQuery<Client> query = entitymanager.createQuery("SELECT c FROM Client c WHERE c.id = :id", Client.class);
+		query.setParameter("id", id);
 		Client c = query.getSingleResult();
 		c.setEmail(client.getEmail());
-		c.setMotDePasse(client.getMotDePasse());
 		c.setNom(client.getNom());
 		c.setPrenom(client.getPrenom());
 	}

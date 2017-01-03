@@ -11,34 +11,10 @@
 <script src="../otherCssJs/jquery.min.js" type="text/javascript"></script>
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../otherCssJs/table.css">
 <title>Tableau Clients</title>
-<script>
-	$(function() {
-		console.log("ready!");
-		$
-				.get(
-						"http://localhost:8080/astrid-pizzeria-admin-app-1/api/rest/clients",
-						function(data) {
-							//$( "#result" ).html( data );
-							console.log(data);
-							var str = "<table><tr><th>Id</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Mot de Passe</th></tr>";
-							$(jQuery.parseJSON(JSON.stringify(data))).each(
-									function() {
-										var id = this.id;
-										var nom = this.nom;
-										var prenom = this.prenom;
-										var email = this.email;
-										var motDePasse = this.motDePasse;
-										str += "<tr><td>" + id + "</td><td>"
-												+ nom + "</td><td>" + prenom
-												+ "</td><td>" + email
-												+ "</td><td>" + motDePasse
-												+ "</td></tr>";
-									});
-							str += "</table>";
-							$("#result").html(str);
-						});
-	});
+<script src="../otherCssJs/script.js">
+	
 </script>
 </head>
 
@@ -46,6 +22,63 @@
 	<div class=”container”>
 		<%@include file="../navbar.jsp"%>
 		<div id="result"></div>
+		<div class="form-horizontal">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Ajouter Client</legend>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="nomA">Nom</label>
+					<div class="col-md-4">
+						<input id="nomA" name="nomA" type="text" placeholder="Nom"
+							class="form-control input-md">
+
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="prenomA">Prénom</label>
+					<div class="col-md-4">
+						<input id="prenomA" name="prenomA" type="text"
+							placeholder="prénom" class="form-control input-md">
+
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="emailA">Email</label>
+					<div class="col-md-4">
+						<input id="emailA" name="emailA" type="text" placeholder="email"
+							class="form-control input-md">
+
+					</div>
+				</div>
+
+				<!-- Password input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="motDePasseA">Mot
+						de Passe</label>
+					<div class="col-md-4">
+						<input id="motDePasseA" name="motDePasseA" type="password"
+							placeholder="Mot de passe" class="form-control input-md">
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="add"></label>
+					<div class="col-md-4">
+						<button id="add" name="add" class="btn btn-primary">Ajouter</button>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+		<span></span>
 	</div>
 
 </body>

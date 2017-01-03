@@ -32,10 +32,10 @@ public class ClientRessource {
 		service.saveClient(client);
 	}
 
-	@Path("/{EMAIL}")
+	@Path("/{ID}")
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateClient(@PathParam("EMAIL") String email, Client client) {
-		service.updateClient(email, client);
+	public void updateClient(@PathParam("ID") Integer id, Client client) {
+		service.updateClient(id, client);
 	}
 }
