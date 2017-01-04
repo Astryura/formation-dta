@@ -55,6 +55,12 @@ public class IhmUtil {
 		this.choixFactory = choixFactory;
 	}
 
+	public IhmUtil(Scanner scanner, DaoFactory daoFactory) {
+
+		this.scanner = scanner;
+		this.daoFactory = daoFactory;
+	}
+
 	public String getChoixFactory() {
 		return choixFactory;
 	}

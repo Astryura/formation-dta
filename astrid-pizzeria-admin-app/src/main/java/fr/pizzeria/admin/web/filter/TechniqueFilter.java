@@ -43,9 +43,14 @@ public class TechniqueFilter implements Filter {
 		}
 		String info;
 		if (names != null) {
-			info = names[(names.length) - 1] + ": " + (after - before) + "ms";
+			String last = names[(names.length) - 1];
+			if (last.contains(".jsp")) {
+				info = last.replaceAll(".jsp", "") + ": " + (after - before) + "ms";
+			} else {
+				info = "";
+			}
 		} else {
-			info = "pas d'info";
+			info = "";
 		}
 		config.getServletContext().log(info);
 		HttpSession session = ((HttpServletRequest) request).getSession();

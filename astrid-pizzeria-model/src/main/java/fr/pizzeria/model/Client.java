@@ -84,6 +84,10 @@ public class Client extends Personne {
 		return motDePasse;
 	}
 
+	public void setMotDePasseWithoutChange(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = DigestUtils.md5Hex(motDePasse);
 	}

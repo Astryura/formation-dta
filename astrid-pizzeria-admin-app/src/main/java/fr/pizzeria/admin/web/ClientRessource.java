@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -37,5 +38,12 @@ public class ClientRessource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void updateClient(@PathParam("ID") Integer id, Client client) {
 		service.updateClient(id, client);
+	}
+
+	@Path("/{ID}")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void deleteClient(@PathParam("ID") Integer id) {
+		service.deleteClient(id);
 	}
 }

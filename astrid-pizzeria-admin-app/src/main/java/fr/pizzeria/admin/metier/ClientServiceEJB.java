@@ -24,11 +24,19 @@ public class ClientServiceEJB {
 		query.setParameter("id", id);
 		Client c = query.getSingleResult();
 		c.setEmail(client.getEmail());
+		c.setMotDePasseWithoutChange(client.getMotDePasse());
 		c.setNom(client.getNom());
 		c.setPrenom(client.getPrenom());
 	}
 
 	public void saveClient(Client client) {
 		entitymanager.persist(client);
+	}
+
+	public void deleteClient(Integer id) {
+		TypedQuery<Client> query = entitymanager.createQuery("SELECT c FROM Client c WHERE c.id = :id", Client.class);
+		query.setParameter("id", id);
+		Client c = query.getSingleResult();
+		entitymanager.remove(c);
 	}
 }
