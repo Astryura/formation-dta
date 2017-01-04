@@ -2,6 +2,8 @@ package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -66,8 +68,14 @@ public class IhmUtil {
 		this.daoFactory = daoFactory;
 	}
 
+	@PostConstruct
+	public void init() {
+		this.choixFactory = daoFactory.getClass().getName();
+	}
+
 	public IhmUtil() {
 		super();
+
 	}
 
 	public String getChoixFactory() {
