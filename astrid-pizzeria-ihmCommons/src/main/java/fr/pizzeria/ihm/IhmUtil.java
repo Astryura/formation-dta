@@ -2,6 +2,9 @@ package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.client.ClientDao;
 import fr.pizzeria.dao.commande.CommandeDao;
 import fr.pizzeria.dao.factory.DaoFactory;
@@ -13,6 +16,7 @@ import fr.pizzeria.dao.pizza.PizzaDao;
  * @author Astrid Hlavacek
  *
  */
+@Component
 public class IhmUtil {
 
 	/**
@@ -22,6 +26,7 @@ public class IhmUtil {
 	 * @see IhmUtil#getScanner
 	 * @see IhmUtil#setScanner
 	 */
+	@Autowired
 	private Scanner scanner;
 	/**
 	 * DaoFactory
@@ -30,6 +35,7 @@ public class IhmUtil {
 	 * @see IhmUtil#getPizzaDao
 	 * @see IhmUtil#setPizzaDao
 	 */
+	@Autowired
 	private DaoFactory daoFactory;
 	/**
 	 * choixFactory
@@ -48,17 +54,20 @@ public class IhmUtil {
 	 * @param daoFactory
 	 * @param choixFactory
 	 */
-	public IhmUtil(Scanner scanner, DaoFactory daoFactory, String choixFactory) {
 
+	public IhmUtil(Scanner scanner, DaoFactory daoFactory, String choixFactory) {
 		this.scanner = scanner;
 		this.daoFactory = daoFactory;
 		this.choixFactory = choixFactory;
 	}
 
 	public IhmUtil(Scanner scanner, DaoFactory daoFactory) {
-
 		this.scanner = scanner;
 		this.daoFactory = daoFactory;
+	}
+
+	public IhmUtil() {
+		super();
 	}
 
 	public String getChoixFactory() {
