@@ -20,6 +20,8 @@ public class MainMenu {
 	Map<Integer, Action> actions = new HashMap<>();
 	@Autowired
 	private IhmUtil ihmUtil;
+	@Autowired
+	ListPizza list;
 
 	/**
 	 * Constructeur
@@ -50,7 +52,7 @@ public class MainMenu {
 
 	@PostConstruct
 	public void init() {
-		actions.put(0, new ListPizza(ihmUtil));
+		actions.put(0, list);
 		actions.put(1, new AddPizza(ihmUtil));
 		actions.put(2, new UpdatePizza(ihmUtil));
 		actions.put(3, new DeletePizza(ihmUtil));
