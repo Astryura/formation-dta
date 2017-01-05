@@ -3,7 +3,6 @@ package fr.pizzeria.ihm;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.pizzeria.dao.other.JPADao;
 import fr.pizzeria.dao.pizza.PizzaDaoJPA;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
@@ -36,7 +35,7 @@ public class CommandePizza implements Action {
 	@Override
 	public void doAction() {
 		System.out.println("Liste des Pizzas :");
-		PizzaDaoJPA piz = new PizzaDaoJPA(new JPADao());
+		PizzaDaoJPA piz = new PizzaDaoJPA();
 		List<Pizza> list = piz.findAllPizzas();
 		piz.close();
 		list.forEach(p -> {
