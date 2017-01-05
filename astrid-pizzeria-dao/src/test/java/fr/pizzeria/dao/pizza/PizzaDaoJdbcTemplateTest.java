@@ -31,7 +31,6 @@ public class PizzaDaoJdbcTemplateTest {
 		if (pizza.isPresent()) {
 			pizza.get().equals(p);
 		}
-		pizzaDao.deletePizza(p.getCode());
 	}
 
 	@Test
@@ -44,8 +43,7 @@ public class PizzaDaoJdbcTemplateTest {
 		if (pizza.isPresent()) {
 			pizza.get().equals(p);
 		}
-		Pizza p2 = new Pizza(7, "IND", "L'indienne", 14.50, "Pizza_alademande.jpg", CategoriePizza.VIANDE);
-		pizzaDao.updatePizza(code, p2);
+
 	}
 
 	@Test

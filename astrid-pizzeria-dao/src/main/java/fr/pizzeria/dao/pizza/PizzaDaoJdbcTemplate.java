@@ -24,7 +24,9 @@ public class PizzaDaoJdbcTemplate implements PizzaDao {
 	@Override
 	public List<Pizza> findAllPizzas() {
 		String sql = "SELECT * FROM PIZZA";
-		return this.jdbcTemplate.query(sql, new PizzaMapper());
+		List<Pizza> list = this.jdbcTemplate.query(sql, new PizzaMapper());
+		Pizza.setNbPizzas(list.size());
+		return list;
 	}
 
 	@Override
