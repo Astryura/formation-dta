@@ -61,7 +61,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<dao.impl>fr.pizzeria.dao.factory.JPADaoFactory</dao.impl>
+				<dao.impl>fr.pizzeria.dao.factory.JdbcTemplateDaoFactory</dao.impl>
 			</properties>
 		</profile>
 		<profile>
@@ -117,6 +117,11 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 </project>

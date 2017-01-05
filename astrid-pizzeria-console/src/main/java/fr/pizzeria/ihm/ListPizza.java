@@ -48,9 +48,8 @@ public class ListPizza implements Action {
 		System.out.println("1. Lister les pizzas");
 	}
 
-	public String getDescription() {
+	public String getDescribe() {
 		return "1. Lister les pizzas";
-
 	}
 
 }

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 /**
  * <b>Pizza est la classe représentant une Pizza.</b>
  * <p>
@@ -207,6 +209,21 @@ public class Pizza {
 
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		if (obj.getClass() != getClass()) {
+			return false;
+		}
+		Pizza p = (Pizza) obj;
+		return new EqualsBuilder().append(code, p.code).append(nom, p.nom).append(prix, p.prix).append(catP, p.catP)
+				.isEquals();
 	}
 
 }
