@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.pizzeria.console.PizzeriaAppSpringConfigTest;
+import fr.pizzeria.console.PizzeriaAppSpringConfig;
 import junit.framework.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = PizzeriaAppSpringConfigTest.class)
+@ContextConfiguration(classes = PizzeriaAppSpringConfig.class)
 public class ListPizzaTest {
 
 	@Autowired
