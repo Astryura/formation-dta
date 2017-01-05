@@ -7,14 +7,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import fr.pizzeria.dao.factory.DaoFactory;
-import fr.pizzeria.dao.factory.JPADaoFactory;
+import fr.pizzeria.dao.factory.TableauDaoFactory;
 
 @Configuration
 @ComponentScan("fr.pizzeria.ihm")
 public class PizzeriaAppSpringConfigTest {
 	@Bean
 	public DaoFactory getDao() {
-		return new JPADaoFactory();
+		return new TableauDaoFactory();
 	}
 
 	@Bean
