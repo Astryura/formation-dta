@@ -5,6 +5,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -14,6 +17,8 @@ import fr.pizzeria.model.Pizza;
  * @author Astrid Hlavacek
  *
  */
+@Component
+@Qualifier("Tableau")
 public class PizzaDaoTableau implements PizzaDao {
 
 	List<Pizza> listPizzas = new ArrayList<>();

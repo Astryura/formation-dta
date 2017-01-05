@@ -19,16 +19,7 @@ public class ClientDaoJPA implements ClientDao {
 	 * @see JPADao
 	 * @see JPADao#JPADao()
 	 */
-	private JPADao jpaDao;
-
-	/**
-	 * Constructeur
-	 * 
-	 * @param jpaDao
-	 */
-	public ClientDaoJPA(JPADao jpaDao) {
-		this.jpaDao = jpaDao;
-	}
+	private JPADao jpaDao = new JPADao();
 
 	@Override
 	public void saveNewClient(Client client) {

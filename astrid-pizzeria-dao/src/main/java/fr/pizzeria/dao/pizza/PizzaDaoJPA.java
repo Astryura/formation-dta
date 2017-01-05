@@ -7,6 +7,9 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.dao.other.JPADao;
 import fr.pizzeria.model.Pizza;
@@ -17,22 +20,15 @@ import fr.pizzeria.model.Pizza;
  * @author Astrid Hlavacek
  *
  */
+@Component
+@Qualifier("JPA")
 public class PizzaDaoJPA implements PizzaDao {
 
 	/**
 	 * @see JPADao
 	 * @see JPADao#JPADao()
 	 */
-	private JPADao jpaDao;
-
-	/**
-	 * Constructeur
-	 * 
-	 * @param jpaDao
-	 */
-	public PizzaDaoJPA(JPADao jpaDao) {
-		this.jpaDao = jpaDao;
-	}
+	private JPADao jpaDao = new JPADao();
 
 	@Override
 	public void close() {

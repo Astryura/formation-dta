@@ -9,16 +9,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
-@ComponentScan("fr.pizzeria.dao")
-public class PizzaDaoConfig {
-	/*
-	 * @Bean public DataSource datasource() { DriverManagerDataSource dataSource
-	 * = new DriverManagerDataSource();
-	 * dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-	 * dataSource.setUrl("jdbc:mysql://localhost:3306/pizzeriabd?useSSL=false");
-	 * dataSource.setUsername("root"); dataSource.setPassword(""); return
-	 * dataSource; }
-	 */
+@ComponentScan("fr.pizzeria.dao.pizza.spring")
+public class PizzaDaoConfigTest {
 
 	@Bean
 	public DataSource datasource() {
@@ -26,5 +18,4 @@ public class PizzaDaoConfig {
 		return builder.setType(EmbeddedDatabaseType.H2).addScript("schema.sql").build();
 
 	}
-
 }

@@ -1,17 +1,20 @@
-package fr.pizzeria.dao.pizza;
+package fr.pizzeria.dao.pizza.spring;
 
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import fr.pizzeria.dao.pizza.PizzaDao;
 import fr.pizzeria.mapper.PizzaMapper;
 import fr.pizzeria.model.Pizza;
 
 @Component
+@Qualifier("JdbcTemplate")
 public class PizzaDaoJdbcTemplate implements PizzaDao {
 
 	private JdbcTemplate jdbcTemplate;

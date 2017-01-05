@@ -1,4 +1,4 @@
-package fr.pizzeria.dao.pizza;
+package fr.pizzeria.dao.pizza.spring;
 
 import static org.junit.Assert.fail;
 
@@ -8,18 +8,21 @@ import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.pizzeria.dao.config.PizzaDaoConfig;
+import fr.pizzeria.dao.config.PizzaDaoConfigTest;
+import fr.pizzeria.dao.pizza.PizzaDao;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = PizzaDaoConfig.class)
+@ContextConfiguration(classes = PizzaDaoConfigTest.class)
 public class PizzaDaoJdbcTemplateTest {
 
 	@Autowired
+	@Qualifier("JdbcTemplate")
 	PizzaDao pizzaDao;
 
 	@Test

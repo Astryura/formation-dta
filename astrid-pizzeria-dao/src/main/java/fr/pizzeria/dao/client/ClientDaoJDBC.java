@@ -19,16 +19,7 @@ public class ClientDaoJDBC implements ClientDao {
 	 * @see JDBCDao
 	 * @see JDBCDao#JDBCDao()
 	 */
-	private JDBCDao jdbcDao;
-
-	/**
-	 * Constructeur
-	 * 
-	 * @param jdbcDao
-	 */
-	public ClientDaoJDBC(JDBCDao jdbcDao) {
-		this.jdbcDao = jdbcDao;
-	}
+	private JDBCDao jdbcDao = new JDBCDao();
 
 	@Override
 	public void saveNewClient(Client client) {

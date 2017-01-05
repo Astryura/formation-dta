@@ -18,16 +18,7 @@ public class LivreurDaoJPA implements LivreurDao {
 	 * @see JPADao
 	 * @see JPADao#JPADao()
 	 */
-	private JPADao jpaDao;
-
-	/**
-	 * Constructeur
-	 * 
-	 * @param jpaDao
-	 */
-	public LivreurDaoJPA(JPADao jpaDao) {
-		this.jpaDao = jpaDao;
-	}
+	private JPADao jpaDao = new JPADao();
 
 	@Override
 	public void addLivreur(Livreur livreur) {

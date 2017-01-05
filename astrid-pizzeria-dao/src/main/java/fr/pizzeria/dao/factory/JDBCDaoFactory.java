@@ -1,12 +1,13 @@
 package fr.pizzeria.dao.factory;
 
-import java.sql.SQLException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.client.ClientDaoJDBC;
 import fr.pizzeria.dao.commande.CommandeDaoJPA;
 import fr.pizzeria.dao.livreur.LivreurDaoJDBC;
-import fr.pizzeria.dao.other.JDBCDao;
-import fr.pizzeria.dao.other.JPADao;
+import fr.pizzeria.dao.pizza.PizzaDao;
 import fr.pizzeria.dao.pizza.PizzaDaoJDBC;
 
 /**
@@ -15,6 +16,8 @@ import fr.pizzeria.dao.pizza.PizzaDaoJDBC;
  * @author Astrid Hlavacek
  *
  */
+@Component
+@Qualifier("JDBCFactory")
 public class JDBCDaoFactory extends DaoFactory {
 
 	/**
@@ -22,9 +25,9 @@ public class JDBCDaoFactory extends DaoFactory {
 	 * 
 	 * @see PizzaDaoJDBC
 	 */
-	public JDBCDaoFactory() throws SQLException {
-		super(new PizzaDaoJDBC(new JDBCDao()), new CommandeDaoJPA(new JPADao()), new LivreurDaoJDBC(new JDBCDao()),
-				new ClientDaoJDBC(new JDBCDao()));
+	@Autowired
+	public JDBCDaoFactory(@Qualifier("JDBC") PizzaDao pizzadao) {
+		super(pizzadao, new CommandeDaoJPA(), new LivreurDaoJDBC(), new ClientDaoJDBC());
 	}
 
 }

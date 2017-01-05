@@ -1,6 +1,7 @@
 package fr.pizzeria.console;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -35,11 +36,12 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
 				PizzeriaAppSpringConfig.class)) {
 			// try (ClassPathXmlApplicationContext context = new
 			// ClassPathXmlApplicationContext("application-config.xml")) {
+			Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+			Logger.getLogger("org.springframework").setLevel(Level.SEVERE);
 			MainMenu mainMenu = context.getBean(MainMenu.class);
 			mainMenu.displayMenu();
 		}

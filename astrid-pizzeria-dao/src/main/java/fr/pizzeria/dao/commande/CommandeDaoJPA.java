@@ -31,16 +31,7 @@ public class CommandeDaoJPA implements CommandeDao {
 	 * @see JPADao
 	 * @see JPADao#JPADao()
 	 */
-	private JPADao jpaDao;
-
-	/**
-	 * Constructeur
-	 * 
-	 * @param jpaDao
-	 */
-	public CommandeDaoJPA(JPADao jpaDao) {
-		this.jpaDao = jpaDao;
-	}
+	private JPADao jpaDao = new JPADao();
 
 	@Override
 	public void newCommande(Integer id, List<String> codes) {

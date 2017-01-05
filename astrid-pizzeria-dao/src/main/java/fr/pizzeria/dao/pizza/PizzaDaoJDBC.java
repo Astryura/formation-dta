@@ -11,6 +11,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import org.apache.commons.collections4.ListUtils;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.dao.other.JDBCDao;
@@ -23,22 +25,15 @@ import fr.pizzeria.model.Pizza;
  * @author Astrid Hlavacek
  *
  */
+@Component
+@Qualifier("JDBC")
 public class PizzaDaoJDBC implements PizzaDao {
 
 	/**
 	 * @see JDBCDao
 	 * @see JDBCDao#JDBCDao()
 	 */
-	private JDBCDao jdbcDao;
-
-	/**
-	 * Constructeur
-	 * 
-	 * @param jdbcDao
-	 */
-	public PizzaDaoJDBC(JDBCDao jdbcDao) {
-		this.jdbcDao = jdbcDao;
-	}
+	private JDBCDao jdbcDao = new JDBCDao();
 
 	@Override
 	public List<Pizza> findAllPizzas() {

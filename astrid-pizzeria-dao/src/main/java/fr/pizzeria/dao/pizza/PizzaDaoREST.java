@@ -9,9 +9,13 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.client.ClientConfig;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import fr.pizzeria.model.Pizza;
 
+@Component
+@Qualifier("REST")
 public class PizzaDaoREST implements PizzaDao {
 	private Client client = ClientBuilder.newClient(new ClientConfig());
 	private String targetUrl = "http://localhost:8080/astrid-pizzeria-admin-app-1/api/rest/pizzas";

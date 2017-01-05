@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.factory.DaoFactory;
@@ -16,6 +17,7 @@ import fr.pizzeria.model.Pizza;
 @Component
 public class ListPizza implements Action {
 	@Autowired
+	@Qualifier("JdbcTemplateFactory")
 	private DaoFactory daoFactory;
 	private IhmUtil ihmUtil;
 

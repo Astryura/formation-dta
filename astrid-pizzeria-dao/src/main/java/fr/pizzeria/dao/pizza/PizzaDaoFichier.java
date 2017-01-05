@@ -17,6 +17,9 @@ import java.util.Optional;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.exception.PizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -27,6 +30,8 @@ import fr.pizzeria.model.Pizza;
  * @author Astrid Hlavacek
  *
  */
+@Component
+@Qualifier("Fichier")
 public class PizzaDaoFichier implements PizzaDao {
 
 	private List<Pizza> listPizzas = new ArrayList<>();

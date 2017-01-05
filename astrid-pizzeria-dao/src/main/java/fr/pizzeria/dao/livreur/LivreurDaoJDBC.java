@@ -17,17 +17,7 @@ public class LivreurDaoJDBC implements LivreurDao {
 	/**
 	 * @see JDBCDao#JDBCDao()
 	 */
-
-	private JDBCDao jdbcDao;
-
-	/**
-	 * Constructeur
-	 * 
-	 * @param jdbcDao
-	 */
-	public LivreurDaoJDBC(JDBCDao jdbcDao) {
-		this.jdbcDao = jdbcDao;
-	}
+	private JDBCDao jdbcDao = new JDBCDao();
 
 	@Override
 	public void addLivreur(Livreur livreur) {

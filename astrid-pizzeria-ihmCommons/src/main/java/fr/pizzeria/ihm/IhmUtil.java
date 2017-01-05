@@ -5,6 +5,7 @@ import java.util.Scanner;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.client.ClientDao;
@@ -38,6 +39,7 @@ public class IhmUtil {
 	 * @see IhmUtil#setPizzaDao
 	 */
 	@Autowired
+	@Qualifier("JdbcTemplateFactory")
 	private DaoFactory daoFactory;
 	/**
 	 * choixFactory
