@@ -48,7 +48,7 @@
     <profile>
       <id>dev</id>
       <properties>
-        <dao.impl>fr.pizzeria.dao.factory.JPADaoFactory</dao.impl>
+        <dao.impl>fr.pizzeria.dao.factory.JdbcTemplateDaoFactory</dao.impl>
       </properties>
     </profile>
     <profile>

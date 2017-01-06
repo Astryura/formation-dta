@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan({ "fr.pizzeria.ihm", "fr.pizzeria.dao"})
+@ComponentScan({ "fr.pizzeria.ihm", "fr.pizzeria.dao" })
 public class PizzeriaAppSpringConfig {
 
 	@Bean

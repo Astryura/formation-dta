@@ -1,4 +1,4 @@
-package fr.pizzeria.mapper;
+package fr.pizzeria.dao.repo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

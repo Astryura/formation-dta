@@ -3,10 +3,8 @@ package fr.pizzeria.ihm;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import fr.pizzeria.dao.factory.DaoFactory;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -16,9 +14,12 @@ import fr.pizzeria.model.Pizza;
  */
 @Component
 public class ListPizza implements Action {
+	/*
+	 * @Autowired
+	 * 
+	 * @Qualifier("JdbcTemplateFactory") private DaoFactory daoFactory;
+	 */
 	@Autowired
-	@Qualifier("JdbcTemplateFactory")
-	private DaoFactory daoFactory;
 	private IhmUtil ihmUtil;
 
 	/**
@@ -37,7 +38,7 @@ public class ListPizza implements Action {
 
 	@Override
 	public void doAction() {
-		List<Pizza> list = this.daoFactory.getPizzaDao().findAllPizzas();
+		List<Pizza> list = this.ihmUtil.getPizzaDao().findAllPizzas();
 		list.forEach(p -> {
 			System.out
 					.println(p.getId() + " " + p.getCode() + " " + p.getNom() + " " + p.getPrix() + " " + p.getCatP());

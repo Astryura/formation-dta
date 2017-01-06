@@ -27,7 +27,7 @@ public class PizzaDaoJdbcTemplateTest {
 
 	@Test
 	public void saveNewPizzaTest() {
-		Pizza p = new Pizza("HAR", "Harissa", 14.56, CategoriePizza.VIANDE);
+		Pizza p = new Pizza("HOR", "Harissa", 14.56, CategoriePizza.VIANDE);
 		pizzaDao.saveNewPizza(p);
 		List<Pizza> list = pizzaDao.findAllPizzas();
 		Optional<Pizza> pizza = list.stream().filter(piz -> piz.getCode().equals(p.getCode())).findFirst();
@@ -38,8 +38,8 @@ public class PizzaDaoJdbcTemplateTest {
 
 	@Test
 	public void updatePizzaTest() {
-		Pizza p = new Pizza(7, "IND", "Indienne", 13.2, CategoriePizza.POISSON);
-		String code = "IND";
+		Pizza p = new Pizza(7, "PIN", "Indienne", 13.2, CategoriePizza.POISSON);
+		String code = "PIN";
 		pizzaDao.updatePizza(code, p);
 		List<Pizza> list = pizzaDao.findAllPizzas();
 		Optional<Pizza> pizza = list.stream().filter(piz -> piz.getCode().equals(p.getCode())).findFirst();
@@ -51,9 +51,9 @@ public class PizzaDaoJdbcTemplateTest {
 
 	@Test
 	public void deletePizzaTest() {
-		Pizza p = new Pizza("PAR", "Party", 14.56, CategoriePizza.VIANDE);
+		Pizza p = new Pizza("PPA", "Party", 14.56, CategoriePizza.VIANDE);
 		pizzaDao.saveNewPizza(p);
-		String code = "PAR";
+		String code = "PPA";
 		pizzaDao.deletePizza(code);
 		List<Pizza> list = pizzaDao.findAllPizzas();
 		Optional<Pizza> pizza = list.stream().filter(piz -> piz.getCode().equals(code)).findFirst();

@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.pizza.PizzaDao;
-import fr.pizzeria.mapper.PizzaMapper;
+import fr.pizzeria.dao.repo.PizzaMapper;
 import fr.pizzeria.model.Pizza;
 
 @Component

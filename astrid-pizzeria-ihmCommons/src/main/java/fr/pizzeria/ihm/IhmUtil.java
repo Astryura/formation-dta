@@ -39,7 +39,7 @@ public class IhmUtil {
 	 * @see IhmUtil#setPizzaDao
 	 */
 	@Autowired
-	@Qualifier("JdbcTemplateFactory")
+	@Qualifier("JPARepoFactory")
 	private DaoFactory daoFactory;
 	/**
 	 * choixFactory
