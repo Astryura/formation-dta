@@ -1,0 +1,13 @@
+fr\pizzeria\console\PizzeriaAdminConsoleApp.class
+fr\pizzeria\console\PizzeriaAppSpringConfig.class
+fr\pizzeria\ihm\AddLivreur.class
+fr\pizzeria\ihm\UpdatePizza.class
+fr\pizzeria\ihm\ImportePizza.class
+fr\pizzeria\ihm\ExpeditionCommande.class
+fr\pizzeria\ihm\ListPizza.class
+fr\pizzeria\ihm\AddPizza.class
+fr\pizzeria\ihm\DeletePizza.class
+fr\pizzeria\ihm\MainMenu.class
+fr\pizzeria\ihm\ListPizzaCat.class
+fr\pizzeria\ihm\ListCommande.class
+fr\pizzeria\ihm\ListPizzaPrix.class

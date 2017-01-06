@@ -1,0 +1,5 @@
+fr\pizzeria\dao\pizza\spring\PizzaDaoJpaSpringTest.class
+fr\pizzeria\dao\pizza\PizzaDaoTableauTest.class
+fr\pizzeria\dao\pizza\spring\PizzaDaoJpaRepoTest.class
+fr\pizzeria\dao\config\PizzaDaoConfigTest.class
+fr\pizzeria\dao\pizza\spring\PizzaDaoJdbcTemplateTest.class

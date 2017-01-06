@@ -1,0 +1,6 @@
+fr\pizzeria\ihm\Subscribe.class
+fr\pizzeria\console\PizzeriaClientConsoleApp.class
+fr\pizzeria\ihm\Connexion.class
+fr\pizzeria\ihm\ListCommande.class
+fr\pizzeria\ihm\MainMenuClient.class
+fr\pizzeria\ihm\CommandePizza.class
