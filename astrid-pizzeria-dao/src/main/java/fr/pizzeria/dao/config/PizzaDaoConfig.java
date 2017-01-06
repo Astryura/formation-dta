@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan("fr.pizzeria.dao")
 @EnableTransactionManagement
 @EnableJpaRepositories("fr.pizzeria.dao.repo")
+@EnableAspectJAutoProxy
 public class PizzaDaoConfig {
 	/*
 	 * @Bean public DataSource datasource() { DriverManagerDataSource dataSource
