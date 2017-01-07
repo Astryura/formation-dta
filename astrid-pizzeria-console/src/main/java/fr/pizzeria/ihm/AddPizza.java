@@ -24,9 +24,7 @@ public class AddPizza implements Action {
 
 	@Override
 	public void doAction() {
-		System.out.println("Cr�ez votre Pizza. \nCode de la Pizza");
-		String code = ihmUtil.getScanner().next();
-		System.out.println("Nom de la Pizza");
+		System.out.println("Cr�ez votre Pizza. \nNom de la Pizza");
 		String nom = ihmUtil.getScanner().next();
 		System.out.println("Prix de la Pizza");
 		String prix = ihmUtil.getScanner().next();
@@ -34,7 +32,7 @@ public class AddPizza implements Action {
 		String cat = ihmUtil.getScanner().next();
 		CategoriePizza catP = CategoriePizza.valueOf(cat.toUpperCase());
 		if (catP != null) {
-			Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), catP);
+			Pizza pizza = new Pizza("", nom, Double.parseDouble(prix), catP);
 			ihmUtil.getPizzaDao().saveNewPizza(pizza);
 		} else {
 			System.out.println("Rentrez une cat�gorie valide");

@@ -11,10 +11,10 @@ import fr.pizzeria.model.Pizza;
 @Component
 public class PizzaAspect {
 
-	@Before("execution(* fr.pizzeria.dao.pizza.PizzaDao.*(..))")
+	@Before("execution(* fr.pizzeria.dao.pizza.PizzaDao.saveNewPizza(..))")
 	public void codeNewPizza(JoinPoint jp) {
 		Pizza pizza = (Pizza) jp.getArgs()[0];
-		String code = pizza.getNom().substring(0, 2).toUpperCase();
+		String code = pizza.getNom().substring(0, 3).toUpperCase();
 		pizza.setCode(code);
 	}
 }
