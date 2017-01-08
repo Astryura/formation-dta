@@ -43,12 +43,14 @@ public class MainMenu {
 			actions.put(7, new ListCommande(ihmUtil, 8));
 			actions.put(8, new AddLivreur(ihmUtil, 9));
 			actions.put(9, new ExpeditionCommande(ihmUtil, 10));
+			actions.put(10, new ListLogPerformance(ihmUtil, 11));
 		} else {
 			actions.put(6, new ListCommande(ihmUtil, 7));
 			actions.put(7, new AddLivreur(ihmUtil, 8));
 			actions.put(8, new ExpeditionCommande(ihmUtil, 9));
+			actions.put(9, new ListLogPerformance(ihmUtil, 10));
 		}
-		actions.put(10, new ExitMenu(ihmUtil));
+		actions.put(11, new ExitMenu(ihmUtil));
 		this.ihmUtil = ihmUtil;
 	}
 
@@ -68,12 +70,14 @@ public class MainMenu {
 			actions.put(7, new ListCommande(ihmUtil, 8));
 			actions.put(8, new AddLivreur(ihmUtil, 9));
 			actions.put(9, new ExpeditionCommande(ihmUtil, 10));
+			actions.put(10, new ListLogPerformance(ihmUtil, 11));
 		} else {
 			actions.put(6, new ListCommande(ihmUtil, 7));
 			actions.put(7, new AddLivreur(ihmUtil, 8));
 			actions.put(8, new ExpeditionCommande(ihmUtil, 9));
+			actions.put(9, new ListLogPerformance(ihmUtil, 10));
 		}
-		actions.put(10, new ExitMenu(ihmUtil));
+		actions.put(11, new ExitMenu(ihmUtil));
 	}
 
 	public MainMenu() {
@@ -97,11 +101,11 @@ public class MainMenu {
 	private void parseAndExec() {
 		String input = ihmUtil.getScanner().next();
 
-		if (Integer.parseInt(input) <= 10) {
+		if (Integer.parseInt(input) <= 11) {
 			actions.get((Integer.parseInt(input)) - 1).doAction();
 			displayMenu();
 		} else if (Integer.parseInt(input) == 99) {
-			actions.get(10).doAction();
+			actions.get(11).doAction();
 		}
 	}
 }

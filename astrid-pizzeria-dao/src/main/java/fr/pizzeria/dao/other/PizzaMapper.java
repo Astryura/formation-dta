@@ -1,4 +1,4 @@
-package fr.pizzeria.dao.repo;
+package fr.pizzeria.dao.other;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

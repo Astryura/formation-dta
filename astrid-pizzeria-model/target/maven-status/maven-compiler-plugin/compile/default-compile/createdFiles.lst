@@ -1,6 +1,7 @@
 fr\pizzeria\model\Commande.class
+fr\pizzeria\model\Performance.class
+fr\pizzeria\model\Personne.class
 fr\pizzeria\model\Client.class
 fr\pizzeria\model\Pizza.class
 fr\pizzeria\model\CategoriePizza.class
 fr\pizzeria\model\Livreur.class
-fr\pizzeria\model\Personne.class
