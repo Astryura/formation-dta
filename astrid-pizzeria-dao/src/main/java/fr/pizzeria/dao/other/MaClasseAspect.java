@@ -39,7 +39,7 @@ public class MaClasseAspect {
 		String today = dateFormat.format(date);
 		long before = System.currentTimeMillis();
 		final Object[] args = pjp.getArgs();
-		final StringBuffer sb = new StringBuffer();
+		StringBuffer sb = new StringBuffer();
 		sb.append(pjp.getSignature().getName());
 		if (args.length != 0) {
 			sb.append(" avec les parametres : (");

@@ -3,9 +3,6 @@ package fr.pizzeria.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,19 +26,4 @@ public class ListIngredientController {
 		return mav;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView addIngredient(@ModelAttribute("ingredient") Ingredient ingredient) {
-		ModelAndView mav = new ModelAndView();
-		ingredientRepo.save(ingredient);
-		mav.addObject("ingredient", ingredient);
-		mav.setViewName("listIngredient");
-		return mav;
-
-	}
-
-	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-	public ModelAndView updateIngredient(@PathVariable Integer id, @RequestBody Ingredient ingredient) {
-		return null;
-
-	}
 }
