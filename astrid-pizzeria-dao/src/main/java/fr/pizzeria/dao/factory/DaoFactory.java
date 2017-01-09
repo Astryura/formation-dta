@@ -1,9 +1,9 @@
 package fr.pizzeria.dao.factory;
 
-import fr.pizzeria.dao.client.ClientDao;
-import fr.pizzeria.dao.commande.CommandeDao;
-import fr.pizzeria.dao.livreur.LivreurDao;
-import fr.pizzeria.dao.pizza.PizzaDao;
+import fr.pizzeria.dao.service.client.ClientDao;
+import fr.pizzeria.dao.service.commande.CommandeDao;
+import fr.pizzeria.dao.service.livreur.LivreurDao;
+import fr.pizzeria.dao.service.pizza.PizzaDao;
 
 /**
  * <h1>DaoFactory</h1> <b>Classe Abstraite sur le model du design pattern

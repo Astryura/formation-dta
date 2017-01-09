@@ -3,7 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.pizzeria.dao.pizza.PizzaDaoJPA;
+import fr.pizzeria.dao.service.pizza.PizzaDaoJPA;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
 

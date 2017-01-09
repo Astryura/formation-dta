@@ -12,7 +12,7 @@ import javax.inject.Named;
 import fr.pizzeria.admin.event.CreerPizzaEvent;
 import fr.pizzeria.admin.event.ModifierPizzaEvent;
 import fr.pizzeria.admin.event.SuppressionPizzaEvent;
-import fr.pizzeria.dao.pizza.PizzaDao;
+import fr.pizzeria.dao.service.pizza.PizzaDao;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaService {

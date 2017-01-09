@@ -3,9 +3,9 @@ package fr.pizzeria.admin.metier;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 
-import fr.pizzeria.dao.pizza.PizzaDao;
-import fr.pizzeria.dao.pizza.PizzaDaoJDBC;
-import fr.pizzeria.dao.pizza.PizzaDaoJPA;
+import fr.pizzeria.dao.service.pizza.PizzaDao;
+import fr.pizzeria.dao.service.pizza.PizzaDaoJDBC;
+import fr.pizzeria.dao.service.pizza.PizzaDaoJPA;
 
 public class DaoProducer {
 

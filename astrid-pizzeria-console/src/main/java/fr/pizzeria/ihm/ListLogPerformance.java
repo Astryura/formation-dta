@@ -22,17 +22,16 @@ public class ListLogPerformance implements Action {
 	@Override
 	public void doAction() {
 		System.out.println("Liste des Logs :");
-		/*
-		 * perfRepo.findAll().forEach(perf -> { System.out.println( perf.getId()
-		 * + " " + perf.getService() + " " + perf.getDate() + " " +
-		 * perf.getTempsExecution()); });
-		 */
+		ihmUtil.getPerfoRepo().findAll().forEach(perf -> {
+			System.out.println("Service : " + perf.getService() + "   Date : " + perf.getDate()
+					+ "    Temps d'execution : " + perf.getTempsExecution());
+		});
 
 	}
 
 	@Override
 	public void describeAction() {
-		System.out.println(num + ". Log");
+		System.out.println(num + ". Liste des logs");
 
 	}
 

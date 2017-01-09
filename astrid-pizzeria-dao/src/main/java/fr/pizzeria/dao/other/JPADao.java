@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
 import fr.pizzeria.dao.exception.PizzaException;
-import fr.pizzeria.dao.pizza.PizzaDaoJPA;
+import fr.pizzeria.dao.service.pizza.PizzaDaoJPA;
 
 /**
  * 

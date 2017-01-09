@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.logging.Logger;
 
 import fr.pizzeria.dao.exception.PizzaException;
-import fr.pizzeria.dao.pizza.PizzaDaoJDBC;
+import fr.pizzeria.dao.service.pizza.PizzaDaoJDBC;
 
 /**
  * 

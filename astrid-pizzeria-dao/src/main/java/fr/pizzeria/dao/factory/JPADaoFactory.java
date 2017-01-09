@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import fr.pizzeria.dao.client.ClientDaoJPA;
-import fr.pizzeria.dao.commande.CommandeDaoJPA;
-import fr.pizzeria.dao.livreur.LivreurDaoJPA;
-import fr.pizzeria.dao.pizza.PizzaDao;
-import fr.pizzeria.dao.pizza.PizzaDaoJPA;
+import fr.pizzeria.dao.service.client.ClientDaoJPA;
+import fr.pizzeria.dao.service.commande.CommandeDaoJPA;
+import fr.pizzeria.dao.service.livreur.LivreurDaoJPA;
+import fr.pizzeria.dao.service.pizza.PizzaDao;
+import fr.pizzeria.dao.service.pizza.PizzaDaoJPA;
 
 /**
  * Classe fille de DaoFactory
