@@ -49,12 +49,11 @@ public class MaClasseAspect {
 		Object obj = null;
 		try {
 			obj = pjp.proceed();
-			if (obj == null) {
-				obj = new Object();
-			}
+		} catch (Exception e) {
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, "", e);
 		} finally {
 			Logger.getLogger(getClass().getName()).log(Level.INFO,
-					"Fin methode :  " + nomMethode + " retour=" + obj.toString());
+					"Fin methode :  " + nomMethode + " retour=" + ((obj == null) ? "pas de retour" : obj.toString()));
 		}
 		long after = System.currentTimeMillis();
 		String temps = (after - before) + "ms";
