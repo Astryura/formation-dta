@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.service.client.ClientDaoJPA;
-import fr.pizzeria.dao.service.commande.CommandeDaoJPA;
-import fr.pizzeria.dao.service.livreur.LivreurDaoJPA;
+import fr.pizzeria.dao.service.commande.CommandeDao;
+import fr.pizzeria.dao.service.livreur.LivreurDao;
 import fr.pizzeria.dao.service.pizza.PizzaDao;
 import fr.pizzeria.dao.service.pizza.PizzaDaoJPA;
 
@@ -20,7 +20,7 @@ public class JpaRepoDaoFactory extends DaoFactory {
 	 * @see PizzaDaoJPA
 	 */
 	@Autowired
-	public JpaRepoDaoFactory(@Qualifier("JPARepo") PizzaDao pizzadao) {
-		super(pizzadao, new CommandeDaoJPA(), new LivreurDaoJPA(), new ClientDaoJPA());
+	public JpaRepoDaoFactory(@Qualifier("JPARepo") PizzaDao pizzadao, CommandeDao commande, LivreurDao livreur) {
+		super(pizzadao, commande, livreur, new ClientDaoJPA());
 	}
 }

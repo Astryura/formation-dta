@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.repo.PerformanceRepository;
+import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Performance;
 import fr.pizzeria.model.Pizza;
 
@@ -32,7 +33,7 @@ public class MaClasseAspect {
 	}
 
 	@Around("execution(* fr.pizzeria.dao.service..*.*(..))")
-	public Object saveLogPizza(ProceedingJoinPoint pjp) throws Throwable {
+	public Object saveLog(ProceedingJoinPoint pjp) throws Throwable {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String today = dateFormat.format(date);
@@ -44,12 +45,17 @@ public class MaClasseAspect {
 			sb.append(" avec les parametres : (");
 			for (int i = 0; i < args.length; i++) {
 				if (args[i].getClass().equals(Pizza.class)) {
-					sb.append(" nouvelle Pizza enregistrée: ");
+					sb.append(" Pizza : ");
 					Pizza p = (Pizza) args[i];
 					sb.append(p.getCode() + " ");
 					sb.append(p.getNom() + " ");
 					sb.append(p.getPrix() + " ");
 					sb.append(p.getCatP() + " ");
+				} else if (args[i].getClass().equals(Livreur.class)) {
+					sb.append(" Livreur : ");
+					Livreur l = (Livreur) args[i];
+					sb.append(l.getNom() + " ");
+					sb.append(l.getPrenom() + " ");
 				} else {
 					sb.append(" " + args[i].toString());
 				}
@@ -59,7 +65,9 @@ public class MaClasseAspect {
 			}
 			sb.append(")");
 		}
-		Logger.getLogger(getClass().getName()).log(Level.INFO, "Debut methode : " + sb);
+		Logger.getLogger(
+
+				getClass().getName()).log(Level.INFO, "Debut methode : " + sb);
 		Object obj = null;
 		try {
 			obj = pjp.proceed();
