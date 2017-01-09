@@ -15,7 +15,7 @@
 			<table>
 				<tr>
 					<td><input name="id" id="id" value="${ingredients.id}"
-						type="text" readonly /></td>
+						type="hidden" readonly /></td>
 					<td><input name="nom" id="nom" value="${ingredients.nom}"
 						type="text" readonly /></td>
 					<td><input name="prix" id="prix" value="${ingredients.prix}"

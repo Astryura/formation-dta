@@ -12,8 +12,8 @@
 	<form method="get">
 		<table>
 			<tr>
-				<td>Id</td>
-				<td><input name="id" id="id" type="text" value="${ingredient.id}" readonly/></td>
+				
+				<td><input name="id" id="id" type="hidden" value="${ingredient.id}" readonly/></td>
 			</tr>
 			<tr>
 				<td>Nom</td>
