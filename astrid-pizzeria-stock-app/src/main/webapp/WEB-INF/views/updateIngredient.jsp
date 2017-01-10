@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -9,23 +11,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="get">
+	<form:form method="post" action="${ingredients.id}" modelAttribute="ingredient">
 		<table>
 			<tr>
-				
-				<td><input name="id" id="id" type="hidden" value="${ingredient.id}" readonly/></td>
-			</tr>
-			<tr>
+			<form:input path="id" type="hidden"/>
 				<td>Nom</td>
-				<td><input name="nom" id="nom" type="text" value="${ingredient.nom}" /></td>
+				<td><form:input path="nom" type="text" /></td>
 			</tr>
 			<tr>
 				<td>Prix</td>
-				<td><input name="prix" id="prix" type="text" value="${ingredient.prix}" /></td>
+				<td><form:input path="prix" type="text" /></td>
 			</tr>
 			<tr>
 				<td>Quantité</td>
-				<td><input name="quantite" id="quantite" type="text" value="${ingredient.quantite}" /></td>
+				<td><form:input path="quantite" type="text" /></td>
 			</tr>
 			<tr>
 				<td>
@@ -33,6 +32,6 @@
 				</td>
 			</tr>
 		</table>
-	</form>
+	</form:form>
 </body>
 </html>

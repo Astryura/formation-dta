@@ -11,18 +11,12 @@
 </head>
 <body>
 	<c:forEach items="${ingredients}" var="ingredients">
-		<form method="post" action="edit">
+		<form method="get" action='<c:url value="edit/${ingredients.id}"/>'>
 			<table>
 				<tr>
-					<td><input name="id" id="id" value="${ingredients.id}"
-						type="hidden" readonly /></td>
-					<td><input name="nom" id="nom" value="${ingredients.nom}"
-						type="text" readonly /></td>
-					<td><input name="prix" id="prix" value="${ingredients.prix}"
-						type="text" readonly /></td>
-					<td><input name="quantite" id="quantite"
-						value="${ingredients.quantite}" type="text" readonly /></td>
-
+					<td>${ingredients.nom}</td>
+					<td>${ingredients.prix}</td>
+					<td>${ingredients.quantite}</td>
 					<td>
 						<button type="submit">Modifier Ingrédient</button>
 					</td>
@@ -30,7 +24,7 @@
 			</table>
 		</form>
 	</c:forEach>
-	<form method="get" action="add">
+	<form method="get" action='<c:url value="add"/>'>
 		<button type="submit">Ajouter Ingrédient</button>
 
 	</form>

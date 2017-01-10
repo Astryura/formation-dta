@@ -1,9 +1,11 @@
 package fr.pizzeria.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -17,25 +19,22 @@ public class UpdateIngredientController {
 	@Autowired
 	IngredientRepository ingredientRepo;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView formIngredient(@RequestParam String id, @RequestParam String nom, @RequestParam String prix,
-			@RequestParam String quantite) {
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public ModelAndView formIngredient(@PathVariable Integer id, Model model) {
 		ModelAndView mav = new ModelAndView();
-		Ingredient ing = new Ingredient(Integer.parseInt(id), nom, Double.parseDouble(prix),
-				Integer.parseInt(quantite));
+		Ingredient ing = ingredientRepo.findById(id);
 		mav.addObject("ingredient", ing);
+		model.addAttribute("ingredient", ing);
 		mav.setViewName("updateIngredient");
 		return mav;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public RedirectView updateIngredient(@RequestParam String id, @RequestParam String nom, @RequestParam String prix,
-			@RequestParam String quantite) {
-		Ingredient ing = ingredientRepo.findById(Integer.parseInt(id));
+	@RequestMapping(value = "{id}", method = RequestMethod.POST)
+	public RedirectView updateIngredient(@PathVariable Integer id,
+			@ModelAttribute("ingredient") Ingredient ingredient) {
+		Ingredient ing = ingredientRepo.findById(id);
 		ingredientRepo.delete(ing);
-		Ingredient ingredient = new Ingredient(Integer.parseInt(id), nom, Double.parseDouble(prix),
-				Integer.parseInt(quantite));
 		ingredientRepo.save(ingredient);
-		return new RedirectView("./");
+		return new RedirectView("../");
 	}
 }
