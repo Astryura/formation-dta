@@ -33,8 +33,10 @@ public class UpdateIngredientController {
 	public RedirectView updateIngredient(@PathVariable Integer id,
 			@ModelAttribute("ingredient") Ingredient ingredient) {
 		Ingredient ing = ingredientRepo.findById(id);
-		ingredientRepo.delete(ing);
-		ingredientRepo.save(ingredient);
+		ing.setNom(ingredient.getNom());
+		ing.setPrix(ingredient.getPrix());
+		ing.setQuantite(ingredient.getQuantite());
+		ingredientRepo.saveAndFlush(ing);
 		return new RedirectView("../");
 	}
 }
