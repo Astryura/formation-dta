@@ -10,9 +10,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${ingredients}" var="ingredients">
-		<form method="get" action='<c:url value="edit/${ingredients.id}"/>'>
-			<table>
+	<table>
+		<c:choose>
+			<c:when test="${ingredients[0] != null}">
+
+				<tr>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Quantité</th>
+				</tr>
+			</c:when>
+			<c:otherwise>
+			<p>Aucun ingrédients enregistrés</p>
+			</c:otherwise>
+		</c:choose>
+		<c:forEach items="${ingredients}" var="ingredients">
+			<form method="get" action='<c:url value="edit/${ingredients.id}"/>'>
 				<tr>
 					<td>${ingredients.nom}</td>
 					<td>${ingredients.prix}</td>
@@ -21,9 +34,9 @@
 						<button type="submit">Modifier Ingrédient</button>
 					</td>
 				</tr>
-			</table>
-		</form>
-	</c:forEach>
+			</form>
+		</c:forEach>
+	</table>
 	<form method="get" action='<c:url value="add"/>'>
 		<button type="submit">Ajouter Ingrédient</button>
 
