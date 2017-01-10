@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import fr.pizzeria.dao.repo.IngredientRepository;
 import fr.pizzeria.model.Ingredient;
-import fr.pizzeria.web.repo.IngredientRepository;
 
 @RestController
 @RequestMapping(value = "/ingredients/add")
@@ -21,7 +21,7 @@ public class AddIngredientController {
 	IngredientRepository ingredientRepo;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView listIngredient(Model model) {
+	public ModelAndView formIngredient(Model model) {
 		ModelAndView mav = new ModelAndView();
 		List<Ingredient> ingredients = ingredientRepo.findAll();
 		Ingredient ing = new Ingredient();

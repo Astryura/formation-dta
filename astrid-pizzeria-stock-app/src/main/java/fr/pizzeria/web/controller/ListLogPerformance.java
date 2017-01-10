@@ -8,22 +8,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.pizzeria.dao.repo.IngredientRepository;
-import fr.pizzeria.model.Ingredient;
+import fr.pizzeria.dao.repo.PerformanceRepository;
+import fr.pizzeria.model.Performance;
 
 @RestController
-@RequestMapping(value = "/ingredients")
-public class ListIngredientController {
+@RequestMapping(value = "/performances")
+public class ListLogPerformance {
 	@Autowired
-	IngredientRepository ingredientRepo;
+	PerformanceRepository perfoRepo;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView listIngredients() {
+	public ModelAndView listLogs() {
 		ModelAndView mav = new ModelAndView();
-		List<Ingredient> ingredients = ingredientRepo.findAll();
-		mav.addObject("ingredients", ingredients);
-		mav.setViewName("listIngredient");
+		List<Performance> performances = perfoRepo.findAll();
+		mav.addObject("performances", performances);
+		mav.setViewName("listPerf");
 		return mav;
 	}
-
 }

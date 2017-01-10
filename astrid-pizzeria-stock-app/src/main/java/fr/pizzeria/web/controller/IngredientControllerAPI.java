@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.pizzeria.dao.repo.IngredientRepository;
 import fr.pizzeria.model.Ingredient;
-import fr.pizzeria.web.repo.IngredientRepository;
 
 @RestController
 @RequestMapping(value = "/rest/ingredients")

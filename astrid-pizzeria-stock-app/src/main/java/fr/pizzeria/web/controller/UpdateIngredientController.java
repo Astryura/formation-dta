@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import fr.pizzeria.model.Ingredient;
-import fr.pizzeria.web.repo.IngredientRepository;
+import fr.pizzeria.dao.repo.IngredientRepository;
 
 @RestController
 @RequestMapping(value = "/ingredients/edit")

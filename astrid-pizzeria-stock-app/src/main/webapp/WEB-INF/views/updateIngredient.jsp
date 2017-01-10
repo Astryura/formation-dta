@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Modifier Ingrédient</title>
 </head>
 <body>
 	<form:form method="post" action="${ingredients.id}" modelAttribute="ingredient">
