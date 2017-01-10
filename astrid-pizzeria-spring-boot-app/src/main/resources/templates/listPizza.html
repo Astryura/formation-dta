@@ -12,13 +12,17 @@
     <thead>
     <tr>
         <th>Code</th>
+        <th>Nom</th>
         <th>Prix</th>
+        <th>Categorie</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="p: ${pizzas}">
         <td th:text="${p.code}"></td>
+        <td th:text="${p.nom}"></td>
         <td th:text="${#numbers.formatDecimal(p.prix, 1, 2)}"></td>
+        <td th:text="${p.catP}"></td>
     </tr>
     </tbody>
 </table>
