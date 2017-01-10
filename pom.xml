@@ -15,6 +15,7 @@
 		<module>astrid-pizzeria-ihmCommons</module>
 		<module>astrid-pizzeria-admin-app</module>
 		<module>astrid-pizzeria-stock-app</module>
+		<module>astrid-pizzeria-spring-boot-app</module>
 	</modules>
 
 	<properties>

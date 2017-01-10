@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="webjars/jquery/3.1.1-1/jquery.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.css" />
+<script type="text/javascript">
+	function list() {
+		$
+				.get(
+						"http://localhost:8080/pizzas",
+						function(data) {
+							console.log(data);
+							var str = "<div id=\"wrapper\"><div class=\"row\">";
+							$(jQuery.parseJSON(JSON.stringify(data)))
+									.each(
+											function() {
+												var id = this.id;
+												var code = this.code;
+												var nom = this.nom;
+												var prix = this.prix;
+												var catP = this.catP;
+												str += "<input class=\"form-control width\" type=\"hidden\" name=\"idL\" id=\"idL\" value=\"" + id + "\" readonly /><div class=\"col-md-3\">"
+														+ "<input class=\"form-control width\" type=\"text\" name=\"codeL\" id=\"codeL\" value=\"" + code + "\" /></div><div class=\"col-md-3\">"
+														+ "<input class=\"form-control width\" type=\"text\" name=\"nomL\" id=\"nomL\" value=\"" + nom + "\" />"
+														+ "</div><div class=\"col-md-3\"><input class=\"form-control width\" type=\"text\" name=\"prixL\" id=\"prixL\" value=\"" + prix + "\" />"
+														+ "</div><div class=\"col-md-3\"><input class=\"form-control width\" type=\"text\" name=\"catL\" id=\"catL\" value=\"" + catP + "\" />"
+														+ "</div>";
+											});
+							str += "</div></div>";
+							$("#result").html(str);
+						});
+	}
+	$(function() {
+		console.log("ready!");
+		list();
+		$("#add").click(function() {
+			var code = $("#code").val();
+			var nom = $("#nom").val();
+			var prix = $("#prix").val();
+			var catP = $("#cat").val();
+			var data = {
+				code : code,
+				nom : nom,
+				prix : prix,
+				catP : catP
+			};
+			$.ajax({
+				url : "http://localhost:8080/pizzas",
+				type : 'POST',
+				data : JSON.stringify(data),
+				contentType : 'application/json; charset=utf-8',
+				dataType : 'json',
+				success : function(data) {
+					list();
+				}
+			});
+
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="result"></div>
+	<div class="form-horizontal">
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>Ajouter Pizza</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="code">code</label>
+				<div class="col-md-4">
+					<input id="code" name="code" type="text"
+						class="form-control input-md">
+
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="nom">Nom</label>
+				<div class="col-md-4">
+					<input id="nom" name="nom" type="text"
+						class="form-control input-md">
+
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="prix">Prix</label>
+				<div class="col-md-4">
+					<input id="prix" name="prix" type="text"
+						class="form-control input-md">
+
+				</div>
+			</div>
+
+			<!-- Password input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="cat">Catégorie</label>
+				<div class="col-md-4">
+					<input id="cat" name="cat" type="text"
+						class="form-control input-md">
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="add"></label>
+				<div class="col-md-4">
+					<button id="add" name="add" class="btn btn-primary">Ajouter</button>
+				</div>
+			</div>
+
+		</fieldset>
+	</div>
+</body>
+</html>
